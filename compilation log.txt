@@ -1,0 +1,58 @@
+********************************************************************************
+*                     Sunday, January 03, 2016 2:51:36 PM                      *
+********************************************************************************
+smcs.exe version: 1.5.3.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
+Unity directory: D:/Programme/Unity/Editor/Data
+Compiler: Version6Mono
+
+- Compilation -----------------------------------------------
+
+Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
+Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-0214466940c83d440900aaca464335dc
+Exit code: 0
+Elapsed time: 2.05 sec
+
+- Compiler output:
+0: Compilation succeeded - 6 warning(s)
+
+- Compiler errors:
+0: Assets/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
+1: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
+2: Assets/Scripts/Movement/MovementComponent.cs(21,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
+3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
+4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
+5: Assets/InteractionComponent.cs(46,44): warning CS0618: `UnityEngine.Application.LoadLevelAdditiveAsync(int)' is obsolete: `Use SceneManager.LoadSceneAsync'
+6: Assets/Scripts/Game.cs(46,21): warning CS0618: `UnityEngine.Application.LoadLevelAdditive(int)' is obsolete: `Use SceneManager.LoadScene'
+7: Assets/Scripts/Movement/MovementComponent.cs(10,25): warning CS0414: The private field `Assets.Scripts.Movement.MovementComponent.position' is assigned but its value is never used
+********************************************************************************
+*                     Sunday, January 03, 2016 2:51:38 PM                      *
+********************************************************************************
+smcs.exe version: 1.5.3.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
+Unity directory: D:/Programme/Unity/Editor/Data
+Compiler: Version6Mono
+
+- Compilation -----------------------------------------------
+
+Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
+Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-3108274e96514234f9a521eea3e058fe
+Exit code: 0
+Elapsed time: 1.43 sec
+
+- Compiler output:
+0: Compilation succeeded - 5 warning(s)
+
+- Compiler errors:
+0: Assets/Tiled2Unity/Scripts/Editor/ICustomTiledImporter.cs(30,59): warning CS0618: `UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(UnityEngine.GameObject, string, string)' is obsolete: `AddComponent(string) has been deprecated. Use GameObject.AddComponent<T>() / GameObject.AddComponent(Type) instead.
+1: API Updater could not automatically update the original call to AddComponent(string name), because it was unable to resolve the type specified in parameter 'name'.
+2: Instead, this call has been replaced with a call to APIUpdaterRuntimeServices.AddComponent() so you can try to test your game in the editor.
+3: In order to be able to build the game, replace this call (APIUpdaterRuntimeServices.AddComponent()) with a call to GameObject.AddComponent<T>() / GameObject.AddComponent(Type).'
+4: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,76): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.Import' is obsolete: `Use ModelImporterNormals.Import instead'
+5: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,27): warning CS0618: `UnityEditor.ModelImporter.normalImportMode' is obsolete: `normalImportMode is deprecated. Use importNormals instead'
+6: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,77): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.None' is obsolete: `Use ModelImporterNormals.None instead'
+7: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,27): warning CS0618: `UnityEditor.ModelImporter.tangentImportMode' is obsolete: `tangentImportMode is deprecated. Use importTangents instead'

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Blocking
+  - Entrance
+  - Ignore Collision
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: BelowGround
+    uniqueID: 1017771313
+    locked: 0
+  - name: OnGround
+    uniqueID: 1366135563
+    locked: 0
+  - name: Ground
+    uniqueID: 2244994781
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Head
+    uniqueID: 2655851399
+    locked: 0
+  - name: AboveHead
+    uniqueID: 532414709
+    locked: 0
+  - name: Above
+    uniqueID: 3459459537
+    locked: 0
+  - name: Sky
+    uniqueID: 4060577027
+    locked: 0

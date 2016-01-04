@@ -11,7 +11,7 @@ namespace Assets.Soraphis.Spirits.Editor {
     public class SpiritTeamEditor : UnityEditor.Editor {
 
         private static SpiritLibrary library = null;
-        private string path = "Assets/New Spirit Library.asset";
+        private string path = "Assets/Resources/New Spirit Library.asset";
         private int selection;
         private int selectedLevel;
         private static string[] list;

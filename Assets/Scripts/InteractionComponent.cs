@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Linq;
 using Assets.Soraphis.Spirits.Scripts;
+using UnityEngine.SceneManagement;
 
 public class InteractionComponent : MonoBehaviour {
 
@@ -15,6 +16,8 @@ public class InteractionComponent : MonoBehaviour {
     [SerializeField] private float recovertime;
 
     public void Start() {
+        team = team.Clone() as SpiritTeam;
+
         bo = new BattleObject(true, team);
     }
 
@@ -43,7 +46,7 @@ public class InteractionComponent : MonoBehaviour {
 
     private IEnumerator LoadBattle() {
         Destroy(GameObject.Find("Canvas: Battle"));
-        AsyncOperation async = Application.LoadLevelAdditiveAsync(1);
+        AsyncOperation async = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive); 
         yield return async;
         bc = GameObject.Find("Canvas: Battle").GetComponent<BattleController>();
         yield return StartCoroutine(bc.BattleRoutine(bo));

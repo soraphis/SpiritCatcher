@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Soraphis.SaveGame;
 using Assets.Soraphis.Spirits.Scripts;
 using Gamelogic;
 
-public class Player : Singleton<Player> {
+public class Player : Singleton<Player>, Saveable {
 
     public enum ActionState {
         Default, Talking, Battle, Cutszene // dont know .... 
@@ -22,5 +23,22 @@ public class Player : Singleton<Player> {
     public List<Spirit> team;
 
 
+    public void Load(DataNode parent) {
+        DataNode node = parent.GetChild("Game");
+        if (node == null) return;
+        team = node.GetChild("team").Get<List<Spirit>>();
+    }
 
+    public DataNode Save() {
+        DataNode node = new DataNode();
+        node.Name = "Game";
+
+        node.AddChild("team", team);
+
+        return node;
+    }
+
+    public void CreateDefault() {
+        throw new System.NotImplementedException();
+    }
 }

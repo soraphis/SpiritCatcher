@@ -12,19 +12,19 @@ MonoBehaviour:
   m_Name: New Spirit Library
   m_EditorClassIdentifier: 
   Spirits:
-  - Name: 42616e617665616c
+  - Name: Banaveal
     Attributes:
       keys:
-      - 4850
-      - 44616d616765
-      - 446566656e7365
-      - 5370656564
-      - 437269746963616c4368616e6365
-      - 494e4954
-      - 46616e6772617465
-      - 4c6576656c44616d616765
-      - 4c6576656c446566656e7365
-      - 4c6576656c5370656564
+      - HP
+      - Damage
+      - Defense
+      - Speed
+      - CriticalChance
+      - INIT
+      - Fangrate
+      - LevelDamage
+      - LevelDefense
+      - LevelSpeed
       values:
       - 30
       - 5
@@ -36,19 +36,19 @@ MonoBehaviour:
       - 1.1
       - 1.2
       - 1.05
-  - Name: 536f6c61666f6c
+  - Name: Solafol
     Attributes:
       keys:
-      - 4850
-      - 44616d616765
-      - 446566656e7365
-      - 5370656564
-      - 437269746963616c4368616e6365
-      - 494e4954
-      - 46616e6772617465
-      - 4c6576656c44616d616765
-      - 4c6576656c446566656e7365
-      - 4c6576656c5370656564
+      - HP
+      - Damage
+      - Defense
+      - Speed
+      - CriticalChance
+      - INIT
+      - Fangrate
+      - LevelDamage
+      - LevelDefense
+      - LevelSpeed
       values:
       - 20
       - 5
@@ -60,19 +60,19 @@ MonoBehaviour:
       - 1.05
       - 1.1
       - 1.2
-  - Name: 467572626f6c64
+  - Name: Furbold
     Attributes:
       keys:
-      - 4850
-      - 44616d616765
-      - 446566656e7365
-      - 5370656564
-      - 437269746963616c4368616e6365
-      - 494e4954
-      - 46616e6772617465
-      - 4c6576656c44616d616765
-      - 4c6576656c446566656e7365
-      - 4c6576656c5370656564
+      - HP
+      - Damage
+      - Defense
+      - Speed
+      - CriticalChance
+      - INIT
+      - Fangrate
+      - LevelDamage
+      - LevelDefense
+      - LevelSpeed
       values:
       - 15
       - 7

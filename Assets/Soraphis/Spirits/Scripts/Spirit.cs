@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets.Soraphis.Spirits.Scripts {
 
     [Serializable]
-    public class Spirit {
+    public class Spirit : ICloneable {
         public string Name;
         public int Level;
         public readonly SpiritType Type;
@@ -51,6 +51,19 @@ namespace Assets.Soraphis.Spirits.Scripts {
             return spirit;
         }
 
+        public object Clone() {
+            Spirit copy = new Spirit(this.Type);
+            copy.Name = Name;
+            copy.Level = Level;
+            copy.currentHP = currentHP;
+            copy.expierience = expierience;
+            copy.CurrentStamina = currentStamina;
+            copy.Attribute = new AttributeDict();
+            foreach(var pair in Attribute) {
+                copy.Attribute.Add(pair.Key, pair.Value);
+            }
+            return copy;
+        }
     }
 
 }

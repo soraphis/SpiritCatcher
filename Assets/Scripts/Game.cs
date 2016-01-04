@@ -1,50 +1,43 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using Assets.Soraphis.SaveGame;
 using Assets.Soraphis.Spirits.Scripts;
 using Gamelogic;
+using UnityEditor;
+using UnityEngine.SceneManagement;
 
-public class Game : Singleton<Game> {
+public class Game : Singleton<Game>, Saveable {
 
     public enum GameState {
         World, Battle, Menu
     }
 
-    public GameState CurrentGameState = GameState.World;
+    public GameState CurrentGameState = GameState.Menu;
     public SpiritLibrary SpiritLibrary;
-
-    public struct GameDate {
-
-        public GameDate(int minutes = 0, int hours = 0, int days = 0, int month = 0, int years = 0) {
-            minutes %= 60;
-            hours %= 24;
-            days %= 30;
-            month %= 12;
-            Time = (ulong) (minutes + hours*60 + days *24*60 + month*30*24*60+years*12*30*24*60);
-        }
-
-        private GameDate(ulong time) {
-            Time = time;
-        }
-
-        public ulong Time { get; private set; }
-
-        public uint Year => (uint) ((Time / 60 / 24 / 30 / 12));
-        public uint Month => (uint) ((Time / 60 / 24 / 30) % (12))+1;
-        public uint Day => (uint) ((Time/60/24) % (30))+1;
-        public uint Hour => (uint) ((Time/60)%(24));
-        public uint Minute => (uint) (Time%(60));
-
-        public static GameDate operator ++(GameDate g) => g + 1;
-        public static GameDate operator +(GameDate g, int i) => new GameDate(g.Time + (ulong) i);
-        public static GameDate operator +(GameDate g, GameDate d) => new GameDate(g.Time + d.Time);
-        public static GameDate operator -(GameDate g, GameDate d) => new GameDate(g.Time - d.Time);
-    }
+    public Scene currentScene;
 
     public GameDate GameTime = new GameDate(month:3);
 
+    public GameObject IngameMenu = null;
+
+    private void Awake() {
+        DontDestroyOnLoad(this.gameObject);
+        currentScene = SceneManager.GetActiveScene();
+    }
+
     public void Start() {
-        Application.LoadLevelAdditive(2);
+//        Application.LoadLevelAdditive(2);
         StartCoroutine(chronos());
+    }
+
+    public void Update() {
+        if(Input.GetKeyDown(KeyCode.Escape)) {
+            if(CurrentGameState != GameState.Battle && IngameMenu != null) {
+                IngameMenu.SetActive(!IngameMenu.activeSelf);
+                CurrentGameState = IngameMenu.activeSelf ? GameState.Menu : GameState.World;
+            }
+        }
     }
 
     private IEnumerator chronos() {
@@ -57,7 +50,45 @@ public class Game : Singleton<Game> {
         }
     }
 
-    public void Update() {
+    public void LoadLevel(string level) {
+        // "unload" old level
+        SceneManager.UnloadScene(currentScene.buildIndex);
+        if (currentScene.buildIndex == 0) {
+            SceneManager.LoadScene(1, LoadSceneMode.Single);
+        }
+        CurrentGameState = GameState.World;
+        SceneManager.LoadScene(level, LoadSceneMode.Additive);
     }
 
+    public void Load(DataNode parent) {
+        DataNode node = parent.GetChild("Game");
+        if(node == null) return;
+        GameTime = node.GetChild("Time").Get<GameDate>();
+        currentScene = SceneManager.GetSceneAt(node.GetChild("Scene").Get<int>());
+
+        LoadLevel(currentScene.name);
+    }
+
+    public DataNode Save() {
+        DataNode node = new DataNode();
+        node.Name = "Game";
+
+        node.AddChild("Time", GameTime);
+        node.AddChild("Scene", currentScene.buildIndex);
+
+        return node;
+    }
+
+    public void CreateDefault() {
+        throw new System.NotImplementedException();
+    }
+
+
+    public static IEnumerable<GameObject> SceneRoots() {
+        var prop = new HierarchyProperty(HierarchyType.GameObjects);
+        var expanded = new int[0];
+        while (prop.Next(expanded)) {
+            yield return prop.pptrValue as GameObject;
+        }
+    }
 }

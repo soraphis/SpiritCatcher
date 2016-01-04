@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Security.Cryptography.X509Certificates;
+using Assets.Soraphis.SaveGame;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Movement{
-    public class MovementComponent : MonoBehaviour {
+    public class MovementComponent : MonoBehaviour, Saveable {
         public const float speedWalking = 12f; // steps per second
         public const float speedRunning = 20f; // steps per second
 
@@ -37,6 +39,7 @@ namespace Assets.Scripts.Movement{
         }
 
         void LateUpdate() {
+            if (Game.Instance.CurrentGameState != Game.GameState.World) return;
             //            if(Vector2.Distance(position, transform.position) <= 0.001f) {
             //                var v = transform.position;
             //                float c = 1; // coordinate rounding
@@ -66,6 +69,36 @@ namespace Assets.Scripts.Movement{
 //                currentSpeed = 0;
                 rigidbody.velocity = Vector2.zero;
             }
+        }
+
+        public void Load(DataNode parent) {
+            DataNode node = parent.GetChild("MoveComponent");
+            if (node == null) return;
+
+            var facing = node.GetChild("FacingDirection");
+            FacingDirection = new Vector2(facing.GetChild("x").Get<float>(), facing.GetChild("y").Get<float>());
+
+            var pos = node.GetChild("Position");
+            transform.position = new Vector2(pos.GetChild("x").Get<float>(), pos.GetChild("y").Get<float>());
+        }
+
+        public DataNode Save() {
+            DataNode node = new DataNode();
+            node.Name = "MoveComponent";
+
+            var facing = node.AddChild("FacingDirection");
+            facing.AddChild("x", FacingDirection.x);
+            facing.AddChild("y", FacingDirection.y);
+
+            var pos = node.AddChild("Position");
+            pos.AddChild("x", position.x);
+            pos.AddChild("y", position.y);
+
+            return node;
+        }
+
+        public void CreateDefault() {
+            throw new NotImplementedException();
         }
     }
 }

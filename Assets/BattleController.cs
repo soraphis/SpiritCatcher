@@ -129,6 +129,8 @@ public class BattleController : MonoBehaviour {
                 for(int i = 0; i < 2; ++i) {
                     if(fs[i].currentHP <= 0) {
                         // die animation
+
+
                         Spirits[i].DOFade(0f, 1.2f);
                         fs[i] = null;
                     }

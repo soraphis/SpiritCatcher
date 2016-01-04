@@ -53,11 +53,11 @@ TagManager:
   - name: Head
     uniqueID: 2655851399
     locked: 0
-  - name: AboveHead
-    uniqueID: 532414709
-    locked: 0
   - name: Above
     uniqueID: 3459459537
+    locked: 0
+  - name: AboveHead
+    uniqueID: 532414709
     locked: 0
   - name: Sky
     uniqueID: 4060577027

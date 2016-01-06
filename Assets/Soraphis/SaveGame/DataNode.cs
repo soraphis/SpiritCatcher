@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using JetBrains.Annotations;
+using UnityEngine;
 
 /// <summary>
 /// This is an moddified version from DataNode class found in tasharen.com's game windward
@@ -13,15 +14,14 @@ using JetBrains.Annotations;
 /// </summary>
 
 namespace Assets.Soraphis.SaveGame {
+    
     [Serializable]
     public class DataNode {
 
         public object Value;
-        private List<DataNode> children = new List<DataNode>();
+        public List<DataNode> Children = new List<DataNode>();
 
         public string Name;
-
-        private bool mResolved = true;
 
         public System.Type type {
             get {
@@ -37,27 +37,38 @@ namespace Assets.Soraphis.SaveGame {
         }
 
         public DataNode AddChild(DataNode dataNode) {
-            this.children.Add(dataNode);
+            this.Children.Add(dataNode);
             return dataNode;
         }
 
         public DataNode AddChild(string name = "", object value = null) {
             DataNode dataNode = new DataNode();
-            this.children.Add(dataNode);
+            this.Children.Add(dataNode);
             dataNode.Name = name;
             dataNode.Value = value;
             return dataNode;
         }
 
-        public DataNode GetChild(string name) {
-            if (children.Any(node => node.Name == name))
-                return children.Find(node => node.Name == name);
+        public DataNode GetChild(string name, bool crateifMissing = false) {
+            if (Children.Any(node => node.Name == name))
+                return Children.Find(node => node.Name == name);
+            if(crateifMissing) return AddChild(name);
             return null;
+        }
+
+        public void Merge(DataNode other, bool overwrite = false) {
+            if(other == null) return;
+
+            if(overwrite || this.Value == null) this.Value = other.Value;
+            foreach(DataNode t in other.Children) {
+                if(t == this) continue;
+                this.GetChild(t.Name, true).Merge(t, overwrite);
+            }
         }
 
         public void Write(StreamWriter writer, int tab = 0) {
             DataNode.Write(writer, tab, !string.IsNullOrEmpty(Name) ? Name : "Node", Value);
-            foreach (var node in children) {
+            foreach (var node in Children) {
                 node.Write(writer, tab + 1);
             }
             if (tab != 0) return;
@@ -167,5 +178,17 @@ namespace Assets.Soraphis.SaveGame {
             return line;
         }
 
+        public string PrintAll() {
+            string s = "";
+
+            s += $"[{Name} = {Value}, ";
+            foreach(var child in Children) {
+                s += child.PrintAll();
+            }
+            if(Children.Count == 0) s += "[]";
+            s += "]";
+
+            return s;
+        }
     }
 }

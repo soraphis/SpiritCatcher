@@ -5,10 +5,6 @@ using Assets.Soraphis.SaveGame;
 using UnityEditor;
 
 public class MainMenu : MonoBehaviour {
-
-    private const string SaveGamePath = "savegame.save";
-
-
     void Start() {
     }
 
@@ -16,21 +12,22 @@ public class MainMenu : MonoBehaviour {
         // write player default values:
 
         // load scene:
-        Game.Instance.LoadLevel("LevelScenes/spukwald");
+        Game.Instance.LoadLevel(3);
 
     }
 
     public void LoadGameButton() {
         try {
-            using(TextReader tr = new StreamReader(SaveGamePath)) {
+            using(TextReader tr = new StreamReader(Game.SaveGamePath)) {
                 DataNode dn = DataNode.Read(tr);
 
-                Game.Instance.Load(dn);
+                Game.Instance.savedData = dn;
+                Game.Instance.gameObject.GetComponent<SavePacker>().Load(dn);
 
-                foreach(var root in Game.SceneRoots()) {
+               /* foreach(var root in Game.SceneRoots()) {
                     var pack = root.GetComponent<SavePacker>();
                     pack?.Load(dn);
-                }
+                }*/
             }
         }
         catch(FileNotFoundException) {

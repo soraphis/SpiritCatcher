@@ -13,4 +13,9 @@ public class IngameMenu : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void SaveGameButton() {
+        Game.Instance.SaveGame();
+    }
+
 }

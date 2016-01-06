@@ -1,5 +1,5 @@
 ********************************************************************************
-*                     Monday, January 04, 2016 6:57:29 PM                      *
+*                    Wednesday, January 06, 2016 3:19:48 PM                    *
 ********************************************************************************
 smcs.exe version: 1.5.3.0
 Platform: Windows
@@ -11,12 +11,12 @@ Compiler: Version6Mono
 - Compilation -----------------------------------------------
 
 Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-338d3c8a671e2564e8450d1afcfaa924
+Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-1d9d83e1ac08e2744801a0d6ebdf56f5
 Exit code: 0
-Elapsed time: 2.11 sec
+Elapsed time: 1.59 sec
 
 - Compiler output:
-0: Compilation succeeded - 4 warning(s)
+0: Compilation succeeded - 5 warning(s)
 
 - Compiler errors:
 0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
@@ -24,9 +24,10 @@ Elapsed time: 2.11 sec
 2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
 3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
 4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
-5: Assets/Soraphis/SaveGame/DataNode.cs(24,22): warning CS0414: The private field `Assets.Soraphis.SaveGame.DataNode.mResolved' is assigned but its value is never used
+5: Assets/Scripts/Game.cs(111,13): warning CS0219: The variable `n1' is assigned but its value is never used
+6: Assets/Scripts/Game.cs(112,13): warning CS0219: The variable `n2' is assigned but its value is never used
 ********************************************************************************
-*                     Monday, January 04, 2016 6:57:32 PM                      *
+*                    Wednesday, January 06, 2016 3:19:50 PM                    *
 ********************************************************************************
 smcs.exe version: 1.5.3.0
 Platform: Windows
@@ -38,9 +39,9 @@ Compiler: Version6Mono
 - Compilation -----------------------------------------------
 
 Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-bb102bd468da04245a748afe2e64d3d2
+Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-e0ccba92d627fcc44ab36b79f4132d46
 Exit code: 0
-Elapsed time: 1.46 sec
+Elapsed time: 1.43 sec
 
 - Compiler output:
 0: Compilation succeeded - 5 warning(s)
@@ -55,7 +56,7 @@ Elapsed time: 1.46 sec
 6: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,77): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.None' is obsolete: `Use ModelImporterNormals.None instead'
 7: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,27): warning CS0618: `UnityEditor.ModelImporter.tangentImportMode' is obsolete: `tangentImportMode is deprecated. Use importTangents instead'
 ********************************************************************************
-*                     Monday, January 04, 2016 6:58:55 PM                      *
+*                    Wednesday, January 06, 2016 3:24:22 PM                    *
 ********************************************************************************
 smcs.exe version: 1.5.3.0
 Platform: Windows
@@ -67,12 +68,12 @@ Compiler: Version6Mono
 - Compilation -----------------------------------------------
 
 Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-5968d32daa9fa624c8ced59b90905efd
+Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-6048ab7cc9beb7b4c843355ff707fde8
 Exit code: 0
-Elapsed time: 1.69 sec
+Elapsed time: 1.54 sec
 
 - Compiler output:
-0: Compilation succeeded - 4 warning(s)
+0: Compilation succeeded - 5 warning(s)
 
 - Compiler errors:
 0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
@@ -80,9 +81,10 @@ Elapsed time: 1.69 sec
 2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
 3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
 4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
-5: Assets/Soraphis/SaveGame/DataNode.cs(24,22): warning CS0414: The private field `Assets.Soraphis.SaveGame.DataNode.mResolved' is assigned but its value is never used
+5: Assets/Scripts/Game.cs(111,13): warning CS0219: The variable `n1' is assigned but its value is never used
+6: Assets/Scripts/Game.cs(112,13): warning CS0219: The variable `n2' is assigned but its value is never used
 ********************************************************************************
-*                     Monday, January 04, 2016 6:58:57 PM                      *
+*                    Wednesday, January 06, 2016 3:24:24 PM                    *
 ********************************************************************************
 smcs.exe version: 1.5.3.0
 Platform: Windows
@@ -94,9 +96,9 @@ Compiler: Version6Mono
 - Compilation -----------------------------------------------
 
 Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-acfa3cb3c2ebddb418ea662b365cc787
+Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-52c36a63676288b4d9df22686c738839
 Exit code: 0
-Elapsed time: 1.40 sec
+Elapsed time: 1.32 sec
 
 - Compiler output:
 0: Compilation succeeded - 5 warning(s)
@@ -111,7 +113,7 @@ Elapsed time: 1.40 sec
 6: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,77): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.None' is obsolete: `Use ModelImporterNormals.None instead'
 7: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,27): warning CS0618: `UnityEditor.ModelImporter.tangentImportMode' is obsolete: `tangentImportMode is deprecated. Use importTangents instead'
 ********************************************************************************
-*                     Monday, January 04, 2016 7:00:07 PM                      *
+*                    Wednesday, January 06, 2016 3:25:05 PM                    *
 ********************************************************************************
 smcs.exe version: 1.5.3.0
 Platform: Windows
@@ -123,470 +125,23 @@ Compiler: Version6Mono
 - Compilation -----------------------------------------------
 
 Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-c69c4e3d3e83d4d428e274081ac8f37a
-Exit code: 0
-Elapsed time: 1.62 sec
-
-- Compiler output:
-0: Compilation succeeded - 4 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
-5: Assets/Soraphis/SaveGame/DataNode.cs(24,22): warning CS0414: The private field `Assets.Soraphis.SaveGame.DataNode.mResolved' is assigned but its value is never used
-********************************************************************************
-*                     Monday, January 04, 2016 7:00:09 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-b8d6fb2d6715cd34b97061efc0c2524e
-Exit code: 0
-Elapsed time: 1.39 sec
-
-- Compiler output:
-0: Compilation succeeded - 5 warning(s)
-
-- Compiler errors:
-0: Assets/Tiled2Unity/Scripts/Editor/ICustomTiledImporter.cs(30,59): warning CS0618: `UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(UnityEngine.GameObject, string, string)' is obsolete: `AddComponent(string) has been deprecated. Use GameObject.AddComponent<T>() / GameObject.AddComponent(Type) instead.
-1: API Updater could not automatically update the original call to AddComponent(string name), because it was unable to resolve the type specified in parameter 'name'.
-2: Instead, this call has been replaced with a call to APIUpdaterRuntimeServices.AddComponent() so you can try to test your game in the editor.
-3: In order to be able to build the game, replace this call (APIUpdaterRuntimeServices.AddComponent()) with a call to GameObject.AddComponent<T>() / GameObject.AddComponent(Type).'
-4: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,76): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.Import' is obsolete: `Use ModelImporterNormals.Import instead'
-5: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,27): warning CS0618: `UnityEditor.ModelImporter.normalImportMode' is obsolete: `normalImportMode is deprecated. Use importNormals instead'
-6: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,77): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.None' is obsolete: `Use ModelImporterNormals.None instead'
-7: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,27): warning CS0618: `UnityEditor.ModelImporter.tangentImportMode' is obsolete: `tangentImportMode is deprecated. Use importTangents instead'
-********************************************************************************
-*                     Monday, January 04, 2016 7:00:51 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-a5522dc0fa59adf40991078c58a86f7f
-Exit code: 0
-Elapsed time: 1.62 sec
-
-- Compiler output:
-0: Compilation succeeded - 4 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
-5: Assets/Soraphis/SaveGame/DataNode.cs(24,22): warning CS0414: The private field `Assets.Soraphis.SaveGame.DataNode.mResolved' is assigned but its value is never used
-********************************************************************************
-*                     Monday, January 04, 2016 7:00:53 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-dec5441485428104eb4926449a8dbe74
-Exit code: 0
-Elapsed time: 1.38 sec
-
-- Compiler output:
-0: Compilation succeeded - 5 warning(s)
-
-- Compiler errors:
-0: Assets/Tiled2Unity/Scripts/Editor/ICustomTiledImporter.cs(30,59): warning CS0618: `UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(UnityEngine.GameObject, string, string)' is obsolete: `AddComponent(string) has been deprecated. Use GameObject.AddComponent<T>() / GameObject.AddComponent(Type) instead.
-1: API Updater could not automatically update the original call to AddComponent(string name), because it was unable to resolve the type specified in parameter 'name'.
-2: Instead, this call has been replaced with a call to APIUpdaterRuntimeServices.AddComponent() so you can try to test your game in the editor.
-3: In order to be able to build the game, replace this call (APIUpdaterRuntimeServices.AddComponent()) with a call to GameObject.AddComponent<T>() / GameObject.AddComponent(Type).'
-4: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,76): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.Import' is obsolete: `Use ModelImporterNormals.Import instead'
-5: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,27): warning CS0618: `UnityEditor.ModelImporter.normalImportMode' is obsolete: `normalImportMode is deprecated. Use importNormals instead'
-6: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,77): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.None' is obsolete: `Use ModelImporterNormals.None instead'
-7: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,27): warning CS0618: `UnityEditor.ModelImporter.tangentImportMode' is obsolete: `tangentImportMode is deprecated. Use importTangents instead'
-********************************************************************************
-*                     Monday, January 04, 2016 7:01:42 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-47cfdaec17b2a7247889b80f4e775637
-Exit code: 0
-Elapsed time: 1.57 sec
-
-- Compiler output:
-0: Compilation succeeded - 4 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
-5: Assets/Soraphis/SaveGame/DataNode.cs(24,22): warning CS0414: The private field `Assets.Soraphis.SaveGame.DataNode.mResolved' is assigned but its value is never used
-********************************************************************************
-*                     Monday, January 04, 2016 7:01:44 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-e772c9c1b5a332349a453d351f16e0e3
-Exit code: 0
-Elapsed time: 1.41 sec
-
-- Compiler output:
-0: Compilation succeeded - 5 warning(s)
-
-- Compiler errors:
-0: Assets/Tiled2Unity/Scripts/Editor/ICustomTiledImporter.cs(30,59): warning CS0618: `UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(UnityEngine.GameObject, string, string)' is obsolete: `AddComponent(string) has been deprecated. Use GameObject.AddComponent<T>() / GameObject.AddComponent(Type) instead.
-1: API Updater could not automatically update the original call to AddComponent(string name), because it was unable to resolve the type specified in parameter 'name'.
-2: Instead, this call has been replaced with a call to APIUpdaterRuntimeServices.AddComponent() so you can try to test your game in the editor.
-3: In order to be able to build the game, replace this call (APIUpdaterRuntimeServices.AddComponent()) with a call to GameObject.AddComponent<T>() / GameObject.AddComponent(Type).'
-4: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,76): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.Import' is obsolete: `Use ModelImporterNormals.Import instead'
-5: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,27): warning CS0618: `UnityEditor.ModelImporter.normalImportMode' is obsolete: `normalImportMode is deprecated. Use importNormals instead'
-6: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,77): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.None' is obsolete: `Use ModelImporterNormals.None instead'
-7: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,27): warning CS0618: `UnityEditor.ModelImporter.tangentImportMode' is obsolete: `tangentImportMode is deprecated. Use importTangents instead'
-********************************************************************************
-*                     Monday, January 04, 2016 7:02:49 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-ee7b559ee8889384c93ef89ce4225535
-Exit code: 0
-Elapsed time: 1.57 sec
-
-- Compiler output:
-0: Compilation succeeded - 4 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
-5: Assets/Soraphis/SaveGame/DataNode.cs(24,22): warning CS0414: The private field `Assets.Soraphis.SaveGame.DataNode.mResolved' is assigned but its value is never used
-********************************************************************************
-*                     Monday, January 04, 2016 7:02:51 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-1392b52cca16d5045b5a537337db0bbc
-Exit code: 0
-Elapsed time: 1.39 sec
-
-- Compiler output:
-0: Compilation succeeded - 5 warning(s)
-
-- Compiler errors:
-0: Assets/Tiled2Unity/Scripts/Editor/ICustomTiledImporter.cs(30,59): warning CS0618: `UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(UnityEngine.GameObject, string, string)' is obsolete: `AddComponent(string) has been deprecated. Use GameObject.AddComponent<T>() / GameObject.AddComponent(Type) instead.
-1: API Updater could not automatically update the original call to AddComponent(string name), because it was unable to resolve the type specified in parameter 'name'.
-2: Instead, this call has been replaced with a call to APIUpdaterRuntimeServices.AddComponent() so you can try to test your game in the editor.
-3: In order to be able to build the game, replace this call (APIUpdaterRuntimeServices.AddComponent()) with a call to GameObject.AddComponent<T>() / GameObject.AddComponent(Type).'
-4: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,76): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.Import' is obsolete: `Use ModelImporterNormals.Import instead'
-5: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,27): warning CS0618: `UnityEditor.ModelImporter.normalImportMode' is obsolete: `normalImportMode is deprecated. Use importNormals instead'
-6: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,77): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.None' is obsolete: `Use ModelImporterNormals.None instead'
-7: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,27): warning CS0618: `UnityEditor.ModelImporter.tangentImportMode' is obsolete: `tangentImportMode is deprecated. Use importTangents instead'
-********************************************************************************
-*                     Monday, January 04, 2016 7:03:52 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-0bec5b7d171145744ab6a1ce4850ca4d
-Exit code: 0
-Elapsed time: 1.62 sec
-
-- Compiler output:
-0: Compilation succeeded - 4 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
-5: Assets/Soraphis/SaveGame/DataNode.cs(24,22): warning CS0414: The private field `Assets.Soraphis.SaveGame.DataNode.mResolved' is assigned but its value is never used
-********************************************************************************
-*                     Monday, January 04, 2016 7:03:54 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-869a224b5aa267b4eb491a180d5df249
-Exit code: 0
-Elapsed time: 1.36 sec
-
-- Compiler output:
-0: Compilation succeeded - 5 warning(s)
-
-- Compiler errors:
-0: Assets/Tiled2Unity/Scripts/Editor/ICustomTiledImporter.cs(30,59): warning CS0618: `UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(UnityEngine.GameObject, string, string)' is obsolete: `AddComponent(string) has been deprecated. Use GameObject.AddComponent<T>() / GameObject.AddComponent(Type) instead.
-1: API Updater could not automatically update the original call to AddComponent(string name), because it was unable to resolve the type specified in parameter 'name'.
-2: Instead, this call has been replaced with a call to APIUpdaterRuntimeServices.AddComponent() so you can try to test your game in the editor.
-3: In order to be able to build the game, replace this call (APIUpdaterRuntimeServices.AddComponent()) with a call to GameObject.AddComponent<T>() / GameObject.AddComponent(Type).'
-4: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,76): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.Import' is obsolete: `Use ModelImporterNormals.Import instead'
-5: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,27): warning CS0618: `UnityEditor.ModelImporter.normalImportMode' is obsolete: `normalImportMode is deprecated. Use importNormals instead'
-6: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,77): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.None' is obsolete: `Use ModelImporterNormals.None instead'
-7: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,27): warning CS0618: `UnityEditor.ModelImporter.tangentImportMode' is obsolete: `tangentImportMode is deprecated. Use importTangents instead'
-********************************************************************************
-*                     Monday, January 04, 2016 7:04:46 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-b1396f733fc45cc4bbd39ec7c54da10f
-Exit code: 0
-Elapsed time: 1.61 sec
-
-- Compiler output:
-0: Compilation succeeded - 4 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
-5: Assets/Soraphis/SaveGame/DataNode.cs(24,22): warning CS0414: The private field `Assets.Soraphis.SaveGame.DataNode.mResolved' is assigned but its value is never used
-********************************************************************************
-*                     Monday, January 04, 2016 7:04:48 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-a633eb80d4f2c2b4fbb919d2646f38f4
-Exit code: 0
-Elapsed time: 1.36 sec
-
-- Compiler output:
-0: Compilation succeeded - 5 warning(s)
-
-- Compiler errors:
-0: Assets/Tiled2Unity/Scripts/Editor/ICustomTiledImporter.cs(30,59): warning CS0618: `UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(UnityEngine.GameObject, string, string)' is obsolete: `AddComponent(string) has been deprecated. Use GameObject.AddComponent<T>() / GameObject.AddComponent(Type) instead.
-1: API Updater could not automatically update the original call to AddComponent(string name), because it was unable to resolve the type specified in parameter 'name'.
-2: Instead, this call has been replaced with a call to APIUpdaterRuntimeServices.AddComponent() so you can try to test your game in the editor.
-3: In order to be able to build the game, replace this call (APIUpdaterRuntimeServices.AddComponent()) with a call to GameObject.AddComponent<T>() / GameObject.AddComponent(Type).'
-4: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,76): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.Import' is obsolete: `Use ModelImporterNormals.Import instead'
-5: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,27): warning CS0618: `UnityEditor.ModelImporter.normalImportMode' is obsolete: `normalImportMode is deprecated. Use importNormals instead'
-6: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,77): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.None' is obsolete: `Use ModelImporterNormals.None instead'
-7: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,27): warning CS0618: `UnityEditor.ModelImporter.tangentImportMode' is obsolete: `tangentImportMode is deprecated. Use importTangents instead'
-********************************************************************************
-*                     Monday, January 04, 2016 7:05:06 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-997661bf8b66e8d44b39d0233a3ff2c4
-Exit code: 0
-Elapsed time: 1.55 sec
-
-- Compiler output:
-0: Compilation succeeded - 4 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
-5: Assets/Soraphis/SaveGame/DataNode.cs(24,22): warning CS0414: The private field `Assets.Soraphis.SaveGame.DataNode.mResolved' is assigned but its value is never used
-********************************************************************************
-*                     Monday, January 04, 2016 7:05:08 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-e500d32e38e494a4285588855208b745
-Exit code: 0
-Elapsed time: 1.37 sec
-
-- Compiler output:
-0: Compilation succeeded - 5 warning(s)
-
-- Compiler errors:
-0: Assets/Tiled2Unity/Scripts/Editor/ICustomTiledImporter.cs(30,59): warning CS0618: `UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(UnityEngine.GameObject, string, string)' is obsolete: `AddComponent(string) has been deprecated. Use GameObject.AddComponent<T>() / GameObject.AddComponent(Type) instead.
-1: API Updater could not automatically update the original call to AddComponent(string name), because it was unable to resolve the type specified in parameter 'name'.
-2: Instead, this call has been replaced with a call to APIUpdaterRuntimeServices.AddComponent() so you can try to test your game in the editor.
-3: In order to be able to build the game, replace this call (APIUpdaterRuntimeServices.AddComponent()) with a call to GameObject.AddComponent<T>() / GameObject.AddComponent(Type).'
-4: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,76): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.Import' is obsolete: `Use ModelImporterNormals.Import instead'
-5: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,27): warning CS0618: `UnityEditor.ModelImporter.normalImportMode' is obsolete: `normalImportMode is deprecated. Use importNormals instead'
-6: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,77): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.None' is obsolete: `Use ModelImporterNormals.None instead'
-7: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,27): warning CS0618: `UnityEditor.ModelImporter.tangentImportMode' is obsolete: `tangentImportMode is deprecated. Use importTangents instead'
-********************************************************************************
-*                     Monday, January 04, 2016 7:05:47 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-c5c41b6ebf15cdc4994dff13066f14bb
+Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-dea883f77f193e442a99bd979a6134cb
 Exit code: 0
 Elapsed time: 1.58 sec
 
 - Compiler output:
-0: Compilation succeeded - 4 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
-5: Assets/Soraphis/SaveGame/DataNode.cs(24,22): warning CS0414: The private field `Assets.Soraphis.SaveGame.DataNode.mResolved' is assigned but its value is never used
-********************************************************************************
-*                     Monday, January 04, 2016 7:05:49 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-4308f408ea4b83b4ea9d9ff26dbd5c78
-Exit code: 0
-Elapsed time: 1.36 sec
-
-- Compiler output:
 0: Compilation succeeded - 5 warning(s)
 
 - Compiler errors:
-0: Assets/Tiled2Unity/Scripts/Editor/ICustomTiledImporter.cs(30,59): warning CS0618: `UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(UnityEngine.GameObject, string, string)' is obsolete: `AddComponent(string) has been deprecated. Use GameObject.AddComponent<T>() / GameObject.AddComponent(Type) instead.
-1: API Updater could not automatically update the original call to AddComponent(string name), because it was unable to resolve the type specified in parameter 'name'.
-2: Instead, this call has been replaced with a call to APIUpdaterRuntimeServices.AddComponent() so you can try to test your game in the editor.
-3: In order to be able to build the game, replace this call (APIUpdaterRuntimeServices.AddComponent()) with a call to GameObject.AddComponent<T>() / GameObject.AddComponent(Type).'
-4: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,76): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.Import' is obsolete: `Use ModelImporterNormals.Import instead'
-5: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,27): warning CS0618: `UnityEditor.ModelImporter.normalImportMode' is obsolete: `normalImportMode is deprecated. Use importNormals instead'
-6: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,77): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.None' is obsolete: `Use ModelImporterNormals.None instead'
-7: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,27): warning CS0618: `UnityEditor.ModelImporter.tangentImportMode' is obsolete: `tangentImportMode is deprecated. Use importTangents instead'
-********************************************************************************
-*                     Monday, January 04, 2016 7:06:08 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-c6e506665d2791a4d941f51a3bc892a1
-Exit code: 0
-Elapsed time: 1.61 sec
-
-- Compiler output:
-0: Compilation succeeded - 4 warning(s)
-
-- Compiler errors:
 0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
 1: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
 2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
 3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
 4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
-5: Assets/Soraphis/SaveGame/DataNode.cs(24,22): warning CS0414: The private field `Assets.Soraphis.SaveGame.DataNode.mResolved' is assigned but its value is never used
+5: Assets/Scripts/Game.cs(111,13): warning CS0219: The variable `n1' is assigned but its value is never used
+6: Assets/Scripts/Game.cs(112,13): warning CS0219: The variable `n2' is assigned but its value is never used
 ********************************************************************************
-*                     Monday, January 04, 2016 7:06:10 PM                      *
+*                    Wednesday, January 06, 2016 3:25:07 PM                    *
 ********************************************************************************
 smcs.exe version: 1.5.3.0
 Platform: Windows
@@ -598,63 +153,7 @@ Compiler: Version6Mono
 - Compilation -----------------------------------------------
 
 Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-a3217fc168377414b91ff175ce60112b
-Exit code: 0
-Elapsed time: 1.51 sec
-
-- Compiler output:
-0: Compilation succeeded - 5 warning(s)
-
-- Compiler errors:
-0: Assets/Tiled2Unity/Scripts/Editor/ICustomTiledImporter.cs(30,59): warning CS0618: `UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(UnityEngine.GameObject, string, string)' is obsolete: `AddComponent(string) has been deprecated. Use GameObject.AddComponent<T>() / GameObject.AddComponent(Type) instead.
-1: API Updater could not automatically update the original call to AddComponent(string name), because it was unable to resolve the type specified in parameter 'name'.
-2: Instead, this call has been replaced with a call to APIUpdaterRuntimeServices.AddComponent() so you can try to test your game in the editor.
-3: In order to be able to build the game, replace this call (APIUpdaterRuntimeServices.AddComponent()) with a call to GameObject.AddComponent<T>() / GameObject.AddComponent(Type).'
-4: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,76): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.Import' is obsolete: `Use ModelImporterNormals.Import instead'
-5: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(77,27): warning CS0618: `UnityEditor.ModelImporter.normalImportMode' is obsolete: `normalImportMode is deprecated. Use importNormals instead'
-6: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,77): warning CS0618: `UnityEditor.ModelImporterTangentSpaceMode.None' is obsolete: `Use ModelImporterNormals.None instead'
-7: Assets/Tiled2Unity/Scripts/Editor/TiledAssetPostProcessor.cs(82,27): warning CS0618: `UnityEditor.ModelImporter.tangentImportMode' is obsolete: `tangentImportMode is deprecated. Use importTangents instead'
-********************************************************************************
-*                     Monday, January 04, 2016 7:07:30 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-20b8cfa594b7d3047acad4cf160ceeeb
-Exit code: 0
-Elapsed time: 1.64 sec
-
-- Compiler output:
-0: Compilation succeeded - 4 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: D:/Programme/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/BattleController.cs(84,25): warning CS0162: Unreachable code detected
-5: Assets/Soraphis/SaveGame/DataNode.cs(24,22): warning CS0414: The private field `Assets.Soraphis.SaveGame.DataNode.mResolved' is assigned but its value is never used
-********************************************************************************
-*                     Monday, January 04, 2016 7:07:32 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: D:/Programme/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-781fbafe98d88d948b5372b7ae23df2c
+Arguments: -sdk:2 -r:"D:/Programme/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-5767f8a76af9c7349bf2cf42e0c13543
 Exit code: 0
 Elapsed time: 1.36 sec
 

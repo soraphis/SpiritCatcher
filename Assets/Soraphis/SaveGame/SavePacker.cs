@@ -6,9 +6,10 @@ namespace Assets.Soraphis.SaveGame {
     [DisallowMultipleComponent]
     public sealed class SavePacker : MonoBehaviour, Saveable {
 
-        public void Load(DataNode parent) {
-            DataNode pack = parent.GetChild(GetInstanceID().ToString());
+        public string SKeyName = "Change Me!";
 
+        public void Load(DataNode parent) {
+            DataNode pack = parent.GetChild(SKeyName);
             foreach(var component in this.GetComponents<MonoBehaviour>()) {
                 if(!(component is Saveable) || component == this) continue;
                 if(pack == null) {
@@ -25,7 +26,7 @@ namespace Assets.Soraphis.SaveGame {
 
         public DataNode Save() {
             DataNode pack = new DataNode();
-            pack.Name = GetInstanceID().ToString();
+            pack.Name = SKeyName;
             foreach (var component in this.GetComponents<MonoBehaviour>()) {
                 if (component is Saveable && component != this)
                     pack.AddChild((component as Saveable).Save());

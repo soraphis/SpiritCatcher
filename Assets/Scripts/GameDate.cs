@@ -11,7 +11,7 @@ public struct GameDate {
         Time = (ulong) (minutes + hours*60 + days *24*60 + month*30*24*60+years*12*30*24*60);
     }
 
-    private GameDate(ulong time) {
+    public GameDate(ulong time) {
         Time = time;
     }
 
@@ -27,4 +27,5 @@ public struct GameDate {
     public static GameDate operator +(GameDate g, int i) => new GameDate(g.Time + (ulong) i);
     public static GameDate operator +(GameDate g, GameDate d) => new GameDate(g.Time + d.Time);
     public static GameDate operator -(GameDate g, GameDate d) => new GameDate(g.Time - d.Time);
+
 }

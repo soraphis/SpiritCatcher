@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
 
 namespace Assets.Soraphis.Lib {
@@ -15,6 +16,13 @@ namespace Assets.Soraphis.Lib {
 
         [SerializeField]
         private List<TValue> values = new List<TValue>();
+
+        public SerializableDictionary() {
+        }
+
+        protected SerializableDictionary(SerializationInfo info, StreamingContext context) : base(info, context) {
+        }
+
 
         // save the dictionary to lists
         public void OnBeforeSerialize() {

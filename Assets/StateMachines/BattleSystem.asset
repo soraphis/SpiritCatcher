@@ -1,0 +1,721 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf21f4b5e46f6214fbe67e8211455ce5, type: 3}
+  m_Name: BattleSystem
+  m_EditorClassIdentifier: 
+  states:
+  - isDefault: 1
+    isAnyState: 1
+    name: Any State
+    stateGUID: 5c1e70f4-0f9d-4d56-9864-94a34b1f30eb
+    editorPosition: {x: 85, y: 218}
+    transitions: []
+    interfaceAssetGUID: 
+    interfaceName: 
+    safeStateName: 
+    generateEnter: 0
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: BattleStart
+    stateGUID: 7a7bb27e-e213-4f7e-a8cc-c89f4ed65065
+    editorPosition: {x: 84, y: 343}
+    transitions:
+    - targetStateGUID: 51490e3e-8332-49fc-a406-e7ca73acb2ae
+      conditions:
+      - propertyName: TrainerFight
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    - targetStateGUID: 89538df7-01f9-40b9-b5e2-8496dd2af8ea
+      conditions:
+      - propertyName: TrainerFight
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: e1109dc2ca668ea4b8360273ecbb0ff0
+    interfaceName: IBattleSystemBattleStartHandler
+    safeStateName: BattleStart
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: SpawnWildSpirits
+    stateGUID: 51490e3e-8332-49fc-a406-e7ca73acb2ae
+    editorPosition: {x: 271, y: 378}
+    transitions:
+    - targetStateGUID: 89538df7-01f9-40b9-b5e2-8496dd2af8ea
+      conditions:
+      - propertyName: SpiritsToSpawn
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 4
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: 462bdec9b974bf84693f15af9a85718b
+    interfaceName: IBattleSystemSpawnWildSpiritsHandler
+    safeStateName: SpawnWildSpirits
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: BattleStartMessage
+    stateGUID: 89538df7-01f9-40b9-b5e2-8496dd2af8ea
+    editorPosition: {x: 268, y: 302}
+    transitions:
+    - targetStateGUID: c99af974-79fb-42ca-9034-7a1727a9bfae
+      conditions:
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: 0dadc3e8b5c4a2d4884680bc0c28c727
+    interfaceName: IBattleSystemBattleStartMessageHandler
+    safeStateName: BattleStartMessage
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: SpawnSpirits
+    stateGUID: c99af974-79fb-42ca-9034-7a1727a9bfae
+    editorPosition: {x: 440, y: 302}
+    transitions:
+    - targetStateGUID: ac59d479-d8ed-4a21-9785-a5e6a0ad78c3
+      conditions:
+      - propertyName: SpiritsToSpawn
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 4
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: 1b6bd44dbf5e9c040ab96af28bd5cf52
+    interfaceName: IBattleSystemSpawnSpiritsHandler
+    safeStateName: SpawnSpirits
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: GenerateEnergy
+    stateGUID: ac59d479-d8ed-4a21-9785-a5e6a0ad78c3
+    editorPosition: {x: 623, y: 301}
+    transitions:
+    - targetStateGUID: dadc7a6c-bc87-4a61-9c0b-e087dcb2ef02
+      conditions:
+      - propertyName: WeatherEffectReady
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    - targetStateGUID: 94880707-77ce-4e5c-8255-f2cc7662029c
+      conditions:
+      - propertyName: SpiritReady
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 1
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: b1bf081b0d40a774f849c85132eaceda
+    interfaceName: IBattleSystemGenerateEnergyHandler
+    safeStateName: GenerateEnergy
+    generateEnter: 0
+    generateUpdate: 1
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: WeatherEffects
+    stateGUID: dadc7a6c-bc87-4a61-9c0b-e087dcb2ef02
+    editorPosition: {x: 853, y: 290}
+    transitions:
+    - targetStateGUID: 66aa1c91-908a-45f9-b42f-e2a4282b2b6f
+      conditions:
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: 5e605a7372577994a8ce17c38c4b56b0
+    interfaceName: IBattleSystemWeatherEffectsHandler
+    safeStateName: WeatherEffects
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: PlayerAction
+    stateGUID: 94880707-77ce-4e5c-8255-f2cc7662029c
+    editorPosition: {x: 852, y: 348}
+    transitions:
+    - targetStateGUID: 66aa1c91-908a-45f9-b42f-e2a4282b2b6f
+      conditions:
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: 48d231ab228e2924daf49c5624a6b416
+    interfaceName: IBattleSystemPlayerActionHandler
+    safeStateName: PlayerAction
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: EvaluateBattle
+    stateGUID: 27c36fb6-9c27-49ae-80a2-43cfbbb14c23
+    editorPosition: {x: 881, y: 157}
+    transitions:
+    - targetStateGUID: e2078f65-f91c-4305-a9f4-0ba17204acc5
+      conditions:
+      - propertyName: CatchSpirit
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    - targetStateGUID: 93741611-2d83-4ede-94ea-4efeadb16fa2
+      conditions:
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: MinSpiritHP
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 3
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    - targetStateGUID: ac59d479-d8ed-4a21-9785-a5e6a0ad78c3
+      conditions:
+      - propertyName: MinSpiritHP
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: CatchSpirit
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    - targetStateGUID: 47bcc074-9869-4e5d-9327-9b72733308bb
+      conditions:
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: TrainerFight
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: PlayerAction
+        boolValue: 0
+        intValue: 4
+        floatValue: 0
+        numericCompareType: 4
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: fdb0f3ca1c6a1ca48a74bbace76bab9b
+    interfaceName: IBattleSystemEvaluateBattleHandler
+    safeStateName: EvaluateBattle
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: PlayerWin
+    stateGUID: f658b648-8e74-4085-99b5-5a2f5dc876b7
+    editorPosition: {x: 270, y: 55}
+    transitions:
+    - targetStateGUID: f82277c1-b9ed-4114-a62a-131083c0b64c
+      conditions:
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: 431d43d2dc78d654f81722e135f33d93
+    interfaceName: IBattleSystemPlayerWinHandler
+    safeStateName: PlayerWin
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: SpiritWasted
+    stateGUID: 93741611-2d83-4ede-94ea-4efeadb16fa2
+    editorPosition: {x: 619, y: 165}
+    transitions:
+    - targetStateGUID: c6d4bd54-f6bb-4650-9659-bf9375098453
+      conditions:
+      - propertyName: EnemyHP
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 3
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: EnemySpirits
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 3
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    - targetStateGUID: f658b648-8e74-4085-99b5-5a2f5dc876b7
+      conditions:
+      - propertyName: PlayerHP
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 3
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: PlayerSpirits
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 3
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    - targetStateGUID: 0800a64f-a3b1-434d-a084-9a8bd743f1fc
+      conditions:
+      - propertyName: PlayerHP
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 3
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: PlayerSpirits
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: 4c8224da3e1344742914ccff7b93186d
+    interfaceName: IBattleSystemSpiritWastedHandler
+    safeStateName: SpiritWasted
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: EnemyWin
+    stateGUID: c6d4bd54-f6bb-4650-9659-bf9375098453
+    editorPosition: {x: 284, y: 146}
+    transitions:
+    - targetStateGUID: f82277c1-b9ed-4114-a62a-131083c0b64c
+      conditions:
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: 0f56875c1a65298488f2f9150007f564
+    interfaceName: IBattleSystemEnemyWinHandler
+    safeStateName: EnemyWin
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: CatchSpirit
+    stateGUID: e2078f65-f91c-4305-a9f4-0ba17204acc5
+    editorPosition: {x: 858, y: 41}
+    transitions:
+    - targetStateGUID: 91b3ded1-fee5-4170-abf6-54c941b120bf
+      conditions:
+      - propertyName: SpiritCatched
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    - targetStateGUID: ac59d479-d8ed-4a21-9785-a5e6a0ad78c3
+      conditions:
+      - propertyName: SpiritCatched
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: 1c2264f0f5b67ec42bc597bc005989a9
+    interfaceName: IBattleSystemCatchSpiritHandler
+    safeStateName: CatchSpirit
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: SpiritCatched
+    stateGUID: 91b3ded1-fee5-4170-abf6-54c941b120bf
+    editorPosition: {x: 417, y: 12}
+    transitions:
+    - targetStateGUID: f82277c1-b9ed-4114-a62a-131083c0b64c
+      conditions:
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: 17585b5f536bfd14a8d7457b22566bab
+    interfaceName: IBattleSystemSpiritCatchedHandler
+    safeStateName: SpiritCatched
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: End
+    stateGUID: f82277c1-b9ed-4114-a62a-131083c0b64c
+    editorPosition: {x: 81, y: 91}
+    transitions: []
+    interfaceAssetGUID: 5cb0f8875f7e4a04c952a68a70b5d8d4
+    interfaceName: IBattleSystemEndHandler
+    safeStateName: End
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: SpawnNext
+    stateGUID: 0800a64f-a3b1-434d-a084-9a8bd743f1fc
+    editorPosition: {x: 533, y: 218}
+    transitions:
+    - targetStateGUID: c99af974-79fb-42ca-9034-7a1727a9bfae
+      conditions:
+      - propertyName: EnemySpirits
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: EnemyHP
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 3
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    - targetStateGUID: ac59d479-d8ed-4a21-9785-a5e6a0ad78c3
+      conditions:
+      - propertyName: PlayerHP
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: EnemyHP
+        boolValue: 0
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: 07343d73f279ec546a1a1e09cb818b6a
+    interfaceName: IBattleSystemSpawnNextHandler
+    safeStateName: SpawnNext
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: Run
+    stateGUID: 47bcc074-9869-4e5d-9327-9b72733308bb
+    editorPosition: {x: 545, y: 88}
+    transitions:
+    - targetStateGUID: f82277c1-b9ed-4114-a62a-131083c0b64c
+      conditions:
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: d0c730b2bca3e514d994a8ece188d48b
+    interfaceName: IBattleSystemRunHandler
+    safeStateName: Run
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  - isDefault: 0
+    isAnyState: 0
+    name: DoSelectedAction
+    stateGUID: 66aa1c91-908a-45f9-b42f-e2a4282b2b6f
+    editorPosition: {x: 1100, y: 246}
+    transitions:
+    - targetStateGUID: 27c36fb6-9c27-49ae-80a2-43cfbbb14c23
+      conditions:
+      - propertyName: StateFinished
+        boolValue: 1
+        intValue: 0
+        floatValue: 0
+        numericCompareType: 0
+        boolCompareType: 0
+        gameObjectCompareType: 0
+      isMuted: 0
+    interfaceAssetGUID: 44904b31211213a47b2834f617710023
+    interfaceName: IBattleSystemDoSelectedActionHandler
+    safeStateName: DoSelectedAction
+    generateEnter: 1
+    generateUpdate: 0
+    generateExit: 0
+  properties:
+  - name: StateFinished
+    propertyType: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: TrainerFight
+    propertyType: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: PlayerSpirits
+    propertyType: 1
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: EnemySpirits
+    propertyType: 1
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: PlayerHP
+    propertyType: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: EnemyHP
+    propertyType: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: MinSpiritHP
+    propertyType: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: WeatherEffectReady
+    propertyType: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: BuffEffectReady
+    propertyType: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: SpiritReady
+    propertyType: 1
+    boolValue: 0
+    intValue: -1
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: CatchSpirit
+    propertyType: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: SpiritCatched
+    propertyType: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: PlayerAction
+    propertyType: 1
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  - name: SpiritsToSpawn
+    propertyType: 1
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    componentValue: {fileID: 0}
+    gameObjectValue: {fileID: 0}
+  editorOffset: {x: -366, y: -168}
+  propertiesAssetGUID: 1031013435be50d4887ab35879351af8

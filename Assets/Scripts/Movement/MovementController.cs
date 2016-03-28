@@ -30,8 +30,8 @@ namespace Assets.Scripts.Movement {
                 return;
             }else if(dir == movement.FacingDirection) {
                 movement.currentSpeed = Input.GetKey(KeyCode.LeftShift)
-                    ? MovementComponent.speedRunning
-                    : MovementComponent.speedWalking;
+                    ? movement.speedRunning
+                    : movement.speedWalking;
             } else {
                 
                 movement.FacingDirection = (dir);

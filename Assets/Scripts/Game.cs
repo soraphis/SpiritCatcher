@@ -4,10 +4,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Assets.Soraphis.SaveGame;
 using Assets.Soraphis.Spirits.Scripts;
 using Gamelogic;
-using UnityEditor;
 using UnityEngine.SceneManagement;
 
 public class Game : Singleton<Game>, Saveable {
@@ -38,10 +38,14 @@ public class Game : Singleton<Game>, Saveable {
     public void Update() {
         if(Input.GetKeyDown(KeyCode.Escape)) {
             if(CurrentGameState != GameState.Battle && IngameMenu != null) {
-                IngameMenu.SetActive(!IngameMenu.activeSelf);
-                CurrentGameState = IngameMenu.activeSelf ? GameState.Menu : GameState.World;
+                ToggleIngameMenu();
             }
         }
+    }
+
+    public void ToggleIngameMenu() {
+        IngameMenu.SetActive(!IngameMenu.activeSelf);
+        CurrentGameState = IngameMenu.activeSelf ? GameState.Menu : GameState.World;
     }
 
     private IEnumerator chronos() {
@@ -119,15 +123,7 @@ public class Game : Singleton<Game>, Saveable {
     }
 
 
-    public static IEnumerable<GameObject> SceneRoots() {
-        var prop = new HierarchyProperty(HierarchyType.GameObjects);
-        var expanded = new int[0];
-        while (prop.Next(expanded)) {
-            yield return prop.pptrValue as GameObject;
-        }
-    }
-
-    public void SaveGame() {
+    public void SaveGame(bool writeSaveFile = true) {
         savedData = savedData ?? new DataNode();
 
         foreach(var go in GameObject.FindObjectsOfType<SavePacker>()) {
@@ -136,8 +132,11 @@ public class Game : Singleton<Game>, Saveable {
             savedData.GetChild(node.Name, true).Merge(node, true);
         }
 
+        if(!writeSaveFile) return; // just update "savedData"
+
         using (StreamWriter sw = new StreamWriter(SaveGamePath)) {
             savedData.Write(sw);
         }
     }
+
 }

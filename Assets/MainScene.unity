@@ -381,11 +381,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be7588eb981c1e46abbef14c0ea8533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colCount: 9
+  colCount: 8
   rowCount: 4
   rowNumber: 0
   colNumber: 0
-  totalCells: 9
+  totalCells: 8
   fps: 10
 --- !u!23 &322172349
 MeshRenderer:
@@ -764,6 +764,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d3ef7787e30384daa284bdb9eb476d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedWalking: 300
+  speedRunning: 450
   FacingDirection: {x: 0, y: 0}
   currentSpeed: 0
 --- !u!50 &560526865
@@ -819,11 +821,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be7588eb981c1e46abbef14c0ea8533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colCount: 9
+  colCount: 8
   rowCount: 4
   rowNumber: 0
   colNumber: 0
-  totalCells: 9
+  totalCells: 8
   fps: 10
 --- !u!23 &560526869
 MeshRenderer:
@@ -865,8 +867,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 560526861}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 110.04, y: -391.64, z: 0}
-  m_LocalScale: {x: 2.7857904, y: 5.572984, z: 1}
+  m_LocalPosition: {x: 2109.5, y: -3565.9, z: 0}
+  m_LocalScale: {x: 80.192314, y: 160.42503, z: 28.786198}
   m_Children:
   - {fileID: 322172345}
   - {fileID: 1175073876}
@@ -1506,7 +1508,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1045089161}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 105363075}
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1045089160
@@ -1773,6 +1786,7 @@ GameObject:
   - 114: {fileID: 1208029300}
   - 114: {fileID: 1208029299}
   - 114: {fileID: 1208029306}
+  - 114: {fileID: 1208029307}
   m_Layer: 0
   m_Name: '0: Main Camera'
   m_TagString: MainCamera
@@ -1786,7 +1800,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1208029298}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6085d8e67a9fe0d4a8f27da5e98b5262, type: 3}
   m_Name: 
@@ -1860,7 +1874,7 @@ Camera:
   far clip plane: 20
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 21
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1881,7 +1895,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1208029298}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 107.2, y: -394.3, z: -10}
+  m_LocalPosition: {x: 2067.8, y: -3645.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1897,6 +1911,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 555ea242ecd210a489a3bc5d2b7bb4db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1208029307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1208029298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab001f9afa7d07f4ca1147c32cb136d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetViewportSizeInPixels: {x: 1280, y: 720}
+  lockToPixels: 1
+  pixelsPerUnit: 0.75
+  followTarget: {fileID: 560526861}
 --- !u!1 &1293060220
 GameObject:
   m_ObjectHideFlags: 0

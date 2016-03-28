@@ -41,7 +41,16 @@ namespace Assets.Soraphis.SaveGame {
             return dataNode;
         }
 
-        public DataNode AddChild(string name = "", object value = null) {
+        public DataNode AddChild(string name = "", object value = null, bool overwrite = true) {
+            if(Children.Any(node => node.Name == name))
+                if(!overwrite)
+                    return Children.Find(node => node.Name == name);
+                else {
+                    var child = Children.Find(node => node.Name == name);
+                    child.Value = value;
+                    return child;
+                }
+            
             DataNode dataNode = new DataNode();
             this.Children.Add(dataNode);
             dataNode.Name = name;

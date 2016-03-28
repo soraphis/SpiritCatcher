@@ -25,7 +25,7 @@ public class InteractionController : MonoBehaviour {
 	    int oldlayer = gameObject.layer;
         gameObject.layer = GameLayer.IGNORERAYCAST;
         RaycastHit2D hit = Physics2D.Raycast(collider.bounds.center, mc.FacingDirection, InteractionRange);
-        hit.collider?.SendMessage("Interact", null);
+        hit.collider?.SendMessage("Interact", null, SendMessageOptions.DontRequireReceiver);
         gameObject.layer = oldlayer;
 	}
 

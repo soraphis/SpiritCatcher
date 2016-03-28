@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Assets.Soraphis.Spirits.Scripts;
 using UnityEditor;
@@ -8,19 +9,22 @@ namespace Assets.Soraphis.Spirits.Editor {
     [CustomEditor(typeof(SpiritLibrary))]
     public class SpiritLibraryEditor : UnityEditor.Editor {
 
-        private string file = "Assets/SpiritLib.txt";
+        // private string file = "Assets/SpiritLib.txt";
+        private TextAsset txtAsset;
         // private string Attackfile = "Assets/Attacks.txt";
         private static bool[] foldouts;
-
 
         public override void OnInspectorGUI() {
             SpiritLibrary tgt = (SpiritLibrary)target;
 
             GUILayout.BeginHorizontal();
-            file = GUILayout.TextField(file);
+
+            txtAsset = EditorGUILayout.ObjectField("Source File", txtAsset, typeof(TextAsset), false) as TextAsset;
+            // file = GUILayout.TextField(file);
 
             if(GUILayout.Button("Load")) {
-                tgt.LoadFromCSV(AssetDatabase.LoadAssetAtPath <TextAsset>(file));
+                // AssetDatabase.LoadAssetAtPath <TextAsset>(file)
+                tgt.LoadFromCSV(txtAsset);
                 EditorUtility.SetDirty(target);
                 AssetDatabase.SaveAssets();
             }
@@ -37,11 +41,22 @@ namespace Assets.Soraphis.Spirits.Editor {
                 foldouts = new bool[tgt.Spirits.Length];
             }
             EditorGUI.BeginChangeCheck();
-            for (int index = 0; index < tgt.Spirits.Length; index++) {
-                var spirit = tgt.Spirits[index];
+
+            SerializedObject lib = new UnityEditor.SerializedObject(tgt);
+            var spirits = lib.FindProperty("Spirits");
+
+            for(int index = 0; index < spirits.arraySize; ++index) {
+                var spiritObject = spirits.GetArrayElementAtIndex(index).objectReferenceValue as SpiritType;
+                var spirit = new SerializedObject(spiritObject);
+
+                spirit.Update();
+
                 var foldout = foldouts[index];
-                foldouts[index] = EditorGUILayout.Foldout(foldout, spirit.Name);
-                if(foldout) {
+                foldouts[index] = EditorGUILayout.Foldout(foldout, spirit.FindProperty("Name").stringValue);
+
+                var prop = spirit.GetIterator().Copy();
+
+                if (foldout) {
                     int f2 = Screen.width/2;
                     int f3 = Screen.width/3;
 
@@ -50,25 +65,26 @@ namespace Assets.Soraphis.Spirits.Editor {
                     GUILayout.Label("Value", GUILayout.MinWidth(f3));
                     GUILayout.EndHorizontal();
 
-
-
-                    foreach (var entry in spirit.Attributes.ToDictionary(entry => entry.Key, entry => entry.Value)) {
-                        GUILayout.BeginHorizontal();
-                        GUILayout.Label((string) entry.Key, GUILayout.MinWidth(f2), GUILayout.MaxWidth(f2));
-                        float x = EditorGUILayout.FloatField((float) entry.Value, GUILayout.MinWidth(f3));
-                        if(! Mathf.Approximately(x, (float) tgt.Spirits[index].Attributes[entry.Key])) {
-                            tgt.Spirits[index].Attributes[entry.Key] = x;
-                            EditorUtility.SetDirty(target);
-                        }
-                        GUILayout.EndHorizontal();
-                    }
+                    prop.Next(true);
+                    var depth = prop.depth;
+                    do {
+                        RenderAttribute(prop, f2);
+                    } while(prop.NextVisible(false) && prop.depth >= depth);
                 }
-            }
-            EditorGUI.EndChangeCheck();
 
+                spirit.ApplyModifiedProperties();
+            }
+
+            lib.ApplyModifiedProperties();
+            EditorGUI.EndChangeCheck();
+    
         }
 
-    
+        private void RenderAttribute(SerializedProperty value, int f2) {
+            GUILayout.BeginHorizontal();
+            EditorGUILayout.PropertyField(value, GUILayout.MinWidth(f2));
+            GUILayout.EndHorizontal();
+        }
 
     }
 }

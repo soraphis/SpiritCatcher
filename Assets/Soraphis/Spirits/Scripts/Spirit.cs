@@ -1,20 +1,48 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Assets.Soraphis.Spirits.Scripts {
+    [Serializable]
+    public class Attack {
+        public AttackType AttackType;
+        public float Precision;
+        public float StaminaCost;
+        public float BaseDMG;
+        public Type Type;
+    }
 
     [Serializable]
     public class Spirit : ICloneable {
         public string Name;
         public int Level;
-        public readonly SpiritType Type;
+        public SpiritType Type;
 
-        [HideInInspector] public float currentHP;
+        [SerializeField] private float currentHP;
         [HideInInspector] public float expierience; // -> to next level
         private float currentStamina;
 
-        [SerializeField] public AttributeDict Attribute;
+        // [SerializeField] public AttackList Attribute;
+
+            // "SKILL POINTS"
+        [SerializeField] public int HP;
+        [SerializeField] public int DMG;
+        [SerializeField] public int DEF;
+        [SerializeField] public int SPEED;
+        [SerializeField] public int CRIT;
+        [SerializeField] public int INIT;
+
+        [Obsolete][HideInInspector] public float BTL_HP => HP * SpiritType.PP_HP;
+        [Obsolete][HideInInspector] public float BTL_SPEED => SPEED * SpiritType.PP_SPEED;
+
+        public List<Attack> Attacks = new List<Attack>(4);
+
+
+        public float CurrentHP {
+            get { return currentHP; }
+            set { currentHP = Mathf.Clamp(value, 0, HP* SpiritType.PP_HP); }
+        }
 
         public float CurrentStamina {
             get { return currentStamina; }
@@ -33,10 +61,16 @@ namespace Assets.Soraphis.Spirits.Scripts {
             var spirit = new Spirit(t) {
                 Level = level,
                 Name = t.Name,
-                Attribute = new AttributeDict()
+
+                HP = t.HP + t.PL_HP * level,
+                DEF = t.DEF + t.PL_DEF * level,
+                SPEED = t.SPEED + t.PL_SPEED * level,
+                DMG = t.DMG + t.PL_DMG * level,
+                CRIT = t.CRIT,
+                INIT = t.INIT,
             };
 
-            foreach(var attr in t.Attributes) {
+            /*foreach(var attr in t.Attributes) {
                 bool b = attr.Key.Contains("Level");
                 var Key = b ? attr.Key.Substring(5) : attr.Key;
                 float Val = b ? attr.Value * level : attr.Value;
@@ -45,9 +79,9 @@ namespace Assets.Soraphis.Spirits.Scripts {
                     spirit.Attribute[Key] = spirit.Attribute[Key] + Val;
                 else
                     spirit.Attribute.Add(Key, Val);
-            }
+            }*/
 
-            spirit.currentHP = spirit.Attribute["HP"];
+            spirit.currentHP = spirit.HP;
             return spirit;
         }
 
@@ -58,10 +92,15 @@ namespace Assets.Soraphis.Spirits.Scripts {
             copy.currentHP = currentHP;
             copy.expierience = expierience;
             copy.CurrentStamina = currentStamina;
-            copy.Attribute = new AttributeDict();
-            foreach(var pair in Attribute) {
-                copy.Attribute.Add(pair.Key, pair.Value);
-            }
+            copy.HP = HP;
+            copy.DEF = DEF;
+            copy.DMG = DMG;
+            copy.SPEED = SPEED;
+            copy.CRIT = CRIT;
+            copy.INIT = INIT;
+
+            copy.Attacks = Attacks.ToList();
+
             return copy;
         }
     }

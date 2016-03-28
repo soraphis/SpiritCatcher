@@ -7,14 +7,18 @@ namespace Assets.Soraphis.Spirits.Scripts {
     [Serializable]
     [CreateAssetMenu(menuName = "Spirit/Team")]
     public class SpiritTeam : ScriptableObject, ICloneable {
-        public Spirit[] Spirits;
+        public List<Spirit> Spirits;
+
+        public void OnEnable() {
+            Spirits = Spirits ?? new List<Spirit>();
+        }
 
         public object Clone() {
             SpiritTeam copy = new SpiritTeam();
-            copy.Spirits = new Spirit[Spirits.Length];
-            for(int index = 0; index < Spirits.Length; index++) {
+            copy.Spirits = new List<Spirit>(Spirits.Count);
+            for(int index = 0; index < Spirits.Count; index++) {
                 var spirit = Spirits[index];
-                copy.Spirits[index] = spirit.Clone() as Spirit;
+                copy.Spirits.Add(spirit.Clone() as Spirit);
             }
             return copy;
         }

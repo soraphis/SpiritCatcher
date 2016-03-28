@@ -18,7 +18,7 @@ public class InteractionComponent : MonoBehaviour {
     public void Start() {
         team = team.Clone() as SpiritTeam;
 
-        bo = new BattleObject(true, team);
+        // bo = new BattleObject(team);
     }
 
     public IEnumerator NewInteract() {
@@ -33,12 +33,12 @@ public class InteractionComponent : MonoBehaviour {
 
     public IEnumerator Interact() {
         yield return StartCoroutine(Dialog.Instance.ShowDialog("hey ho wie gehts"));
-        if (team.Spirits.Any(s => s.currentHP > 0)) {
+        if (team.Spirits.Any(s => s.CurrentHP > 0)) {
             yield return StartCoroutine(LoadBattle());
-            if (bo.winner == 0)
-                yield return StartCoroutine(Dialog.Instance.ShowDialog("yo krasser kampf"));
-            else
-                yield return StartCoroutine(Dialog.Instance.ShowDialog("Hab ich dich platt gemacht!"));
+//            if (bo.winner == 0)
+//                yield return StartCoroutine(Dialog.Instance.ShowDialog("yo krasser kampf"));
+//            else
+//                yield return StartCoroutine(Dialog.Instance.ShowDialog("Hab ich dich platt gemacht!"));
         } else
             yield return StartCoroutine(Dialog.Instance.ShowDialog("Meine Spirits müssen erst wieder regenerieren bevor wir nocheinmal kämpfen"));
         yield return null;
@@ -49,7 +49,7 @@ public class InteractionComponent : MonoBehaviour {
         AsyncOperation async = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive); 
         yield return async;
         bc = GameObject.Find("Canvas: Battle").GetComponent<BattleController>();
-        yield return StartCoroutine(bc.BattleRoutine(bo));
+//        yield return StartCoroutine(bc.BattleRoutine(bo));
         Destroy(GameObject.Find("Canvas: Battle"));
     }
     

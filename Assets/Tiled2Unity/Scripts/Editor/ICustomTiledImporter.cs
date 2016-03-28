@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 
 using UnityEngine;
 
@@ -21,14 +24,30 @@ namespace Tiled2Unity
 [Tiled2Unity.CustomTiledImporter]
 class CustomImporterAddComponent : Tiled2Unity.ICustomTiledImporter
 {
+    public static Type[] getTypeByName(string className) {
+        List<Type> returnVal = new List<Type>();
+
+        foreach (Assembly a in AppDomain.CurrentDomain.GetAssemblies()) {
+            Type[] assemblyTypes = a.GetTypes();
+            for (int j = 0; j < assemblyTypes.Length; j++) {
+                if (assemblyTypes[j].Name == className) {
+                    returnVal.Add(assemblyTypes[j]);
+                }
+            }
+        }
+
+        return returnVal.ToArray();
+    }
+
     public void HandleCustomProperties(UnityEngine.GameObject gameObject,
         IDictionary<string, string> props)
     {
         // Simply add a component to our GameObject
-        if (props.ContainsKey("AddComp"))
-        {
-            UnityEngineInternal.APIUpdaterRuntimeServices.AddComponent(gameObject, "Assets/Tiled2Unity/Scripts/Editor/ICustomTiledImporter.cs (30,13)", props["AddComp"]);
-            //gameObject.AddComponent(Type.GetType(props["AddComp"]));
+        if (props.ContainsKey("AddComp")) {
+
+            Type[] t = getTypeByName(props["AddComp"]);
+            if(t.Length == 1) gameObject.AddComponent(t[0]);
+            else Debug.LogWarning("Component \"" + props["AddComp"] + "\" could not be identified. Found " + t.Length + " expected 1.");
         }
     }
 

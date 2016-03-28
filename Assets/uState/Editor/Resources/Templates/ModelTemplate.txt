@@ -1,0 +1,6 @@
+﻿using uState;
+
+public class {MODEL_NAME} : IModel
+{
+
+}

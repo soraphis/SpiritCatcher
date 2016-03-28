@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Movement{
     public class MovementComponent : MonoBehaviour, Saveable {
-        public const float speedWalking = 12f; // steps per second
-        public const float speedRunning = 20f; // steps per second
+        public float speedWalking = 120f; // steps per second
+        public float speedRunning = 200f; // steps per second
 
         private Vector2 position;
         public Vector2 FacingDirection;
@@ -59,7 +59,13 @@ namespace Assets.Scripts.Movement{
                 if(anim == null) continue;
                 anim.rowNumber = Array.IndexOf(rotations, FacingDirection);
                 if (anim.rowNumber == -1) anim.rowNumber = 0;
-                anim.totalCells = rigidbody.velocity.sqrMagnitude > 0.01f ? 9 : 1;
+
+                if(rigidbody.velocity.sqrMagnitude < 0.01f) {
+                    anim.SetSpriteAnimation(anim.colCount, anim.rowCount, anim.rowNumber, anim.colNumber, 1, anim.fps);
+                    anim.Pause();
+                } else
+                    anim.Pause(false);
+                // anim.totalCells = rigidbody.velocity.sqrMagnitude > 0.01f ? 8 : 1;
             }
         }
 

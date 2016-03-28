@@ -22,7 +22,7 @@ public class Teleporter : MonoBehaviour {
         float distance;
         do {
             mCMP.FacingDirection = (this.transform.position - other.transform.position).normalized;
-            mCMP.currentSpeed = MovementComponent.speedWalking;
+            mCMP.currentSpeed = mCMP.speedWalking;
             yield return null;
             distance = Vector3.Distance(other.transform.position, transform.position);
             if(origDistance - distance < 0.1f) fullstop--;
@@ -46,7 +46,7 @@ public class Teleporter : MonoBehaviour {
         while (Vector3.Distance(other.transform.position, (Target.position + Direction)) > 0.05f)
         {
             mCMP.FacingDirection = ((Target.position + Direction) - other.transform.position).normalized;
-            mCMP.currentSpeed = MovementComponent.speedWalking;
+            mCMP.currentSpeed = mCMP.speedWalking;
             yield return null;
         }
 

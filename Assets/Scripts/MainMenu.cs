@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 using System.IO;
 using Assets.Soraphis.SaveGame;
-using UnityEditor;
 
 public class MainMenu : MonoBehaviour {
     void Start() {
@@ -36,7 +34,7 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void QuitButton() {
-
+        Application.Quit();
     }
 
 }

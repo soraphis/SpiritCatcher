@@ -46,7 +46,7 @@ TextureImporter:
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -56,7 +56,7 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
-    heightScale: .25
+    heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
@@ -81,7 +81,7 @@ TextureImporter:
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
-  spritePivot: {x: .5, y: .5}
+  spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 8
   alphaIsTransparency: 1
@@ -97,8 +97,9 @@ TextureImporter:
         width: 30
         height: 46
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_1
       rect:
         serializedVersion: 2
@@ -107,8 +108,9 @@ TextureImporter:
         width: 30
         height: 46
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_2
       rect:
         serializedVersion: 2
@@ -117,8 +119,9 @@ TextureImporter:
         width: 30
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_3
       rect:
         serializedVersion: 2
@@ -127,8 +130,9 @@ TextureImporter:
         width: 29
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_4
       rect:
         serializedVersion: 2
@@ -137,8 +141,9 @@ TextureImporter:
         width: 30
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_5
       rect:
         serializedVersion: 2
@@ -147,8 +152,9 @@ TextureImporter:
         width: 30
         height: 46
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_6
       rect:
         serializedVersion: 2
@@ -157,8 +163,9 @@ TextureImporter:
         width: 30
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_7
       rect:
         serializedVersion: 2
@@ -167,8 +174,9 @@ TextureImporter:
         width: 29
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_8
       rect:
         serializedVersion: 2
@@ -177,8 +185,9 @@ TextureImporter:
         width: 30
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_9
       rect:
         serializedVersion: 2
@@ -187,8 +196,9 @@ TextureImporter:
         width: 20
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_10
       rect:
         serializedVersion: 2
@@ -197,8 +207,9 @@ TextureImporter:
         width: 25
         height: 46
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_11
       rect:
         serializedVersion: 2
@@ -207,8 +218,9 @@ TextureImporter:
         width: 22
         height: 46
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_12
       rect:
         serializedVersion: 2
@@ -217,8 +229,9 @@ TextureImporter:
         width: 22
         height: 46
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_13
       rect:
         serializedVersion: 2
@@ -227,8 +240,9 @@ TextureImporter:
         width: 24
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_14
       rect:
         serializedVersion: 2
@@ -237,8 +251,9 @@ TextureImporter:
         width: 28
         height: 46
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_15
       rect:
         serializedVersion: 2
@@ -247,8 +262,9 @@ TextureImporter:
         width: 23
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_16
       rect:
         serializedVersion: 2
@@ -257,8 +273,9 @@ TextureImporter:
         width: 22
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_17
       rect:
         serializedVersion: 2
@@ -267,8 +284,9 @@ TextureImporter:
         width: 21
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_18
       rect:
         serializedVersion: 2
@@ -277,8 +295,9 @@ TextureImporter:
         width: 30
         height: 26
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_19
       rect:
         serializedVersion: 2
@@ -287,8 +306,9 @@ TextureImporter:
         width: 30
         height: 26
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_20
       rect:
         serializedVersion: 2
@@ -297,8 +317,9 @@ TextureImporter:
         width: 30
         height: 27
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_21
       rect:
         serializedVersion: 2
@@ -307,8 +328,9 @@ TextureImporter:
         width: 29
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_22
       rect:
         serializedVersion: 2
@@ -317,8 +339,9 @@ TextureImporter:
         width: 30
         height: 48
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_23
       rect:
         serializedVersion: 2
@@ -327,8 +350,9 @@ TextureImporter:
         width: 30
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_24
       rect:
         serializedVersion: 2
@@ -337,8 +361,9 @@ TextureImporter:
         width: 30
         height: 48
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_25
       rect:
         serializedVersion: 2
@@ -347,8 +372,9 @@ TextureImporter:
         width: 29
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_26
       rect:
         serializedVersion: 2
@@ -357,8 +383,9 @@ TextureImporter:
         width: 30
         height: 48
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_27
       rect:
         serializedVersion: 2
@@ -367,8 +394,9 @@ TextureImporter:
         width: 20
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_28
       rect:
         serializedVersion: 2
@@ -377,8 +405,9 @@ TextureImporter:
         width: 25
         height: 46
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_29
       rect:
         serializedVersion: 2
@@ -387,8 +416,9 @@ TextureImporter:
         width: 22
         height: 46
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_30
       rect:
         serializedVersion: 2
@@ -397,8 +427,9 @@ TextureImporter:
         width: 22
         height: 46
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_31
       rect:
         serializedVersion: 2
@@ -407,8 +438,9 @@ TextureImporter:
         width: 24
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_32
       rect:
         serializedVersion: 2
@@ -417,8 +449,9 @@ TextureImporter:
         width: 28
         height: 46
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_33
       rect:
         serializedVersion: 2
@@ -427,8 +460,9 @@ TextureImporter:
         width: 23
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_34
       rect:
         serializedVersion: 2
@@ -437,8 +471,9 @@ TextureImporter:
         width: 22
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_35
       rect:
         serializedVersion: 2
@@ -447,8 +482,9 @@ TextureImporter:
         width: 21
         height: 47
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_36
       rect:
         serializedVersion: 2
@@ -457,8 +493,9 @@ TextureImporter:
         width: 30
         height: 22
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_37
       rect:
         serializedVersion: 2
@@ -467,8 +504,9 @@ TextureImporter:
         width: 30
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
     - name: MaleCharset_38
       rect:
         serializedVersion: 2
@@ -477,8 +515,10 @@ TextureImporter:
         width: 30
         height: 21
       alignment: 0
-      pivot: {x: .5, y: .5}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+    outline: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

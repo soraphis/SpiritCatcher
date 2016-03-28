@@ -19,8 +19,8 @@ Material:
         first:
           name: _MainTex
         second:
-          m_Texture: {fileID: 2800000, guid: b5e9b40239354b644b611998145d9fd2, type: 3}
-          m_Scale: {x: 0.111, y: 0.25}
+          m_Texture: {fileID: 2800000, guid: f5526d20438bbe84d8fb459422f2b242, type: 3}
+          m_Scale: {x: 0.125, y: 0.25}
           m_Offset: {x: 0, y: 0.25}
       data:
         first:
@@ -97,6 +97,30 @@ Material:
         second: 0
       data:
         first:
+          name: _Stencil
+        second: 0
+      data:
+        first:
+          name: _StencilComp
+        second: 8
+      data:
+        first:
+          name: _StencilOp
+        second: 0
+      data:
+        first:
+          name: _StencilReadMask
+        second: 255
+      data:
+        first:
+          name: _StencilWriteMask
+        second: 255
+      data:
+        first:
+          name: _ColorMask
+        second: 15
+      data:
+        first:
           name: _Parallax
         second: 0.02
       data:
@@ -135,30 +159,6 @@ Material:
         first:
           name: _InvFade
         second: 1
-      data:
-        first:
-          name: _Stencil
-        second: 0
-      data:
-        first:
-          name: _StencilComp
-        second: 8
-      data:
-        first:
-          name: _StencilOp
-        second: 0
-      data:
-        first:
-          name: _StencilReadMask
-        second: 255
-      data:
-        first:
-          name: _StencilWriteMask
-        second: 255
-      data:
-        first:
-          name: _ColorMask
-        second: 15
     m_Colors:
       data:
         first:

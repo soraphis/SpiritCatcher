@@ -240,7 +240,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 605901540}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1694491847}
+        m_MethodName: QuitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &605901539
@@ -333,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentGameState: 2
-  SpiritLibrary: {fileID: 11400000, guid: 179c24b77cdf8744884c6b90bd0147e7, type: 2}
+  SpiritLibrary: {fileID: 11400000, guid: 2936b0957bd4f144bb062a80539096b0, type: 2}
   currentScene: 0
   IngameMenu: {fileID: 0}
 --- !u!4 &829163673

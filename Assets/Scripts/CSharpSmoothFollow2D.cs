@@ -8,7 +8,7 @@ public class CSharpSmoothFollow2D : MonoBehaviour
     private Transform thisTransform;
     private Vector2 velocity;
 
-    private const float tilesize = 128f;
+    private const float tilesize = 128;
     private const float smoothness = 1/tilesize;
 
     private void Start()
@@ -33,3 +33,4 @@ public class CSharpSmoothFollow2D : MonoBehaviour
             );
     }
 }
+

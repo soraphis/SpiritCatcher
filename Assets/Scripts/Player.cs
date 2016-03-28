@@ -24,14 +24,14 @@ public class Player : Singleton<Player>, Saveable {
 
 
     public void Load(DataNode parent) {
-        DataNode node = parent.GetChild("Game");
+        DataNode node = parent.GetChild("Player");
         if (node == null) return;
         team = node.GetChild("team").Get<List<Spirit>>();
     }
 
     public DataNode Save() {
         DataNode node = new DataNode();
-        node.Name = "Game";
+        node.Name = "Player";
 
         node.AddChild("team", team);
 

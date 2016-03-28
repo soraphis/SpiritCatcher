@@ -12,75 +12,451 @@ MonoBehaviour:
   m_Name: New Spirit Library
   m_EditorClassIdentifier: 
   Spirits:
-  - Name: Banaveal
-    Attributes:
-      keys:
-      - HP
-      - Damage
-      - Defense
-      - Speed
-      - CriticalChance
-      - INIT
-      - Fangrate
-      - LevelDamage
-      - LevelDefense
-      - LevelSpeed
-      values:
-      - 30
-      - 5
-      - 4
-      - 3
-      - 0.02
-      - 0.1
-      - 0
-      - 1.1
-      - 1.2
-      - 1.05
-  - Name: Solafol
-    Attributes:
-      keys:
-      - HP
-      - Damage
-      - Defense
-      - Speed
-      - CriticalChance
-      - INIT
-      - Fangrate
-      - LevelDamage
-      - LevelDefense
-      - LevelSpeed
-      values:
-      - 20
-      - 5
-      - 6
-      - 6
-      - 0.02
-      - 0.15
-      - 0
-      - 1.05
-      - 1.1
-      - 1.2
-  - Name: Furbold
-    Attributes:
-      keys:
-      - HP
-      - Damage
-      - Defense
-      - Speed
-      - CriticalChance
-      - INIT
-      - Fangrate
-      - LevelDamage
-      - LevelDefense
-      - LevelSpeed
-      values:
-      - 15
-      - 7
-      - 4
-      - 4
-      - 0.03
-      - 0.17
-      - 0.7
-      - 1.05
-      - 1.21
-      - 1.1
+  - {fileID: 11400226}
+  - {fileID: 11472562}
+  - {fileID: 11451228}
+  - {fileID: 11464948}
+  - {fileID: 11439386}
+  - {fileID: 11418518}
+  - {fileID: 11478588}
+  - {fileID: 11481458}
+  - {fileID: 11460496}
+  - {fileID: 11426504}
+  - {fileID: 11411298}
+  - {fileID: 11404214}
+  - {fileID: 11453736}
+  - {fileID: 11414490}
+--- !u!114 &11400226
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Banaveal
+  m_EditorClassIdentifier: 
+  Name: Banaveal
+  Image: {fileID: 21300000, guid: 5f0fc630c4096c740a95ba3cbd1bea55, type: 3}
+  ImageBack: {fileID: 21300002, guid: 5f0fc630c4096c740a95ba3cbd1bea55, type: 3}
+  Typ: Flamme
+  HP: 5
+  DMG: 4
+  DEF: 4
+  SPEED: 1
+  CRIT: 1
+  INIT: 1
+  PL_HP: 3
+  PL_DMG: 1
+  PL_DEF: 3
+  PL_SPEED: 1
+  Catchiness: 0
+  isStarter: 1
+  isLegendary: 0
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11404214
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Koyabird
+  m_EditorClassIdentifier: 
+  Name: Koyabird
+  Image: {fileID: 0}
+  ImageBack: {fileID: 0}
+  Typ: Sand
+  HP: 3
+  DMG: 3
+  DEF: 2
+  SPEED: 3
+  CRIT: 2
+  INIT: 2
+  PL_HP: 3
+  PL_DMG: 1
+  PL_DEF: 1
+  PL_SPEED: 2
+  Catchiness: 0.3
+  isStarter: 0
+  isLegendary: 0
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11411298
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Magumaworm
+  m_EditorClassIdentifier: 
+  Name: Magumaworm
+  Image: {fileID: 0}
+  ImageBack: {fileID: 0}
+  Typ: Lava
+  HP: 4
+  DMG: 5
+  DEF: 4
+  SPEED: 0
+  CRIT: 1
+  INIT: 1
+  PL_HP: 1
+  PL_DMG: 4
+  PL_DEF: 1
+  PL_SPEED: 1
+  Catchiness: 0.25
+  isStarter: 0
+  isLegendary: 0
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11414490
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Paraspor Cladis
+  m_EditorClassIdentifier: 
+  Name: Paraspor Cladis
+  Image: {fileID: 0}
+  ImageBack: {fileID: 0}
+  Typ: Pflanze
+  HP: 4
+  DMG: 4
+  DEF: 4
+  SPEED: 1
+  CRIT: 2
+  INIT: 3
+  PL_HP: 3
+  PL_DMG: 2
+  PL_DEF: 3
+  PL_SPEED: 1
+  Catchiness: 0.2
+  isStarter: 0
+  isLegendary: 1
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11418518
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Pipendra
+  m_EditorClassIdentifier: 
+  Name: Pipendra
+  Image: {fileID: 0}
+  ImageBack: {fileID: 0}
+  Typ: Sumpf
+  HP: 5
+  DMG: 4
+  DEF: 3
+  SPEED: 1
+  CRIT: 1
+  INIT: 1
+  PL_HP: 2
+  PL_DMG: 2
+  PL_DEF: 2
+  PL_SPEED: 1
+  Catchiness: 0.6
+  isStarter: 0
+  isLegendary: 0
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11426504
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Hechtor
+  m_EditorClassIdentifier: 
+  Name: Hechtor
+  Image: {fileID: 0}
+  ImageBack: {fileID: 0}
+  Typ: Qelle
+  HP: 2
+  DMG: 3
+  DEF: 3
+  SPEED: 4
+  CRIT: 1
+  INIT: 2
+  PL_HP: 2
+  PL_DMG: 3
+  PL_DEF: 1
+  PL_SPEED: 1
+  Catchiness: 0.4
+  isStarter: 0
+  isLegendary: 0
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11439386
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Mynshrum
+  m_EditorClassIdentifier: 
+  Name: Mynshrum
+  Image: {fileID: 0}
+  ImageBack: {fileID: 0}
+  Typ: Pflanze
+  HP: 3
+  DMG: 4
+  DEF: 2
+  SPEED: 1
+  CRIT: 2
+  INIT: 3
+  PL_HP: 2
+  PL_DMG: 1
+  PL_DEF: 2
+  PL_SPEED: 2
+  Catchiness: 0.5
+  isStarter: 0
+  isLegendary: 0
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11451228
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Skuliena
+  m_EditorClassIdentifier: 
+  Name: Skuliena
+  Image: {fileID: 0}
+  ImageBack: {fileID: 0}
+  Typ: "\xD6dland"
+  HP: 4
+  DMG: 3
+  DEF: 2
+  SPEED: 3
+  CRIT: 3
+  INIT: 1
+  PL_HP: 3
+  PL_DMG: 1
+  PL_DEF: 1
+  PL_SPEED: 3
+  Catchiness: 0
+  isStarter: 1
+  isLegendary: 0
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11453736
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Paraspor
+  m_EditorClassIdentifier: 
+  Name: Paraspor
+  Image: {fileID: 0}
+  ImageBack: {fileID: 0}
+  Typ: Pflanze
+  HP: 4
+  DMG: 5
+  DEF: 4
+  SPEED: 1
+  CRIT: 2
+  INIT: 2
+  PL_HP: 3
+  PL_DMG: 2
+  PL_DEF: 3
+  PL_SPEED: 1
+  Catchiness: 0.15
+  isStarter: 0
+  isLegendary: 1
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11460496
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Nagaduo
+  m_EditorClassIdentifier: 
+  Name: Nagaduo
+  Image: {fileID: 0}
+  ImageBack: {fileID: 0}
+  Typ: Qelle
+  HP: 5
+  DMG: 4
+  DEF: 3
+  SPEED: 1
+  CRIT: 1
+  INIT: 1
+  PL_HP: 2
+  PL_DMG: 3
+  PL_DEF: 1
+  PL_SPEED: 1
+  Catchiness: 0.35
+  isStarter: 0
+  isLegendary: 0
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11464948
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Chukori
+  m_EditorClassIdentifier: 
+  Name: Chukori
+  Image: {fileID: 0}
+  ImageBack: {fileID: 0}
+  Typ: Eis
+  HP: 2
+  DMG: 5
+  DEF: 4
+  SPEED: 1
+  CRIT: 4
+  INIT: 0
+  PL_HP: 2
+  PL_DMG: 4
+  PL_DEF: 2
+  PL_SPEED: 0
+  Catchiness: 0
+  isStarter: 1
+  isLegendary: 0
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11472562
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Solafol
+  m_EditorClassIdentifier: 
+  Name: Solafol
+  Image: {fileID: 21300000, guid: 769a4aa8b8d9d64419af627045685044, type: 3}
+  ImageBack: {fileID: 21300002, guid: 769a4aa8b8d9d64419af627045685044, type: 3}
+  Typ: Solar
+  HP: 3
+  DMG: 3
+  DEF: 3
+  SPEED: 3
+  CRIT: 2
+  INIT: 2
+  PL_HP: 2
+  PL_DMG: 2
+  PL_DEF: 1
+  PL_SPEED: 3
+  Catchiness: 0
+  isStarter: 1
+  isLegendary: 0
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11478588
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Furbold
+  m_EditorClassIdentifier: 
+  Name: Furbold
+  Image: {fileID: 0}
+  ImageBack: {fileID: 0}
+  Typ: Schatten
+  HP: 3
+  DMG: 3
+  DEF: 3
+  SPEED: 3
+  CRIT: 2
+  INIT: 1
+  PL_HP: 1
+  PL_DMG: 3
+  PL_DEF: 1
+  PL_SPEED: 2
+  Catchiness: 0.7
+  isStarter: 0
+  isLegendary: 0
+  Attacks:
+    keys: 
+    values: []
+--- !u!114 &11481458
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fd4e4feca0e09145acd744004a3013a, type: 3}
+  m_Name: Buforappo
+  m_EditorClassIdentifier: 
+  Name: Buforappo
+  Image: {fileID: 0}
+  ImageBack: {fileID: 0}
+  Typ: Sumpf
+  HP: 2
+  DMG: 4
+  DEF: 2
+  SPEED: 2
+  CRIT: 2
+  INIT: 3
+  PL_HP: 2
+  PL_DMG: 2
+  PL_DEF: 1
+  PL_SPEED: 2
+  Catchiness: 0.6
+  isStarter: 0
+  isLegendary: 0
+  Attacks:
+    keys: 
+    values: []

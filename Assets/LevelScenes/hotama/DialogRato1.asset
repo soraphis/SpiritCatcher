@@ -1,0 +1,979 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae9a88c80635b24598fab8d2c34758f, type: 3}
+  m_Name: DialogRato1
+  m_EditorClassIdentifier: 
+  DialogName: DialogRato1
+  StartingPoint: {fileID: 11478562}
+  Statements:
+  - {fileID: 11478562}
+  - {fileID: 11404730}
+  - {fileID: 11407602}
+  - {fileID: 11474284}
+  - {fileID: 11428336}
+  - {fileID: 11472574}
+  - {fileID: 11409852}
+  - {fileID: 11425296}
+  - {fileID: 11456646}
+  - {fileID: 11482554}
+  - {fileID: 11449538}
+  Properties:
+  - Name: SendToRato
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: PickedExtractor
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: PickedSpirit
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: whileFestival
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: afterFestival
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: beforeBanditFight
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: afterBanditFight
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: SendToExtractor
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+--- !u!114 &11400466
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: HelperNode2
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1411
+    y: -1682
+    width: 160
+    height: 50
+  Id: 10
+  Answers:
+  - {fileID: 11439370}
+  - {fileID: 11431268}
+--- !u!114 &11404730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: GenericGreeting
+  m_EditorClassIdentifier: 
+  speaker: Rato
+  text: "... Tut mir leid, ich bin besch\xE4ftigt ..."
+  NodeRect:
+    serializedVersion: 2
+    x: -1677
+    y: -1935
+    width: 160
+    height: 50
+  Id: 1
+  Answers: []
+--- !u!114 &11407602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: QuestUpdate
+  m_EditorClassIdentifier: 
+  speaker: Rato
+  text: "Serim hat dich zu mir geschickt? Hmm... ja ich habe eine Ahnung woher diese
+    r\xE4tselhafte Krankheit stammen k\xF6nnte... Die Krankheit kommt aus dem Wald,
+    n\xF6rdlich von hier. Sie wird mit dem Fluss ins Dorf gesp\xFClt. Ich glaube deine
+    Schwester wird nicht die einzige sein die darunter leiden wird... die Sicherheit
+    des ganzen Dorfes steht auf dem Spiel. Um deine Schwester zu heilen musst du die
+    Geister des Waldes heilen. Diese Geister nennt man Spirits. Ich bin zu alt um
+    selbst loszuziehen. Wenn du dich dieser Sache annimst w\xE4re ich dir sehr dankbar.
+    Vor 200 Jahren gab es eine Katastrophe, seit dem sind die Geister rastlos und
+    die Welt nicht mehr die selbe. Damals hatten die Menschen \"Extraktoren\" mit
+    denen sie rastlose Geister aus Gegenst\xE4nden extrahieren und b\xE4ndigen konnten."
+  NodeRect:
+    serializedVersion: 2
+    x: -1669
+    y: -1803
+    width: 160
+    height: 50
+  Id: 2
+  Answers:
+  - {fileID: 11408358}
+--- !u!114 &11408358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11407602}
+  To: {fileID: 11474284}
+  Id: 20
+  BoundingRect:
+    serializedVersion: 2
+    x: -1599.0162
+    y: -1753
+    width: -1665.4878
+    height: -1680
+  conditions: []
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11409852
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: PickSpiritReminder
+  m_EditorClassIdentifier: 
+  speaker: Rato
+  text: "Such dir einen Spirit aus, aber die ladung wird wohl nur f\xFCr einen Spirit
+    reichen."
+  NodeRect:
+    serializedVersion: 2
+    x: -1514
+    y: -1617
+    width: 160
+    height: 50
+  Id: 14
+  Answers: []
+--- !u!114 &11425296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: GoodbyePart1
+  m_EditorClassIdentifier: 
+  speaker: Rato
+  text: "Der Extraktor ist nun ersch\xF6pft, du brauchst *Energiekapseln* um ihn wieder
+    aufzuladen. \n\nOhje wie die Zeit verrint, das Fest zu ehren der Waldgeister beginnt
+    gleich. Auch wenn Serim glaubt den H\xFCter des Waldes mit seiner Zeremonie heilen
+    zu k\xF6nnen, bezweifle ich es. Ich denke du bist unsere einzige Hoffnung, {Konah}."
+  NodeRect:
+    serializedVersion: 2
+    x: -1332
+    y: -1665
+    width: 160
+    height: 50
+  Id: 15
+  Answers: []
+--- !u!114 &11427440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11474284}
+  To: {fileID: 11407602}
+  Id: 4
+  BoundingRect:
+    serializedVersion: 2
+    x: -1678.2357
+    y: -1680
+    width: -1611.7643
+    height: -1753
+  conditions: []
+  title: Nein
+  parent: {fileID: 11400000}
+--- !u!114 &11428336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: QuestStart
+  m_EditorClassIdentifier: 
+  speaker: Rato
+  text: "Gut, dann sieh dort hinten in der Truhe nach... dort bewahre ich einen auf...mit
+    dem wirst du in der Lage sein Geister zu extrahieren. Ich selbst besitze vier
+    Spirits aus meiner Jugend. Sie schlummern nun schon ewig in den Gef\xE4\xDFen
+    auf dem Tisch dort dr\xFCben. Ich glaube die Energiekapazit\xE4t des Extraktors
+    w\xFCrde reichen um eines dieser Wesen zu extrahieren. W\xE4hle einen Gegestand
+    aus und probiere es selbst."
+  NodeRect:
+    serializedVersion: 2
+    x: -1683
+    y: -1561
+    width: 160
+    height: 50
+  Id: 5
+  Answers: []
+--- !u!114 &11430004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11478562}
+  To: {fileID: 11472574}
+  Id: 29
+  BoundingRect:
+    serializedVersion: 2
+    x: -1333.75
+    y: -1890
+    width: -1482.25
+    height: -1692
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToExtractor
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedExtractor
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedSpirit
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11431268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11400466}
+  To: {fileID: 11409852}
+  Id: 17
+  BoundingRect:
+    serializedVersion: 2
+    x: -1340.5629
+    y: -1632
+    width: -1391.4371
+    height: -1499
+  conditions:
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedSpirit
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11436866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 28
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1402
+    y: -1627
+    width: 160
+    height: 50
+  Id: 28
+  Answers: []
+--- !u!114 &11437694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11478562}
+  To: {fileID: 11425296}
+  Id: 31
+  BoundingRect:
+    serializedVersion: 2
+    x: -1309.2727
+    y: -1890
+    width: -1257.7273
+    height: -1665
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedSpirit
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: whileFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11439370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11400466}
+  To: {fileID: 11425296}
+  Id: 16
+  BoundingRect:
+    serializedVersion: 2
+    x: -1311.9722
+    y: -1632
+    width: -1213.0278
+    height: -1502
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedSpirit
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11442576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11474284}
+  To: {fileID: 11428336}
+  Id: 6
+  BoundingRect:
+    serializedVersion: 2
+    x: -1680.4117
+    y: -1630
+    width: -1623.5883
+    height: -1561
+  conditions: []
+  title: Ja
+  parent: {fileID: 11400000}
+--- !u!114 &11442792
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11409852}
+  To: {fileID: 11425296}
+  Id: 18
+  BoundingRect:
+    serializedVersion: 2
+    x: -1355.7981
+    y: -1556
+    width: -1245.2019
+    height: -1502
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedSpirit
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11443994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11478562}
+  To: {fileID: 11482554}
+  Id: 25
+  BoundingRect:
+    serializedVersion: 2
+    x: -1251.0544
+    y: -1890
+    width: -1002.94556
+    height: -1793
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: beforeBanditFight
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11449538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 26
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: "Du kannst die Kapseln um deinen Hanschuh aufzuladen selber herstellen. Suche
+    im Wald nach {Baumharz} und {Pilzen}. Die Kapselh\xFClsen kannst du hier im Laden
+    kaufen"
+  NodeRect:
+    serializedVersion: 2
+    x: -910
+    y: -1869
+    width: 160
+    height: 50
+  Id: 26
+  Answers: []
+--- !u!114 &11450766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11478562}
+  To: {fileID: 11407602}
+  Id: 7
+  BoundingRect:
+    serializedVersion: 2
+    x: -1378.0803
+    y: -1890
+    width: -1552.0803
+    height: -1803
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToRato
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToExtractor
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11451614
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11478562}
+  To: {fileID: 11409852}
+  Id: 30
+  BoundingRect:
+    serializedVersion: 2
+    x: -1324.2106
+    y: -1890
+    width: -1424.7894
+    height: -1617
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToExtractor
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedExtractor
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedSpirit
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11456646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: FestivalSpeech
+  m_EditorClassIdentifier: 
+  speaker: Rato
+  text: "Du solltest unbedingt mit Jerome sprechen. Er ist der H\xFCter des Geistes
+    der unser Dorf sch\xFCtzt, und kennt sich mit Geistern am besten aus."
+  NodeRect:
+    serializedVersion: 2
+    x: -1206
+    y: -1782
+    width: 160
+    height: 50
+  Id: 21
+  Answers: []
+--- !u!114 &11463722
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428336}
+  To: {fileID: 11400466}
+  Id: 12
+  BoundingRect:
+    serializedVersion: 2
+    x: -1511.9741
+    y: -1548
+    width: -1257
+    height: -1482
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedExtractor
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11464856
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11472574}
+  To: {fileID: 11400466}
+  Id: 13
+  BoundingRect:
+    serializedVersion: 2
+    x: -1380.6304
+    y: -1643
+    width: -1204.3696
+    height: -1482
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedSpirit
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11466766
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11404730}
+  To: {fileID: 11407602}
+  Id: 19
+  BoundingRect:
+    serializedVersion: 2
+    x: -1506.6818
+    y: -1811
+    width: -1432
+    height: -1795
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToRato
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11472568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11478562}
+  To: {fileID: 11404730}
+  Id: 8
+  BoundingRect:
+    serializedVersion: 2
+    x: -1395
+    y: -1913.5815
+    width: -1517
+    height: -1911.4185
+  conditions:
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToRato
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11472574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: PickExtractorReminder
+  m_EditorClassIdentifier: 
+  speaker: Rato
+  text: Hast du den Extraktor schon aus meiner Truhe genommen?
+  NodeRect:
+    serializedVersion: 2
+    x: -1581
+    y: -1692
+    width: 160
+    height: 50
+  Id: 9
+  Answers: []
+--- !u!114 &11474284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: TrollAskForRepeat
+  m_EditorClassIdentifier: 
+  speaker: Rato
+  text: Hast du das Alles verstanden?
+  NodeRect:
+    serializedVersion: 2
+    x: -1781
+    y: -1680
+    width: 160
+    height: 50
+  Id: 3
+  Answers:
+  - {fileID: 11427440}
+  - {fileID: 11442576}
+--- !u!114 &11478562
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: HelperNode
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1395
+    y: -1940
+    width: 160
+    height: 50
+  Id: 0
+  Answers:
+  - {fileID: 11450766}
+  - {fileID: 11472568}
+  - {fileID: 11491774}
+  - {fileID: 11443994}
+  - {fileID: 11481624}
+  - {fileID: 11430004}
+  - {fileID: 11451614}
+  - {fileID: 11437694}
+--- !u!114 &11481624
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11478562}
+  To: {fileID: 11449538}
+  Id: 27
+  BoundingRect:
+    serializedVersion: 2
+    x: -1235
+    y: -1903.2887
+    width: -910
+    height: -1855.7113
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11482554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 22
+  m_EditorClassIdentifier: 
+  speaker: Rato
+  text: Los {Konah} du bist der einzige von uns der einen Spirit hat, du musst sie
+    aufhalten!
+  NodeRect:
+    serializedVersion: 2
+    x: -1019
+    y: -1793
+    width: 160
+    height: 50
+  Id: 22
+  Answers: []
+--- !u!114 &11488848
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428336}
+  To: {fileID: 11472574}
+  Id: 11
+  BoundingRect:
+    serializedVersion: 2
+    x: -1552.421
+    y: -1598
+    width: -1467.1578
+    height: -1643
+  conditions:
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedSpirit
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11491774
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11478562}
+  To: {fileID: 11456646}
+  Id: 24
+  BoundingRect:
+    serializedVersion: 2
+    x: -1285.095
+    y: -1890
+    width: -1155.905
+    height: -1782
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: whileFestival
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11497822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 23
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1136
+    y: -1840
+    width: 160
+    height: 50
+  Id: 23
+  Answers: []

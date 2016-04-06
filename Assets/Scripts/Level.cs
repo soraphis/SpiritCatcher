@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System.IO;
-using Assets.Soraphis.SaveGame;
 
 
 public class Level : MonoBehaviour {

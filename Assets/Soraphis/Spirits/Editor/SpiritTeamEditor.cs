@@ -1,41 +1,21 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
+using System.Reflection;
+using Assets.Soraphis.Lib;
 using Assets.Soraphis.Spirits.Scripts;
-using Supyrb;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace Assets.Soraphis.Spirits.Editor {
-
-    public static class RectExtensions {
-
-        /// <summary>
-        /// Splits a Rect in vertical ordered, even, pieces and returns the piece at the given index
-        /// </summary>
-        public static Rect SplitRectV(this Rect rect, int many, int index) {
-            var height = rect.height/many;
-            return new Rect(rect.x, rect.y + height*index, rect.width, height);
-        }
-
-        /// <summary>
-        /// Splits a Rect in horizontal ordered, even, pieces and returns the piece at the given index
-        /// </summary>
-        public static Rect SplitRectH(this Rect rect, int many, int index) {
-            var width = rect.width/many;
-            return new Rect(rect.x + width*index, rect.y, width, rect.height);
-        }
-    }
-
     [CustomEditor(typeof(SpiritTeam))]
     public class SpiritTeamEditor : UnityEditor.Editor {
 
         private SpiritLibrary library;
+        private AttackLibrary atkLibrary;
         private string[] libraryList;
         private int selectedListItem;
         private int selectedLevel;
@@ -88,20 +68,19 @@ namespace Assets.Soraphis.Spirits.Editor {
                 rect => EditorGUI.LabelField(rect, $"{selectedSpirit.displayName}'s attacks");
             attackList.drawElementCallback = (rect, index, active, focused) => {
                 var el = attackList.serializedProperty.GetArrayElementAtIndex(index);
-                EditorGUI.PropertyField(rect, el.FindPropertyRelative("AttackType"));
+                EditorGUI.PropertyField(rect, el.FindPropertyRelative("AttackName"));
             };
             attackList.onSelectCallback = reorderableList => {
                 selectedAttack = attackList.serializedProperty.GetArrayElementAtIndex(reorderableList.index);
             };
         }
 
-
-
         public override void OnInspectorGUI() {
             library = EditorGUILayout.ObjectField("Library", library, typeof(SpiritLibrary), false) as SpiritLibrary;
+            atkLibrary = EditorGUILayout.ObjectField("AttackLibrary", atkLibrary, typeof(AttackLibrary), false) as AttackLibrary;
 
             serializedObject.Update();
-            if(library != null) RenderGeneratorStuff();
+            if(library != null && atkLibrary != null) RenderGeneratorStuff();
             spiritList.DoLayoutList();
 
             if(selectedSpirit != null) {
@@ -109,7 +88,7 @@ namespace Assets.Soraphis.Spirits.Editor {
 
                 attackList?.DoLayoutList();
                 if(selectedAttack != null) {
-                    RenderSpirit(selectedAttack);
+                    RenderAttack(selectedAttack);
                 }
             }
 
@@ -127,7 +106,7 @@ namespace Assets.Soraphis.Spirits.Editor {
             selectedLevel = Mathf.Clamp(EditorGUILayout.IntField(selectedLevel), 1, 100);
             GUI.enabled = t.Spirits.Count < 6;
             if(GUILayout.Button("Generate")) {
-                var generated = Spirit.GenerateSpirit(library.Spirits[selectedListItem], selectedLevel);
+                var generated = Spirit.GenerateSpirit(library.Spirits[selectedListItem], selectedLevel, atkLibrary);
 
                 int newIndex = sprop.arraySize;
                 sprop.InsertArrayElementAtIndex(newIndex);
@@ -147,10 +126,28 @@ namespace Assets.Soraphis.Spirits.Editor {
             it.NextVisible(true);
             var d = it.depth;
             do {
-                var field = o.GetType().GetField(it.name);
+                var field = o.GetType().GetField(it.name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                if(field == null) {
+                    Debug.Log($"field: {it.name}({it.displayName}) not found");
+                    continue;
+                }
                 switch(it.propertyType) {
                     case SerializedPropertyType.Generic:
+                        if(it.isArray) {
+                            var list = field.GetValue(o) as IList;
+                            if(list == null) break;
+                            var prop = it.FindPropertyRelative("Array");
+                            prop.FindPropertyRelative("size").intValue = list.Count;
+                            int index = 0;
+                            foreach(var l in list) {
+                                fillPropertyFromObject(prop.GetArrayElementAtIndex(index++), l);
+                            }
+                        }
                         break;
+                    case SerializedPropertyType.Enum:
+                        if(!(field.GetValue(o) is Enum)) it.enumValueIndex = 0;
+                        it.enumValueIndex = (int) field.GetValue(o);
+                    break;
                     case SerializedPropertyType.Integer:
                         it.intValue = (int) field.GetValue(o);
                         break;

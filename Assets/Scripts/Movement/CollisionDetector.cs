@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Gamelogic;
-using UnityEngine;
-
-/*
+﻿/*
 public class CollisionDetector : MonoBehaviour {
 
     private Vector2[] dirs = {Vector2.right, Vector2.up, Vector2.left, Vector2.down};

@@ -352,7 +352,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 153152833}
   m_OnClick:
     m_PersistentCalls:
@@ -498,8 +498,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117.45624, y: -62.610584}
-  m_SizeDelta: {x: 234.91248, y: 125.22117}
+  m_AnchoredPosition: {x: 109.26445, y: -61.829346}
+  m_SizeDelta: {x: 218.5289, y: 123.65869}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &165836010
 MonoBehaviour:
@@ -546,7 +546,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1498,8 +1498,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 352.3687, y: -125.22117}
-  m_SizeDelta: {x: 234.91245, y: 250.44234}
+  m_AnchoredPosition: {x: 327.79333, y: -123.65869}
+  m_SizeDelta: {x: 218.52887, y: 247.31738}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &483221978
 MonoBehaviour:
@@ -1680,8 +1680,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117.45624, y: -125.22117}
-  m_SizeDelta: {x: 234.91248, y: 250.44234}
+  m_AnchoredPosition: {x: 109.26445, y: -123.65869}
+  m_SizeDelta: {x: 218.5289, y: 247.31738}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566572357
 MonoBehaviour:
@@ -2246,8 +2246,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117.45624, y: -187.83176}
-  m_SizeDelta: {x: 234.91248, y: 125.22117}
+  m_AnchoredPosition: {x: 109.26445, y: -185.48804}
+  m_SizeDelta: {x: 218.5289, y: 123.65869}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &704376326
 MonoBehaviour:
@@ -2287,7 +2287,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 704376327}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1052489474}
+        m_MethodName: PlayerSelectAttack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &704376327
@@ -2449,7 +2460,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 741493069}
   m_OnClick:
     m_PersistentCalls:
@@ -2500,7 +2511,7 @@ GameObject:
   - 222: {fileID: 790966899}
   - 114: {fileID: 790966898}
   m_Layer: 5
-  m_Name: Image
+  m_Name: blue_indicator_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2520,8 +2531,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 55.30002, y: -19.599998}
-  m_SizeDelta: {x: 110.6, y: 56.7}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &790966898
 MonoBehaviour:
@@ -2542,7 +2553,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 633af1334cb069748838b29df12e1d76, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 56a81410aee5cf84cb768786b8c6f53b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -2895,7 +2906,7 @@ GameObject:
   - 222: {fileID: 962795194}
   - 114: {fileID: 962795193}
   m_Layer: 5
-  m_Name: Image
+  m_Name: red_indicator_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2915,8 +2926,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 55.30002, y: -19.599998}
-  m_SizeDelta: {x: 110.6, y: 56.7}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962795193
 MonoBehaviour:
@@ -2937,7 +2948,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 633af1334cb069748838b29df12e1d76, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56a81410aee5cf84cb768786b8c6f53b, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -3202,23 +3213,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b5f30aebffdf4046bdb85d411980799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpiritUI:
+  - SpiritName: {fileID: 298746652}
+    SpiritLevel: {fileID: 1296434346}
+    SpiritHPText: {fileID: 635076761}
+    SpiritStaminaImage: {fileID: 1429438639}
+    SpiritStaminaImageSprite: {fileID: 790966898}
+  - SpiritName: {fileID: 357243100}
+    SpiritLevel: {fileID: 413515326}
+    SpiritHPText: {fileID: 319986245}
+    SpiritStaminaImage: {fileID: 1932460698}
+    SpiritStaminaImageSprite: {fileID: 962795193}
   Spirits:
   - {fileID: 1176465605}
   - {fileID: 1149306519}
-  StaminaImages:
-  - {fileID: 1429438639}
-  - {fileID: 1932460698}
   HPBar:
   - {fileID: 1440493460}
   - {fileID: 26804211}
-  HPText:
-  - {fileID: 635076761}
-  - {fileID: 319986245}
   StaminaBar: {fileID: 613647071}
   ActionPanel: {fileID: 2051504270}
   MessageBox: {fileID: 1605125392}
-  t1: {fileID: 11400000, guid: c29b4fab9ea79d0468b89b3a15f4d6fc, type: 2}
-  t2: {fileID: 11400000, guid: 4580da8dc29953248a9b5ae187e6ba0c, type: 2}
+  BasicActionsPanel: {fileID: 2141138974}
+  AttackOptionsPanel: {fileID: 729830585}
+  AttackButtons:
+  - ButtonText: {fileID: 1180336248}
+    Button: {fileID: 165836010}
+  - ButtonText: {fileID: 346693925}
+    Button: {fileID: 704376326}
+  - ButtonText: {fileID: 464068317}
+    Button: {fileID: 1362194330}
+  - ButtonText: {fileID: 836706327}
+    Button: {fileID: 1813868835}
+  t1: {fileID: 0}
+  t2: {fileID: 0}
 --- !u!114 &1052489475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3276,8 +3303,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 496.2547, y: -125.22117}
-  m_SizeDelta: {x: 52.859577, y: 250.44234}
+  m_AnchoredPosition: {x: 476.72556, y: -123.65869}
+  m_SizeDelta: {x: 79.33558, y: 247.31738}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1053438083
 MonoBehaviour:
@@ -3899,8 +3926,8 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.050479688, y: 0.1192301}
   m_AnchorMax: {x: 0.39969113, y: 0.5}
-  m_AnchoredPosition: {x: -0.024963379, y: -0.025260925}
-  m_SizeDelta: {x: -0.050018, y: 0.049515}
+  m_AnchoredPosition: {x: -0.018157959, y: -11.054993}
+  m_SizeDelta: {x: 89.789, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1176465605
 MonoBehaviour:
@@ -3921,7 +3948,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 633af1334cb069748838b29df12e1d76, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 5f0fc630c4096c740a95ba3cbd1bea55, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4114,8 +4141,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117.45622, y: -62.610584}
-  m_SizeDelta: {x: 234.91245, y: 125.22117}
+  m_AnchoredPosition: {x: 109.264435, y: -61.829346}
+  m_SizeDelta: {x: 218.52887, y: 123.65869}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1362194330
 MonoBehaviour:
@@ -4155,7 +4182,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1362194331}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1052489474}
+        m_MethodName: PlayerSelectAttack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1362194331
@@ -4204,7 +4242,7 @@ GameObject:
   - 114: {fileID: 1429438641}
   - 114: {fileID: 1429438640}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: blue_stamina_indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4225,7 +4263,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 48.916, y: 0}
+  m_AnchoredPosition: {x: -268.00003, y: 0}
   m_SizeDelta: {x: 0, y: 34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1429438640
@@ -4859,8 +4897,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117.45622, y: -187.83176}
-  m_SizeDelta: {x: 234.91245, y: 125.22117}
+  m_AnchoredPosition: {x: 109.264435, y: -185.48804}
+  m_SizeDelta: {x: 218.52887, y: 123.65869}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1813868835
 MonoBehaviour:
@@ -4900,7 +4938,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1813868836}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1052489474}
+        m_MethodName: PlayerSelectAttack
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1813868836
@@ -5006,7 +5055,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1821229607}
   m_OnClick:
     m_PersistentCalls:
@@ -5360,7 +5409,7 @@ GameObject:
   - 114: {fileID: 1932460699}
   - 114: {fileID: 1932460702}
   m_Layer: 5
-  m_Name: Image
+  m_Name: red_stamina_indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5381,7 +5430,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.5, y: -0.000012397766}
+  m_AnchoredPosition: {x: -268, y: -0.000012397766}
   m_SizeDelta: {x: 0, y: 34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1932460699

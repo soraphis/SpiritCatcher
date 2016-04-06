@@ -1,0 +1,428 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae9a88c80635b24598fab8d2c34758f, type: 3}
+  m_Name: GenericDialog
+  m_EditorClassIdentifier: 
+  DialogName: 
+  StartingPoint: {fileID: 11434166}
+  Statements:
+  - {fileID: 11460054}
+  - {fileID: 11451504}
+  - {fileID: 11420592}
+  - {fileID: 11472930}
+  - {fileID: 11434166}
+  - {fileID: 11488854}
+  - {fileID: 11498336}
+  Properties:
+  - Name: PlayerWinsFight
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: FightEnd
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: HasTeam
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: NPCFight
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+--- !u!114 &11420592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: PlayerWins
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: diesmal hast du gewonnen, doch man sieht sich immer zwei mal!
+  NodeRect:
+    serializedVersion: 2
+    x: -1392
+    y: -1253
+    width: 160
+    height: 50
+  Id: 2
+  Answers: []
+--- !u!114 &11427666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11434166}
+  To: {fileID: 11460054}
+  Id: 9
+  BoundingRect:
+    serializedVersion: 2
+    x: -1366.2142
+    y: -1590
+    width: -1503.7858
+    height: -1500
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: HasTeam
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: NPCFight
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11428680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11472930}
+  To: {fileID: 11451504}
+  Id: 6
+  BoundingRect:
+    serializedVersion: 2
+    x: -1448.527
+    y: -1352
+    width: -1516.0676
+    height: -1254
+  conditions:
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PlayerWinsFight
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: FightEnd
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11434166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 8
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1408
+    y: -1640
+    width: 160
+    height: 50
+  Id: 8
+  Answers:
+  - {fileID: 11427666}
+  - {fileID: 11471398}
+  - {fileID: 11436028}
+--- !u!114 &11436028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11434166}
+  To: {fileID: 11498336}
+  Id: 13
+  BoundingRect:
+    serializedVersion: 2
+    x: -1328
+    y: -1590
+    width: -1328
+    height: -1522
+  conditions:
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: NPCFight
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: HasTeam
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11451504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: NPCWins
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: die murmeln nehm ich mal lieber an mich
+  NodeRect:
+    serializedVersion: 2
+    x: -1600
+    y: -1254
+    width: 160
+    height: 50
+  Id: 1
+  Answers: []
+--- !u!114 &11460054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: FightTaunt
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: Dann zeigt mal was du drauf hast
+  NodeRect:
+    serializedVersion: 2
+    x: -1622
+    y: -1500
+    width: 160
+    height: 50
+  Id: 0
+  Answers:
+  - {fileID: 11479976}
+--- !u!114 &11471398
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11434166}
+  To: {fileID: 11488854}
+  Id: 11
+  BoundingRect:
+    serializedVersion: 2
+    x: -1286.1897
+    y: -1590
+    width: -1175.8103
+    height: -1524
+  conditions:
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: HasTeam
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11472930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: FightStart
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1498
+    y: -1402
+    width: 160
+    height: 50
+  Id: 5
+  Answers:
+  - {fileID: 11428680}
+  - {fileID: 11473016}
+--- !u!114 &11473016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11472930}
+  To: {fileID: 11420592}
+  Id: 7
+  BoundingRect:
+    serializedVersion: 2
+    x: -1413.5302
+    y: -1352
+    width: -1343.1007
+    height: -1253
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PlayerWinsFight
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: FightEnd
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11479976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11460054}
+  To: {fileID: 11472930}
+  Id: 4
+  BoundingRect:
+    serializedVersion: 2
+    x: -1510.3673
+    y: -1450
+    width: -1449.6327
+    height: -1402
+  conditions: []
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11488854
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 10
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 'Du hast ja gar keine Spirits ... '
+  NodeRect:
+    serializedVersion: 2
+    x: -1214
+    y: -1524
+    width: 160
+    height: 50
+  Id: 10
+  Answers: []
+--- !u!114 &11491368
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11460054}
+  To: {fileID: 11472930}
+  Id: 3
+  BoundingRect:
+    serializedVersion: 2
+    x: -1419.5763
+    y: -1489
+    width: -1417.4237
+    height: -1362
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PlayerWinsFight
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11498336
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 12
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: "Meine Spirits sind noch ersch\xF6pft...."
+  NodeRect:
+    serializedVersion: 2
+    x: -1408
+    y: -1522
+    width: 160
+    height: 50
+  Id: 12
+  Answers: []

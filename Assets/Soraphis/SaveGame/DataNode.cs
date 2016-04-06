@@ -4,9 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using JetBrains.Annotations;
-using UnityEngine;
 
 /// <summary>
 /// This is an moddified version from DataNode class found in tasharen.com's game windward

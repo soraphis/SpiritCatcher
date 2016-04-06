@@ -1,0 +1,472 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae9a88c80635b24598fab8d2c34758f, type: 3}
+  m_Name: DialogMutter1
+  m_EditorClassIdentifier: 
+  DialogName: DialogMutter1
+  StartingPoint: {fileID: 11486170}
+  Statements:
+  - {fileID: 11429348}
+  - {fileID: 11426668}
+  - {fileID: 11486170}
+  - {fileID: 11408166}
+  - {fileID: 11406766}
+  - {fileID: 11486300}
+  - {fileID: 11445464}
+  Properties:
+  - Name: HasMedicine
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: SendToSarim
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: FestivalActive
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: AfterFestival
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+--- !u!114 &11400920
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11486170}
+  To: {fileID: 11486300}
+  Id: 12
+  BoundingRect:
+    serializedVersion: 2
+    x: -1262.6683
+    y: -1811
+    width: -1106.3317
+    height: -1668
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: HasMedicine
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: AfterFestival
+  title: f
+  parent: {fileID: 11400000}
+--- !u!114 &11406766
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: MedicinRefresh
+  m_EditorClassIdentifier: 
+  speaker: Mutter
+  text: "Hier, es sind noch ein paar Kr\xE4uter \xFCbrig, du kannst sie bestimmt gebrauchen"
+  NodeRect:
+    serializedVersion: 2
+    x: -1257
+    y: -1600
+    width: 160
+    height: 50
+  Id: 9
+  Answers: []
+--- !u!114 &11408166
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 6
+  m_EditorClassIdentifier: 
+  speaker: Mutter
+  text: Warst du schon bei Sarim?
+  NodeRect:
+    serializedVersion: 2
+    x: -1648
+    y: -1728
+    width: 160
+    height: 50
+  Id: 6
+  Answers: []
+--- !u!114 &11419272
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11486170}
+  To: {fileID: 11406766}
+  Id: 10
+  BoundingRect:
+    serializedVersion: 2
+    x: -1279.1763
+    y: -1811
+    width: -1187.8237
+    height: -1600
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: AfterFestival
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: HasMedicine
+  title: e
+  parent: {fileID: 11400000}
+--- !u!114 &11426668
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: FinishQuest
+  m_EditorClassIdentifier: 
+  speaker: Mutter
+  text: "Du hast die Kr\xE4uter! Perfekt"
+  NodeRect:
+    serializedVersion: 2
+    x: -1612
+    y: -1616
+    width: 160
+    height: 50
+  Id: 2
+  Answers: []
+--- !u!114 &11426966
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11486170}
+  To: {fileID: 11445464}
+  Id: 14
+  BoundingRect:
+    serializedVersion: 2
+    x: -1296.0078
+    y: -1811
+    width: -1345.9922
+    height: -1603
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: FestivalActive
+  title: d
+  parent: {fileID: 11400000}
+--- !u!114 &11429348
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: StartQuest
+  m_EditorClassIdentifier: 
+  speaker: Mutter
+  text: "Asra ist Krank, geh zum Schamanen und besorge mir noch ein paar Heilkr\xE4uter."
+  NodeRect:
+    serializedVersion: 2
+    x: -1675
+    y: -1844
+    width: 160
+    height: 50
+  Id: 0
+  Answers: []
+--- !u!114 &11431842
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11486170}
+  To: {fileID: 11426668}
+  Id: 8
+  BoundingRect:
+    serializedVersion: 2
+    x: -1314.6938
+    y: -1811
+    width: -1507.3062
+    height: -1616
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: HasMedicine
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: AfterFestival
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: FestivalActive
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToSarim
+  title: c
+  parent: {fileID: 11400000}
+--- !u!114 &11433724
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11486170}
+  To: {fileID: 11429348}
+  Id: 5
+  BoundingRect:
+    serializedVersion: 2
+    x: -1370
+    y: -1831.541
+    width: -1515
+    height: -1823.459
+  conditions:
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToSarim
+  title: a
+  parent: {fileID: 11400000}
+--- !u!114 &11437692
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11429348}
+  To: {fileID: 11426668}
+  Id: 3
+  BoundingRect:
+    serializedVersion: 2
+    x: -1587.7133
+    y: -1773
+    width: -1583.2867
+    height: -1687
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: HasMedicine
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11445464
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: FestivalSpeech
+  m_EditorClassIdentifier: 
+  speaker: Mutter
+  text: "Asra ist zu krank, ich muss bei ihr bleiben. Genie\xDF du das Fest! Ich bin
+    sicher das wird Spa\xDF machen."
+  NodeRect:
+    serializedVersion: 2
+    x: -1432
+    y: -1603
+    width: 160
+    height: 50
+  Id: 13
+  Answers: []
+--- !u!114 &11486170
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 4
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1370
+    y: -1861
+    width: 160
+    height: 50
+  Id: 4
+  Answers:
+  - {fileID: 11433724}
+  - {fileID: 11492638}
+  - {fileID: 11431842}
+  - {fileID: 11419272}
+  - {fileID: 11400920}
+  - {fileID: 11426966}
+--- !u!114 &11486300
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: AfterFestivalWishes
+  m_EditorClassIdentifier: 
+  speaker: Mutter
+  text: "Ich habe geh\xF6rt das du geholfen hat die Banditen aufzuhalten.  Ich bin
+    sooo stolz auf dich."
+  NodeRect:
+    serializedVersion: 2
+    x: -1159
+    y: -1668
+    width: 160
+    height: 50
+  Id: 11
+  Answers: []
+--- !u!114 &11489190
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 1
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1440
+    y: -1839
+    width: 160
+    height: 50
+  Id: 1
+  Answers: []
+--- !u!114 &11492638
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11486170}
+  To: {fileID: 11408166}
+  Id: 7
+  BoundingRect:
+    serializedVersion: 2
+    x: -1342.2556
+    y: -1811
+    width: -1515.7444
+    height: -1728
+  conditions:
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: HasMedicine
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToSarim
+  title: b
+  parent: {fileID: 11400000}

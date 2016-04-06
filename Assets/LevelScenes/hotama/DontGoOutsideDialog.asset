@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae9a88c80635b24598fab8d2c34758f, type: 3}
+  m_Name: DontGoOutsideDialog
+  m_EditorClassIdentifier: 
+  DialogName: 
+  StartingPoint: {fileID: 11487500}
+  Statements:
+  - {fileID: 11487500}
+  Properties: []
+--- !u!114 &11487500
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 0
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: Ich kann die Leute im Dorf nicht im Stich lassen.
+  NodeRect:
+    serializedVersion: 2
+    x: -1547
+    y: -1802
+    width: 160
+    height: 50
+  Id: 0
+  Answers: []

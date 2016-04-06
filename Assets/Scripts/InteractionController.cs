@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 using Assets.Scripts.Movement;
 
 public class InteractionController : MonoBehaviour {
 
     private MovementComponent mc = null;
-    private Collider2D collider = null;
-    public const float InteractionRange = 5;
+    private new Collider2D collider = null;
+    public const float InteractionRange = 64;
 
 	// Use this for initialization
 	void Start () {
@@ -24,8 +23,22 @@ public class InteractionController : MonoBehaviour {
 
 	    int oldlayer = gameObject.layer;
         gameObject.layer = GameLayer.IGNORERAYCAST;
+
+
+	    var InteractionRange_mod = InteractionRange;
+        var origin = collider.bounds.center;
+	    if(mc.FacingDirection == Vector2.up) {
+	        InteractionRange_mod *= 1.3f;
+	        // origin.y += collider.bounds.extents.y;
+	    }
+
+        Debug.DrawRay(origin, mc.FacingDirection * InteractionRange_mod, Color.red, 0.2f);
         RaycastHit2D hit = Physics2D.Raycast(collider.bounds.center, mc.FacingDirection, InteractionRange);
-        hit.collider?.SendMessage("Interact", null, SendMessageOptions.DontRequireReceiver);
+        if(hit.collider != null) { 
+            var trig = hit.collider.isTrigger;
+            if(!trig)
+                hit.collider.SendMessage("Interact", null, SendMessageOptions.DontRequireReceiver);
+        }
         gameObject.layer = oldlayer;
 	}
 

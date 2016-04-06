@@ -1,0 +1,361 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae9a88c80635b24598fab8d2c34758f, type: 3}
+  m_Name: DialogJerome
+  m_EditorClassIdentifier: 
+  DialogName: DialogJerome
+  StartingPoint: {fileID: 11428864}
+  Statements:
+  - {fileID: 11428864}
+  - {fileID: 11444726}
+  - {fileID: 11402926}
+  - {fileID: 11473098}
+  - {fileID: 11462138}
+  - {fileID: 11479480}
+  Properties:
+  - Name: whileFestival
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: afterFestival
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: beforeBanditFight
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: afterBanditFight
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: FestivalSpeechListened
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+--- !u!114 &11402926
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: FestivalSpeach
+  m_EditorClassIdentifier: 
+  speaker: Jerome
+  text: Hey, du hast ja auch einen Spirit, komm doch morgen mal zum Schrein dann zeig
+    ich dir ein paar Kniffe.
+  NodeRect:
+    serializedVersion: 2
+    x: -1602
+    y: -1722
+    width: 160
+    height: 50
+  Id: 3
+  Answers: []
+--- !u!114 &11405288
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428864}
+  To: {fileID: 11444726}
+  Id: 2
+  BoundingRect:
+    serializedVersion: 2
+    x: -1482.8794
+    y: -1874
+    width: -1617.1206
+    height: -1783
+  conditions:
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: whileFestival
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11405676
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428864}
+  To: {fileID: 11479480}
+  Id: 10
+  BoundingRect:
+    serializedVersion: 2
+    x: -1415.1106
+    y: -1874
+    width: -1219.8894
+    height: -1716
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterBanditFight
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11428864
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: HelperNode
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1526
+    y: -1924
+    width: 160
+    height: 50
+  Id: 0
+  Answers:
+  - {fileID: 11405288}
+  - {fileID: 11432330}
+  - {fileID: 11429822}
+  - {fileID: 11465572}
+  - {fileID: 11405676}
+--- !u!114 &11429822
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428864}
+  To: {fileID: 11473098}
+  Id: 6
+  BoundingRect:
+    serializedVersion: 2
+    x: -1366
+    y: -1878.5349
+    width: -1182
+    height: -1831.4651
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11432330
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428864}
+  To: {fileID: 11402926}
+  Id: 4
+  BoundingRect:
+    serializedVersion: 2
+    x: -1455.4059
+    y: -1874
+    width: -1512.5941
+    height: -1722
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: whileFestival
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11444726
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: Greeting
+  m_EditorClassIdentifier: 
+  speaker: Jerome
+  text: "Ursomno zu h\xFCten ist nicht immer leicht. Er ist ein wilder Geist und wird
+    ungern aus seinem Schlummer im Schrein geweckt..."
+  NodeRect:
+    serializedVersion: 2
+    x: -1734
+    y: -1783
+    width: 160
+    height: 50
+  Id: 1
+  Answers: []
+--- !u!114 &11462138
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: BanditFight
+  m_EditorClassIdentifier: 
+  speaker: Jerome
+  text: Halte sie auf, ich geh und wecke Ursomno !.
+  NodeRect:
+    serializedVersion: 2
+    x: -1433
+    y: -1686
+    width: 160
+    height: 50
+  Id: 7
+  Answers: []
+--- !u!114 &11465572
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428864}
+  To: {fileID: 11462138}
+  Id: 9
+  BoundingRect:
+    serializedVersion: 2
+    x: -1436.2311
+    y: -1874
+    width: -1362.7689
+    height: -1686
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: beforeBanditFight
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11473098
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: AfterFestivalWishes
+  m_EditorClassIdentifier: 
+  speaker: Jerome
+  text: "Wenn wir den Wald l\xE4utern wollen, m\xFCssen wir mehr \xFCber die Spirits
+    lernen. Hier, nimm diese Schriftrolle *gibt Schriftrolle*, sie ist verzaubert,
+    darin kannst du mehrere Spirits einfangen."
+  NodeRect:
+    serializedVersion: 2
+    x: -1182
+    y: -1836
+    width: 160
+    height: 50
+  Id: 5
+  Answers: []
+--- !u!114 &11479480
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: BanditFight2
+  m_EditorClassIdentifier: 
+  speaker: Jerome
+  text: "Euch Tunichtgute werde ich aufhalten, danke {Konah} ab hier \xFCbernehm ich.\n"
+  NodeRect:
+    serializedVersion: 2
+    x: -1269
+    y: -1716
+    width: 160
+    height: 50
+  Id: 8
+  Answers: []

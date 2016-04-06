@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 470e00b9ab685924fb07474b7c350534
+timeCreated: 1447668360
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - DialogWindowPanel: {instanceID: 0}
+  - DialogNameField: {instanceID: 0}
+  - DialogTextField: {instanceID: 0}
+  - DialogAnswerPrefab: {fileID: 100800, guid: 071865e15b03e8f4fb7959bd696c183a, type: 2}
+  - DialogAnswerPanel: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

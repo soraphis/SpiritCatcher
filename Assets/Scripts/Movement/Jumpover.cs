@@ -29,7 +29,7 @@ namespace Assets.Scripts.Movement {
 
         private IEnumerator JumpOver(Collision2D collision) {
             var mCTRL = collision.gameObject.GetComponent<MovementController>();
-            var mCMP = collision.gameObject.GetComponent<MovementComponent>();
+            // var mCMP = collision.gameObject.GetComponent<MovementComponent>();
             if (mCTRL != null) mCTRL.enabled = false;
             int oldlayer = collision.gameObject.layer;
             if(oldlayer == GameLayer.IGNORECOLLISON) yield break;

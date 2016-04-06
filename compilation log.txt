@@ -1,5 +1,5 @@
 ********************************************************************************
-*                      Monday, March 28, 2016 1:42:59 PM                       *
+*                     Wednesday, April 06, 2016 6:36:28 PM                     *
 ********************************************************************************
 smcs.exe version: 1.5.3.0
 Platform: Windows
@@ -11,26 +11,17 @@ Compiler: Version6Mono
 - Compilation -----------------------------------------------
 
 Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-a1031fb46349ef14ba864b66c76032bd
+Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-81ee06676cdbbbb49a56fc90f3bfec1a
 Exit code: 0
-Elapsed time: 1.73 sec
+Elapsed time: 1.96 sec
 
 - Compiler output:
-0: Compilation succeeded - 8 warning(s)
+0: Compilation succeeded - 1 warning(s)
 
 - Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/Scripts/Game.cs(115,13): warning CS0219: The variable `n1' is assigned but its value is never used
-5: Assets/Scripts/Game.cs(116,13): warning CS0219: The variable `n2' is assigned but its value is never used
-6: Assets/Scripts/Movement/Jumpover.cs(32,17): warning CS0219: The variable `mCMP' is assigned but its value is never used
-7: Assets/Soraphis/Spirits/Scripts/AttackAnimation.cs(35,17): warning CS0219: The variable `attacker' is assigned but its value is never used
-8: Assets/StateMachines/BattleSystemImpl2.cs(272,13): warning CS0219: The variable `ps' is assigned but its value is never used
-9: Assets/Scripts/InteractionComponent.cs(11,30): warning CS0414: The private field `InteractionComponent.bc' is assigned but its value is never used
+0: Assets/Scripts/InteractionComponent.cs(40,13): warning CS0219: The variable `_spirits' is assigned but its value is never used
 ********************************************************************************
-*                      Monday, March 28, 2016 1:43:01 PM                       *
+*                     Wednesday, April 06, 2016 6:36:31 PM                     *
 ********************************************************************************
 smcs.exe version: 1.5.3.0
 Platform: Windows
@@ -42,15 +33,15 @@ Compiler: Version6Mono
 - Compilation -----------------------------------------------
 
 Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-2249627be3621ed46840a5442ca60399
+Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-0657aa1f89792684392e233f89348b8d
 Exit code: 0
-Elapsed time: 1.57 sec
+Elapsed time: 1.51 sec
 
 - Compiler output:
 
 - Compiler errors:
 ********************************************************************************
-*                      Monday, March 28, 2016 1:44:34 PM                       *
+*                     Wednesday, April 06, 2016 6:37:20 PM                     *
 ********************************************************************************
 smcs.exe version: 1.5.3.0
 Platform: Windows
@@ -62,26 +53,15 @@ Compiler: Version6Mono
 - Compilation -----------------------------------------------
 
 Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-58385f2d55819b546b2c38235b917abb
+Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-fde7ff354ac121241928890ed4ff675c
 Exit code: 0
-Elapsed time: 1.66 sec
+Elapsed time: 1.65 sec
 
 - Compiler output:
-0: Compilation succeeded - 8 warning(s)
 
 - Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/Scripts/Game.cs(115,13): warning CS0219: The variable `n1' is assigned but its value is never used
-5: Assets/Scripts/Game.cs(116,13): warning CS0219: The variable `n2' is assigned but its value is never used
-6: Assets/Scripts/Movement/Jumpover.cs(32,17): warning CS0219: The variable `mCMP' is assigned but its value is never used
-7: Assets/Soraphis/Spirits/Scripts/AttackAnimation.cs(36,17): warning CS0219: The variable `attacker' is assigned but its value is never used
-8: Assets/StateMachines/BattleSystemImpl2.cs(272,13): warning CS0219: The variable `ps' is assigned but its value is never used
-9: Assets/Scripts/InteractionComponent.cs(11,30): warning CS0414: The private field `InteractionComponent.bc' is assigned but its value is never used
 ********************************************************************************
-*                      Monday, March 28, 2016 1:44:36 PM                       *
+*                     Wednesday, April 06, 2016 6:37:22 PM                     *
 ********************************************************************************
 smcs.exe version: 1.5.3.0
 Platform: Windows
@@ -93,264 +73,9 @@ Compiler: Version6Mono
 - Compilation -----------------------------------------------
 
 Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-d567b12afb97ed547af09fdbd91f39b1
-Exit code: 0
-Elapsed time: 1.44 sec
-
-- Compiler output:
-
-- Compiler errors:
-********************************************************************************
-*                      Monday, March 28, 2016 1:46:55 PM                       *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: C:/Program Files/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-2bcfb8eb08203454580a6aa1f3314a57
-Exit code: 0
-Elapsed time: 1.83 sec
-
-- Compiler output:
-0: Compilation succeeded - 8 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/Scripts/Game.cs(115,13): warning CS0219: The variable `n1' is assigned but its value is never used
-5: Assets/Scripts/Game.cs(116,13): warning CS0219: The variable `n2' is assigned but its value is never used
-6: Assets/Scripts/Movement/Jumpover.cs(32,17): warning CS0219: The variable `mCMP' is assigned but its value is never used
-7: Assets/Soraphis/Spirits/Scripts/AttackAnimation.cs(36,17): warning CS0219: The variable `attacker' is assigned but its value is never used
-8: Assets/StateMachines/BattleSystemImpl2.cs(272,13): warning CS0219: The variable `ps' is assigned but its value is never used
-9: Assets/Scripts/InteractionComponent.cs(11,30): warning CS0414: The private field `InteractionComponent.bc' is assigned but its value is never used
-********************************************************************************
-*                      Monday, March 28, 2016 1:46:57 PM                       *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: C:/Program Files/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-b80d12cc1db934f44b92fd60431a3694
-Exit code: 0
-Elapsed time: 1.66 sec
-
-- Compiler output:
-
-- Compiler errors:
-********************************************************************************
-*                      Monday, March 28, 2016 1:49:15 PM                       *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: C:/Program Files/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-182ccccd58ebe3b46a95198f441f3a2e
-Exit code: 0
-Elapsed time: 1.72 sec
-
-- Compiler output:
-0: Compilation succeeded - 8 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/Scripts/Game.cs(115,13): warning CS0219: The variable `n1' is assigned but its value is never used
-5: Assets/Scripts/Game.cs(116,13): warning CS0219: The variable `n2' is assigned but its value is never used
-6: Assets/Scripts/Movement/Jumpover.cs(32,17): warning CS0219: The variable `mCMP' is assigned but its value is never used
-7: Assets/Soraphis/Spirits/Scripts/AttackAnimation.cs(36,17): warning CS0219: The variable `attacker' is assigned but its value is never used
-8: Assets/StateMachines/BattleSystemImpl2.cs(272,13): warning CS0219: The variable `ps' is assigned but its value is never used
-9: Assets/Scripts/InteractionComponent.cs(11,30): warning CS0414: The private field `InteractionComponent.bc' is assigned but its value is never used
-********************************************************************************
-*                      Monday, March 28, 2016 1:49:18 PM                       *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: C:/Program Files/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-be0588b24675e3043a30ad325a56385a
-Exit code: 0
-Elapsed time: 1.46 sec
-
-- Compiler output:
-
-- Compiler errors:
-********************************************************************************
-*                      Monday, March 28, 2016 1:50:02 PM                       *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: C:/Program Files/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-9d521542d7949f14f8cd0dd4a5c46854
-Exit code: 0
-Elapsed time: 1.71 sec
-
-- Compiler output:
-0: Compilation succeeded - 8 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/Scripts/Game.cs(115,13): warning CS0219: The variable `n1' is assigned but its value is never used
-5: Assets/Scripts/Game.cs(116,13): warning CS0219: The variable `n2' is assigned but its value is never used
-6: Assets/Scripts/Movement/Jumpover.cs(32,17): warning CS0219: The variable `mCMP' is assigned but its value is never used
-7: Assets/Soraphis/Spirits/Scripts/AttackAnimation.cs(36,17): warning CS0219: The variable `attacker' is assigned but its value is never used
-8: Assets/StateMachines/BattleSystemImpl2.cs(272,13): warning CS0219: The variable `ps' is assigned but its value is never used
-9: Assets/Scripts/InteractionComponent.cs(11,30): warning CS0414: The private field `InteractionComponent.bc' is assigned but its value is never used
-********************************************************************************
-*                      Monday, March 28, 2016 1:50:04 PM                       *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: C:/Program Files/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-9a97de6d792327d4ebd3f523560564a0
-Exit code: 0
-Elapsed time: 1.48 sec
-
-- Compiler output:
-
-- Compiler errors:
-********************************************************************************
-*                      Monday, March 28, 2016 1:50:37 PM                       *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: C:/Program Files/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-c19488c5f8c8f9d4290794f518261a4f
-Exit code: 0
-Elapsed time: 1.75 sec
-
-- Compiler output:
-0: Compilation succeeded - 8 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/Scripts/Game.cs(115,13): warning CS0219: The variable `n1' is assigned but its value is never used
-5: Assets/Scripts/Game.cs(116,13): warning CS0219: The variable `n2' is assigned but its value is never used
-6: Assets/Scripts/Movement/Jumpover.cs(32,17): warning CS0219: The variable `mCMP' is assigned but its value is never used
-7: Assets/Soraphis/Spirits/Scripts/AttackAnimation.cs(36,17): warning CS0219: The variable `attacker' is assigned but its value is never used
-8: Assets/StateMachines/BattleSystemImpl2.cs(272,13): warning CS0219: The variable `ps' is assigned but its value is never used
-9: Assets/Scripts/InteractionComponent.cs(11,30): warning CS0414: The private field `InteractionComponent.bc' is assigned but its value is never used
-********************************************************************************
-*                      Monday, March 28, 2016 1:50:39 PM                       *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: C:/Program Files/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-70d3d145f67959c47b5dcf3cdbad0220
+Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-83dc4297ced015a49859a8ad5454c6f9
 Exit code: 0
 Elapsed time: 1.49 sec
-
-- Compiler output:
-
-- Compiler errors:
-********************************************************************************
-*                      Monday, March 28, 2016 1:51:06 PM                       *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: C:/Program Files/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-f73535eb1ee6bb94c997593eb89ffb8f
-Exit code: 0
-Elapsed time: 1.69 sec
-
-- Compiler output:
-0: Compilation succeeded - 8 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/InteractionController.cs(8,24): warning CS0108: `InteractionController.collider' hides inherited member `UnityEngine.Component.collider'. Use the new keyword if hiding was intended
-1: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-2: Assets/Scripts/Movement/MovementComponent.cs(23,45): warning CS0108: `Assets.Scripts.Movement.MovementComponent.animation' hides inherited member `UnityEngine.Component.animation'. Use the new keyword if hiding was intended
-3: C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll (Location of the symbol related to previous warning)
-4: Assets/Scripts/Game.cs(115,13): warning CS0219: The variable `n1' is assigned but its value is never used
-5: Assets/Scripts/Game.cs(116,13): warning CS0219: The variable `n2' is assigned but its value is never used
-6: Assets/Scripts/Movement/Jumpover.cs(32,17): warning CS0219: The variable `mCMP' is assigned but its value is never used
-7: Assets/Soraphis/Spirits/Scripts/AttackAnimation.cs(36,17): warning CS0219: The variable `attacker' is assigned but its value is never used
-8: Assets/StateMachines/BattleSystemImpl2.cs(272,13): warning CS0219: The variable `ps' is assigned but its value is never used
-9: Assets/Scripts/InteractionComponent.cs(11,30): warning CS0414: The private field `InteractionComponent.bc' is assigned but its value is never used
-********************************************************************************
-*                      Monday, March 28, 2016 1:51:08 PM                       *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: C:/Program Files/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: D:\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-ee3d7aea74f8b7341b197f5d08c8f6b2
-Exit code: 0
-Elapsed time: 1.47 sec
 
 - Compiler output:
 

@@ -3,16 +3,31 @@ using Assets.Soraphis.Spirits.Scripts;
 using DG.Tweening;
 using UnityEngine;
 using Gamelogic;
-using RSG;
 using UnityEngine.UI;
 
 public class BattleController : Singleton<BattleController> {
 
+    [System.Serializable]
+    public struct SpiritUIElements {
+        [SerializeField] public Text SpiritName;
+        [SerializeField] public Text SpiritLevel;
+        [SerializeField] public Text SpiritHPText;
+        [SerializeField] public RectTransform SpiritStaminaImage;
+        [SerializeField] public Image SpiritStaminaImageSprite;
+    }
+
+    [System.Serializable]
+    public struct UIAttackButtons {
+        [SerializeField] public Text ButtonText;
+        [SerializeField] public Button Button;
+    }
+
+    [Layout] public SpiritUIElements[] SpiritUI = new SpiritUIElements[2];
+
     public Image[] Spirits = new Image[2];
 
-    public RectTransform[] StaminaImages = new RectTransform[2];
+    // public RectTransform[] StaminaImages = new RectTransform[2];
     public Image[] HPBar = new Image[2];
-    public Text[] HPText = new Text[2];
 
     public RectTransform StaminaBar;
 
@@ -20,6 +35,9 @@ public class BattleController : Singleton<BattleController> {
     public GameObject ActionPanel;
     private Text ActionPanel_Message;
     public RectTransform MessageBox;
+    public GameObject BasicActionsPanel;
+    public GameObject AttackOptionsPanel;
+    public UIAttackButtons[] AttackButtons = new UIAttackButtons[4];
 
     private BattleObject battleObject;
     
@@ -40,8 +58,8 @@ public class BattleController : Singleton<BattleController> {
         stateMachine = GetComponent<StateMachine>();
         Spirits[0].enabled = false;
         Spirits[1].enabled = false;
-        StaminaImages[0].gameObject.SetActive(false);
-        StaminaImages[1].gameObject.SetActive(false);
+        SpiritUI[0].SpiritStaminaImage.gameObject.SetActive(false);
+        SpiritUI[1].SpiritStaminaImage.gameObject.SetActive(false);
         //Player.Instance.team = new Team();s
         //Player.Instance.team.TeamList.Add(SpiritType.GenerateSpirit("Furbold", 5));
     }
@@ -53,42 +71,63 @@ public class BattleController : Singleton<BattleController> {
             BattleObject b = new BattleObject(true, t);
             StartBattle(b);
         }*/
-        if(battleObject == null && Input.GetKeyDown(KeyCode.T)) {
-            StartCoroutine(StartBattle(new BattleObject((SpiritTeam) t2.Clone(), (SpiritTeam) t1.Clone())));
-        }
+//        if(battleObject == null && Input.GetKeyDown(KeyCode.T)) {
+//            StartCoroutine(StartBattle(new BattleObject((SpiritTeam) t2.Clone(), (SpiritTeam) t1.Clone())));
+//        }
 
         if(battleObject != null) {
             for(int i = 0; i < 2; ++i) {
                 var sp = battleObject.GetSpirit(i);
                 var hpp = Mathf.Ceil(sp.CurrentHP)/(sp.HP*SpiritType.PP_HP);
                 HPBar[i].fillAmount = hpp;
+                SpiritUI[i].SpiritHPText.text = $"{Mathf.Ceil(sp.CurrentHP)}/{(sp.HP * SpiritType.PP_HP)}";
+                SpiritUI[i].SpiritName.text = $"{sp.Name}";
+                SpiritUI[i].SpiritLevel.text = $"lvl. {sp.Level}";
+                SpiritUI[i].SpiritStaminaImageSprite.sprite = sp.Type.ImageIcon;
             }
-            
+            for(int i = 0; i < 4; i++) {
+                var sp = battleObject.GetSpirit(0);
+                if(i >= sp.Attacks.Count) {
+                    AttackButtons[i].Button.interactable = false;
+                    AttackButtons[i].ButtonText.text = "";
+                } else {
+                    AttackButtons[i].Button.interactable = true;
+                    AttackButtons[i].ButtonText.text = sp.Attacks[i].Name;
+                }
+            }
         }
-        if (battleObject != null && stateMachine.currentState.name == "GenerateEnergy" 
+        if (battleObject != null && (stateMachine.currentState.name == "GenerateEnergy" 
             || stateMachine.currentState.name == "SpawnWildSpirits"
             || stateMachine.currentState.name == "EvaluateBattle"
             || stateMachine.currentState.name == "DoSelectedAction"
-            || stateMachine.currentState.name == "SpawnSpirits") {
+            || stateMachine.currentState.name == "SpawnSpirits")) {
             for(int i = 0; i < 2; ++i) { 
-                var v = StaminaImages[i].localPosition;
+                var v = SpiritUI[i].SpiritStaminaImage.localPosition;
                 v.x = battleObject.GetSpirit(i).CurrentStamina/100*StaminaBar.rect.width - StaminaBar.rect.width/2;
-                var dif = Mathf.Abs(v.x - StaminaImages[i].localPosition.x);
+
+                var dif = Mathf.Abs(v.x - SpiritUI[i].SpiritStaminaImage.localPosition.x);
                 if(dif < 10)
-                    StaminaImages[i].localPosition = v;
+                    SpiritUI[i].SpiritStaminaImage.localPosition = v;
                 else
-                    StaminaImages[i].DOLocalMoveX(v.x, dif/1000, false);
+                    SpiritUI[i].SpiritStaminaImage.DOLocalMoveX(v.x, dif/1000, false);
             }
         }
 
     }
 
-    private IEnumerator StartBattle(BattleObject bo) {
+    public IEnumerator StartBattle(BattleObject bo) {
+        Game.Instance.CurrentGameState = Game.GameState.Menu;
+        Player.Instance.CurrentActionState = Player.ActionState.Battle;
+
         yield return new WaitForEndOfFrame();
         battleObject = bo;
         GetComponent<BattleSystemImpl2>().BattleObject = bo;
         GetComponent<StateMachine>().GoToState("BattleStart");
-        battleObject.ActionHandlers = new[] {new AIBattleActionHandler(bo, 0), new AIBattleActionHandler(bo, 1)};
+        battleObject.ActionHandlers = new BattleActionHandler[]{new PlayerBattleActionHandler(bo), new AIBattleActionHandler(bo, 1)};
+
+        yield return new WaitUntil(() => battleObject.winner >= 0);
+        Game.Instance.CurrentGameState = Game.GameState.World;
+        Player.Instance.CurrentActionState = Player.ActionState.Default;
     }
 
 

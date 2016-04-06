@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace Gamelogic
+﻿namespace Gamelogic
 {
 	/**
 		Some convenience functions for random bools and integers.

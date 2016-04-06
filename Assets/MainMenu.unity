@@ -332,6 +332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentActionState: 0
   team: []
+  isOutdoor: 0
 --- !u!114 &829163672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,8 +346,138 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentGameState: 2
   SpiritLibrary: {fileID: 11400000, guid: 2936b0957bd4f144bb062a80539096b0, type: 2}
+  AttackLibrary: {fileID: 11400000, guid: 14666f664d59cff4eb9fadce11529e99, type: 2}
   currentScene: 0
   IngameMenu: {fileID: 0}
+  QuestPart1Variables:
+    SendToSarim: 0
+    SendToRato: 0
+    FestivalAktive: 0
+    FestivalEnded: 0
+    BanditsAppeared: 0
+    BanditsDefeated: 0
+    FestivalListened: 0
+    SendToExtractor: 0
+  DayNightColorCycle:
+    red:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.20000005
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.34
+        value: 0.45000002
+        inSlope: 2.5607646
+        outSlope: 2.5607646
+        tangentMode: 0
+      - time: 0.49812645
+        value: 1
+        inSlope: -0.033657186
+        outSlope: -0.033657186
+        tangentMode: 0
+      - time: 0.59999996
+        value: 1
+        inSlope: -0.04989201
+        outSlope: -0.04989201
+        tangentMode: 0
+      - time: 0.79999995
+        value: 0.35000002
+        inSlope: -1.7483078
+        outSlope: -1.7483078
+        tangentMode: 0
+      - time: 1
+        value: 0.20000005
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    gree:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.3
+        inSlope: 0.6
+        outSlope: 0.6
+        tangentMode: 10
+      - time: 0.25
+        value: 0.45000002
+        inSlope: 1.3999999
+        outSlope: 1.3999999
+        tangentMode: 10
+      - time: 0.5
+        value: 1
+        inSlope: 0.11785704
+        outSlope: 0.11785704
+        tangentMode: 10
+      - time: 0.78
+        value: 0.45000002
+        inSlope: -1.3230519
+        outSlope: -1.3230519
+        tangentMode: 10
+      - time: 1
+        value: 0.3
+        inSlope: -0.6818181
+        outSlope: -0.6818181
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    blue:
+      serializedVersion: 2
+      m_Curve:
+      - time: 0
+        value: 0.39999998
+        inSlope: 1.1111113
+        outSlope: 1.1111113
+        tangentMode: 10
+      - time: 0.26999998
+        value: 0.7
+        inSlope: 1.2077296
+        outSlope: 1.2077296
+        tangentMode: 10
+      - time: 0.5
+        value: 1
+        inSlope: 0.075250745
+        outSlope: 0.075250745
+        tangentMode: 10
+      - time: 0.76
+        value: 0.7
+        inSlope: -1.2019231
+        outSlope: -1.2019231
+        tangentMode: 10
+      - time: 1
+        value: 0.39999998
+        inSlope: -1.25
+        outSlope: -1.25
+        tangentMode: 10
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 0
+    sat:
+      serializedVersion: 2
+      m_Curve:
+      - time: -0.0019376196
+        value: 0.84785724
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 0.50102806
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - time: 1.0009688
+        value: 0.8493174
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 1
+      m_RotationOrder: 0
 --- !u!4 &829163673
 Transform:
   m_ObjectHideFlags: 0

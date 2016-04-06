@@ -1,8 +1,4 @@
-﻿using System;
-using UnityEngine;
-using System.Collections;
-
-public abstract class GameConstant<T>{
+﻿public abstract class GameConstant<T>{
 
     private readonly T value;
     protected GameConstant(T value){

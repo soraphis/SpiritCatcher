@@ -14,7 +14,7 @@ namespace Assets.Soraphis.Spirits.Scripts {
         }
 
         public object Clone() {
-            SpiritTeam copy = new SpiritTeam();
+            SpiritTeam copy = ScriptableObject.CreateInstance(typeof(SpiritTeam)) as SpiritTeam;
             copy.Spirits = new List<Spirit>(Spirits.Count);
             for(int index = 0; index < Spirits.Count; index++) {
                 var spirit = Spirits[index];

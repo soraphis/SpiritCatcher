@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class AnimatedTextureExtendedUV : MonoBehaviour {
 
@@ -24,18 +23,19 @@ public class AnimatedTextureExtendedUV : MonoBehaviour {
     }
 
     //Update
-    void Update() { SetSpriteAnimation(colCount, rowCount, rowNumber, colNumber, totalCells, fps); }
+    void Update() {
+        if(pause) return;
+        SetSpriteAnimation(colCount, rowCount, rowNumber, colNumber, totalCells, fps);
+    }
 
 
-    private bool pause = false;
+    [SerializeField] private bool pause = false;
     public void Pause(bool p = true) {
         pause = p;
     }
 
     //SetSpriteAnimation
     public void SetSpriteAnimation(int colCount, int rowCount, int rowNumber, int colNumber, int totalCells, int fps) {
-        if(pause) return;
-
         // Calculate index
         int index = (int)(Time.time * fps);
         // Repeat when exhausting all cells

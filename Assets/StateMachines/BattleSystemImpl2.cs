@@ -8,16 +8,13 @@ using System.Linq;
 using System.Reflection;
 using Assets.Soraphis.Spirits.Scripts;
 using DG.Tweening;
-using RSG;
-using UnityEngine.UI;
 using props = BattleSystemProperties;
 using BUI = BattleController;
 
 
-
 public class BattleObject {
     public readonly bool trainerFight;
-    public readonly NPC trainer;
+    public readonly GameObject trainer;
 
     public readonly SpiritTeam enemyTeam;
     public readonly SpiritTeam playerTeam;
@@ -33,8 +30,9 @@ public class BattleObject {
     public int? activePlayer = null;
     public PlayerAction[] action = new PlayerAction[2];
 
+    public int winner = -1;
 
-    public BattleObject(SpiritTeam enemyTeam, SpiritTeam playerTeam = null, NPC trainer = null) {
+    public BattleObject(SpiritTeam enemyTeam, SpiritTeam playerTeam = null, GameObject trainer = null) {
         this.enemyTeam = enemyTeam;
         if(playerTeam == null) {
             playerTeam = new SpiritTeam();
@@ -45,12 +43,13 @@ public class BattleObject {
         } else {
             this.playerTeam = playerTeam;
         }
-        
+
         this.trainer = trainer;
-        if(trainer == null) trainerFight = false;
+        trainerFight = trainer != null;
     }
 
     public Spirit GetSpirit(int i) => i == 0 ? playerSpirit : enemySpirit;
+
     public void SetSpirit(int i, Spirit s) {
         if(i == 0) playerSpirit = s;
         else enemySpirit = s;
@@ -63,7 +62,7 @@ public class BattleObject {
         if(Buffs.ContainsKey(s))
             bonus_speed = s.SPEED + Buffs[s].Where(b => b.Attribute == "speed").Select(b => b.Value).Sum();
 
-        return Mathf.Log(1 + s.SPEED + bonus_speed) * (SpiritType.PP_SPEED);
+        return Mathf.Log(1 + s.SPEED + bonus_speed)*(SpiritType.PP_SPEED);
     }
 }
 
@@ -86,11 +85,16 @@ public class BattleSystemImpl2 : MonoBehaviour, IBattleSystemBattleStartHandler,
     }
 
     /* this line is so important, that i have to wrap it with comments */
-    private void LateUpdate() { stateMachine.SetProperty(props.StateFinished, false); }
+
+    private void LateUpdate() {
+        stateMachine.SetProperty(props.StateFinished, false);
+    }
+
     private IEnumerator FinishState() {
         yield return new WaitForEndOfFrame();
         stateMachine.SetProperty(props.StateFinished, true);
-    } 
+    }
+
     /* --------------------------------------------------------------- */
 
 
@@ -101,9 +105,9 @@ public class BattleSystemImpl2 : MonoBehaviour, IBattleSystemBattleStartHandler,
         BattleObject.GetSpirit(team).CurrentStamina = 0f;
 
         var hp = team == 0 ? BattleObject.GetSpirit(0).CurrentHP : BattleObject.GetSpirit(1).CurrentHP;
-        if (team == 0)
+        if(team == 0)
             stateMachine.SetProperty(props.PlayerHP, hp);
-        else if (team == 1)
+        else if(team == 1)
             stateMachine.SetProperty(props.EnemyHP, hp);
 
 
@@ -112,20 +116,21 @@ public class BattleSystemImpl2 : MonoBehaviour, IBattleSystemBattleStartHandler,
             .OnStart(() => {
                 BUI.Instance.Spirits[team].sprite = image;
                 BUI.Instance.Spirits[team].enabled = true;
-                BUI.Instance.StaminaImages[team].gameObject.SetActive(true);
+                BUI.Instance.SpiritUI[team].SpiritStaminaImage.gameObject.SetActive(true);
             })
-            .OnComplete(() => {
-                stateMachine.SetProperty(props.SpiritsToSpawn, stateMachine.GetProperty<int>(props.SpiritsToSpawn) - 1);
-            });
-
+            .OnComplete(
+                () => {
+                    stateMachine.SetProperty(props.SpiritsToSpawn,
+                        stateMachine.GetProperty<int>(props.SpiritsToSpawn) - 1);
+                });
     }
 
 
     public void OnEnterBattleStart() {
         if(BattleObject == null) return;
         stateMachine.SetProperty(props.TrainerFight, BattleObject.trainerFight);
-        
-        
+
+
         BattleObject.SetSpirit(0, BattleObject.GetTeam(0).Spirits[0]);
         BattleObject.SetSpirit(1, BattleObject.GetTeam(1).Spirits[0]);
 
@@ -137,10 +142,9 @@ public class BattleSystemImpl2 : MonoBehaviour, IBattleSystemBattleStartHandler,
     public void OnEnterBattleStartMessage() {
         var message = BattleObject.trainerFight
             ? "Insert trainer spuch hier"
-            : "Wildes XY greift an";
+            : $"Wildes {BattleObject.enemyTeam.Spirits[0].Name} greift an";
 
         StartCoroutine(BUI.Instance.WriteMessage(message, () => stateMachine.SetProperty(props.StateFinished, true)));
-
     }
 
     public void OnEnterCatchSpirit() {
@@ -148,8 +152,10 @@ public class BattleSystemImpl2 : MonoBehaviour, IBattleSystemBattleStartHandler,
     }
 
     public void OnGenerateEnergy() {
-        float[] speed = new []{BattleObject.GetBattleSpeed(BattleObject.GetSpirit(0)),
-                               BattleObject.GetBattleSpeed(BattleObject.GetSpirit(1))};
+        float[] speed = new[] {
+            BattleObject.GetBattleSpeed(BattleObject.GetSpirit(0)),
+            BattleObject.GetBattleSpeed(BattleObject.GetSpirit(1))
+        };
 
         var maxSpeed = Math.Max(speed[0], speed[1]);
         if(BattleObject.weatherEffect != null) maxSpeed = Mathf.Max(maxSpeed, BattleObject.weatherEffect.Speed);
@@ -157,14 +163,14 @@ public class BattleSystemImpl2 : MonoBehaviour, IBattleSystemBattleStartHandler,
 
         BattleObject.activePlayer = null;
         stateMachine.SetProperty(props.SpiritReady, -1);
-        for (int i = 0; i <= 1; ++i) {
-            BattleObject.GetSpirit(i).CurrentStamina += speed[i] * Time.deltaTime * time_multiplicator;
-            if(BattleObject.GetSpirit(i).CurrentStamina >= 100) { 
+        for(int i = 0; i <= 1; ++i) {
+            BattleObject.GetSpirit(i).CurrentStamina += speed[i]*Time.deltaTime*time_multiplicator;
+            if(BattleObject.GetSpirit(i).CurrentStamina >= 100) {
                 stateMachine.SetProperty(props.SpiritReady, i);
             }
         }
 
-        for (int i = 0; i <= 1; ++i) {
+        for(int i = 0; i <= 1; ++i) {
             if(i == stateMachine.GetProperty<int>(props.SpiritReady)) {
                 BattleObject.activePlayer = i;
                 break;
@@ -178,20 +184,19 @@ public class BattleSystemImpl2 : MonoBehaviour, IBattleSystemBattleStartHandler,
             BattleObject.weatherEffect.Stamina += BattleObject.weatherEffect.Speed*Time.deltaTime*time_multiplicator;
             stateMachine.SetProperty(props.WeatherEffectReady, BattleObject.weatherEffect.Stamina >= 100);
 
-            if (BattleObject.weatherEffect.Duration > 0) {
-                BattleObject.weatherEffect.Duration -= BattleObject.weatherEffect.Speed*Time.deltaTime * time_multiplicator;
+            if(BattleObject.weatherEffect.Duration > 0) {
+                BattleObject.weatherEffect.Duration -= BattleObject.weatherEffect.Speed*Time.deltaTime*
+                                                       time_multiplicator;
             } else {
                 BattleObject.weatherEffect = null;
             }
-            
         }
 
         stateMachine.SetProperty(props.StateFinished, true);
     }
 
     public void OnEnterWeatherEffects() {
-        BattleObject.weatherEffect.Proc(BattleObject)
-            .Then(() => stateMachine.SetProperty(props.StateFinished, true));
+        BattleObject.weatherEffect.Proc(BattleObject, () => stateMachine.SetProperty(props.StateFinished, true));
     }
 
     public void OnEnterPlayerAction() {
@@ -202,36 +207,68 @@ public class BattleSystemImpl2 : MonoBehaviour, IBattleSystemBattleStartHandler,
 
     public void OnEnterDoSelectedAction() {
         //// -----
-        var p = (int)BattleObject.activePlayer;
+        var p = (int) BattleObject.activePlayer;
         var b = BattleObject.action[p];
-        if (b.action == PlayerAction.ActionType.Attack) {
-            var attack = BattleObject.GetSpirit(p).Attacks[(int)b.actionValue];
-            var attacktype = attack.AttackType;
-            var method = typeof(AttackAnimation).GetMethod(attacktype.ToString("F"), BindingFlags.Static | BindingFlags.Public);
+        if(b.action == PlayerAction.ActionType.Attack) {
+            var attack = BattleObject.GetSpirit(p).Attacks[(int) b.actionValue];
+            var attacktype = attack.AttackName;
+            var method = typeof(AttackAnimation).GetMethod(attacktype.ToString("F"),
+                BindingFlags.Static | BindingFlags.Public);
+
+            float acc;
+            var precision = attack.CalculateAccuracy(BattleObject.GetSpirit(p), out acc);
+
             Action a = () => {
                 BattleObject.GetSpirit(p).CurrentStamina -= attack.StaminaCost;
-                var dmg = attack.BaseDMG * (100 + BattleObject.GetSpirit(p).DMG) / 100 *
-                          (100 - BattleObject.GetSpirit(1 - p).DEF) / 100;
+
+                bool crit;
+                float effective;
+                var dmg = attack.CalculateDamage(BattleObject.GetSpirit(p), BattleObject.GetSpirit(1 - p), acc, out crit,
+                    out effective);
+
                 BattleObject.GetSpirit(1 - p).CurrentHP -= Mathf.Floor(dmg);
-                var message2 = $"{BattleObject.GetSpirit(1 - p).Name} hat {Mathf.Floor(dmg)} Schaden erlitten.";
-                StartCoroutine(BUI.Instance.WriteMessage(message2, () => stateMachine.SetProperty(props.StateFinished, true)));
+                string msg_part1 = "";
+                string msg_part2 = "";
+                if(crit) msg_part1 = "wurde kritisch getroffen und ";
+                if(effective >= 1.5) msg_part2 = "Der Angriff war sehr effektiv";
+                else if(effective > 1) msg_part2 = "Der Angriff war effektiv";
+                else if(effective < 1) msg_part2 = "Der Angriff war nicht sehr effektiv";
+                else if(effective < 0.5) msg_part2 = "Der Angriff zeigt kaum Wirkung";
+
+                string message2 = "";
+                if(effective <= 0) message2 = "Der Angriff hatte keine Wirkung";
+                else
+                    message2 =
+                        $"{BattleObject.GetSpirit(1 - p).Name} {msg_part1} hat {Mathf.Floor(dmg)} Schaden erlitten. {msg_part2}";
+
+                StartCoroutine(BUI.Instance.WriteMessage(message2,
+                    () => stateMachine.SetProperty(props.StateFinished, true)));
             };
             // man nehme an method sei immer != null :D
-            var message = $"{BattleObject.GetSpirit(p).Name} greift mit {attacktype.ToString("F")} an.";
-            StartCoroutine(BUI.Instance.WriteMessage(message,
-                () => StartCoroutine((IEnumerator)method.Invoke(null, new object[] { BUI.Instance, p, a }))));
+            var message = $"{BattleObject.GetSpirit(p).Name} greift mit {attack.Name} an.";
 
+            StartCoroutine(BUI.Instance.WriteMessage(message,
+                () => {
+                    if(precision) {
+                        StartCoroutine((IEnumerator) method.Invoke(null, new object[] {BUI.Instance, p, a}));
+                    } else {
+                        BattleObject.GetSpirit(p).CurrentStamina -= attack.StaminaCost*2/3;
+                        StartCoroutine(BUI.Instance.WriteMessage("Die Attacke ging daneben",
+                            () => stateMachine.SetProperty(props.StateFinished, true)));
+                    }
+                }));
         }
         //// ----
     }
 
     public void OnEnterEvaluateBattle() {
-        if (BattleObject.activePlayer == null) throw new ArgumentException("this should not happen");
-        if (BattleObject.action[(int)BattleObject.activePlayer] == null) throw new ArgumentException("this should not happen");
-        stateMachine.SetProperty(props.PlayerAction, (int)BattleObject.action[(int)BattleObject.activePlayer].action);
+        if(BattleObject.activePlayer == null) throw new ArgumentException("this should not happen");
+        if(BattleObject.action[(int) BattleObject.activePlayer] == null)
+            throw new ArgumentException("this should not happen");
+        stateMachine.SetProperty(props.PlayerAction, (int) BattleObject.action[(int) BattleObject.activePlayer].action);
 
         stateMachine.SetProperty(props.CatchSpirit, false); // TODO: is true if item selected is xyz
-        stateMachine.SetProperty(props.MinSpiritHP, 
+        stateMachine.SetProperty(props.MinSpiritHP,
             Mathf.Min(BattleObject.GetSpirit(0).CurrentHP, BattleObject.GetSpirit(1).CurrentHP));
 
         stateMachine.SetProperty(props.PlayerHP, BattleObject.playerSpirit.CurrentHP);
@@ -241,8 +278,9 @@ public class BattleSystemImpl2 : MonoBehaviour, IBattleSystemBattleStartHandler,
     }
 
     public void OnEnterSpiritWasted() {
-        stateMachine.SetProperty(props.PlayerSpirits, BattleObject.GetTeam(0).Spirits.Count(spirit => spirit.CurrentHP > 0));
-        stateMachine.SetProperty(props.EnemySpirits, BattleObject.GetTeam(1).Spirits.Select(s => s.CurrentHP > 0).Count());
+        stateMachine.SetProperty(props.PlayerSpirits,
+            BattleObject.GetTeam(0).Spirits.Count(spirit => spirit.CurrentHP > 0));
+        stateMachine.SetProperty(props.EnemySpirits, BattleObject.GetTeam(1).Spirits.Count(s => s.CurrentHP > 0));
         StartCoroutine(FinishState());
     }
 
@@ -267,9 +305,7 @@ public class BattleSystemImpl2 : MonoBehaviour, IBattleSystemBattleStartHandler,
     }
 
 
-
     public void OnEnterSpawnSpirits() {
-        var ps = new List<Promise>();
         if(BattleObject.trainerFight) {
             stateMachine.SetProperty(props.SpiritsToSpawn, 1);
             SpawnSpirit(1);
@@ -279,30 +315,31 @@ public class BattleSystemImpl2 : MonoBehaviour, IBattleSystemBattleStartHandler,
 
         // Promise.Resolved().ThenAll(() => ps.ToArray()).Then(() => stateMachine.SetProperty(props.StateFinished, true));
     }
+
     public void OnEnterSpawnWildSpirits() {
         stateMachine.SetProperty(props.SpiritsToSpawn, 1);
         SpawnSpirit(1);
     }
 
-
     public void OnEnterSpiritCatched() {
         throw new System.NotImplementedException();
     }
 
-
     #region EndOfBattle
 
     public void OnEnterEnemyWin() {
-        throw new System.NotImplementedException();
+        BattleObject.winner = 0;
+        StartCoroutine(FinishState());
     }
+
     public void OnEnterPlayerWin() {
-        throw new System.NotImplementedException();
+        BattleObject.winner = 1;
+        StartCoroutine(FinishState());
     }
+
     public void OnEnterEnd() {
-        throw new System.NotImplementedException();
+        StartCoroutine(FinishState());
     }
 
     #endregion
-
-
 }

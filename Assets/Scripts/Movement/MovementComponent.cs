@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Security.Cryptography.X509Certificates;
 using Assets.Soraphis.SaveGame;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Movement{
     public class MovementComponent : MonoBehaviour, Saveable {
@@ -20,7 +18,7 @@ namespace Assets.Scripts.Movement{
             Vector2.right
         };
 
-        private AnimatedTextureExtendedUV[] animation = null;
+        private new AnimatedTextureExtendedUV[] animation = null;
 
         private new Rigidbody2D rigidbody;
         private Renderer[] renderers;
@@ -31,15 +29,20 @@ namespace Assets.Scripts.Movement{
         }
 
         void Update() {
-            if(Game.Instance.CurrentGameState != Game.GameState.World) return;
+            if(Game.Instance.CurrentGameState != Game.GameState.World) {
+                this.rigidbody.velocity = Vector2.zero;
+                return;
+            }
+            //            transform.Translate(FacingDirection * currentSpeed * Time.deltaTime);
             this.position = transform.position;
-//            transform.Translate(FacingDirection * currentSpeed * Time.deltaTime);
             this.rigidbody.velocity = FacingDirection*currentSpeed;
            
         }
 
         void LateUpdate() {
-            if (Game.Instance.CurrentGameState != Game.GameState.World) return;
+            // if (Game.Instance.CurrentGameState != Game.GameState.World) return;
+
+
             //            if(Vector2.Distance(position, transform.position) <= 0.001f) {
             //                var v = transform.position;
             //                float c = 1; // coordinate rounding
@@ -50,6 +53,7 @@ namespace Assets.Scripts.Movement{
             //                transform.position = v;
             //                return;
             //            }
+            //transform.position = new Vector3(Mathf.Round(transform.position.x), Mathf.Round(transform.position.y));
             foreach (var renderer in renderers) {
                 renderer.sortingOrder = -(int)transform.position.y;
             }
@@ -60,11 +64,12 @@ namespace Assets.Scripts.Movement{
                 anim.rowNumber = Array.IndexOf(rotations, FacingDirection);
                 if (anim.rowNumber == -1) anim.rowNumber = 0;
 
-                if(rigidbody.velocity.sqrMagnitude < 0.01f) {
+                if(rigidbody.velocity.sqrMagnitude < 0.1f) {
                     anim.SetSpriteAnimation(anim.colCount, anim.rowCount, anim.rowNumber, anim.colNumber, 1, anim.fps);
                     anim.Pause();
-                } else
+                } else {
                     anim.Pause(false);
+                }
                 // anim.totalCells = rigidbody.velocity.sqrMagnitude > 0.01f ? 8 : 1;
             }
         }
@@ -72,7 +77,6 @@ namespace Assets.Scripts.Movement{
         void OnCollisionEnter2D(Collision2D coll) {
             var collider = coll.collider;
             if (collider.gameObject.layer == (int)GameLayer.BLOCKING) {
-//                currentSpeed = 0;
                 rigidbody.velocity = Vector2.zero;
             }
         }

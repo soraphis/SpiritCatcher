@@ -40,17 +40,24 @@ namespace Assets.Soraphis.Spirits.Editor {
             if(foldouts == null || foldouts.Length != tgt.Spirits.Length) {
                 foldouts = new bool[tgt.Spirits.Length];
             }
+
             EditorGUI.BeginChangeCheck();
 
             SerializedObject lib = new UnityEditor.SerializedObject(tgt);
             var spirits = lib.FindProperty("Spirits");
 
-            for(int index = 0; index < spirits.arraySize; ++index) {
+            //            EditorGUILayout.PropertyField(spirits, true);
+            //            lib.ApplyModifiedProperties();
+            //            EditorGUI.EndChangeCheck();
+            //            return;
+
+            for (int index = 0; index < spirits.arraySize; ++index) {
                 var spiritObject = spirits.GetArrayElementAtIndex(index).objectReferenceValue as SpiritType;
                 var spirit = new SerializedObject(spiritObject);
 
                 spirit.Update();
 
+                
                 var foldout = foldouts[index];
                 foldouts[index] = EditorGUILayout.Foldout(foldout, spirit.FindProperty("Name").stringValue);
 
@@ -68,8 +75,13 @@ namespace Assets.Soraphis.Spirits.Editor {
                     prop.Next(true);
                     var depth = prop.depth;
                     do {
+                        if (prop.displayName == "Attacks") continue;
                         RenderAttribute(prop, f2);
                     } while(prop.NextVisible(false) && prop.depth >= depth);
+
+                    var prop_attacks = spirit.FindProperty("Attacks");
+                    EditorGUILayout.PropertyField(prop_attacks);
+
                 }
 
                 spirit.ApplyModifiedProperties();

@@ -1,0 +1,379 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae9a88c80635b24598fab8d2c34758f, type: 3}
+  m_Name: Generic
+  m_EditorClassIdentifier: 
+  DialogName: 
+  StartingPoint: {fileID: 11407390}
+  Statements:
+  - {fileID: 11407390}
+  - {fileID: 11402702}
+  - {fileID: 11485878}
+  - {fileID: 11427904}
+  - {fileID: 11414094}
+  - {fileID: 11436884}
+  - {fileID: 11450104}
+  Properties:
+  - Name: PickedExtractor
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: PickedSpirit
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: SendtoExtractor
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+--- !u!114 &11402702
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 1
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: Seltsame Artefakte liegen hier.
+  NodeRect:
+    serializedVersion: 2
+    x: -1799
+    y: -1837
+    width: 160
+    height: 50
+  Id: 1
+  Answers: []
+--- !u!114 &11407390
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 0
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1514
+    y: -1889
+    width: 160
+    height: 50
+  Id: 0
+  Answers:
+  - {fileID: 11415608}
+  - {fileID: 11430614}
+  - {fileID: 11425288}
+  - {fileID: 11485874}
+--- !u!114 &11414094
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: ChooseSpirit
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1625
+    y: -1598
+    width: 160
+    height: 50
+  Id: 7
+  Answers: []
+--- !u!114 &11415608
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11407390}
+  To: {fileID: 11402702}
+  Id: 2
+  BoundingRect:
+    serializedVersion: 2
+    x: -1514
+    y: -1849.4036
+    width: -1639
+    height: -1826.5964
+  conditions:
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedExtractor
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendtoExtractor
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11421264
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11485878}
+  To: {fileID: 11450104}
+  Id: 12
+  BoundingRect:
+    serializedVersion: 2
+    x: -1452.626
+    y: -1672
+    width: -1393.8699
+    height: -1599
+  conditions: []
+  title: nein
+  parent: {fileID: 11400000}
+--- !u!114 &11425288
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11407390}
+  To: {fileID: 11427904}
+  Id: 6
+  BoundingRect:
+    serializedVersion: 2
+    x: -1402.0851
+    y: -1839
+    width: -1285.9149
+    height: -1748
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedSpirit
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11427904
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 5
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: Der Extraktor ist entladen.
+  NodeRect:
+    serializedVersion: 2
+    x: -1334
+    y: -1748
+    width: 160
+    height: 50
+  Id: 5
+  Answers: []
+--- !u!114 &11430614
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11407390}
+  To: {fileID: 11485878}
+  Id: 4
+  BoundingRect:
+    serializedVersion: 2
+    x: -1437.8922
+    y: -1839
+    width: -1456.1078
+    height: -1722
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedExtractor
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedSpirit
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11436884
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: New Statement 8
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: Ohne den Extraktor kann ich hier nichts tun.
+  NodeRect:
+    serializedVersion: 2
+    x: -1763
+    y: -1733
+    width: 160
+    height: 50
+  Id: 8
+  Answers: []
+--- !u!114 &11446626
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11485878}
+  To: {fileID: 11414094}
+  Id: 10
+  BoundingRect:
+    serializedVersion: 2
+    x: -1489.9113
+    y: -1672
+    width: -1540.6371
+    height: -1598
+  conditions: []
+  title: ja
+  parent: {fileID: 11400000}
+--- !u!114 &11450104
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: Decline
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1441
+    y: -1599
+    width: 160
+    height: 50
+  Id: 11
+  Answers: []
+--- !u!114 &11485874
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11407390}
+  To: {fileID: 11436884}
+  Id: 9
+  BoundingRect:
+    serializedVersion: 2
+    x: -1473.9038
+    y: -1839
+    width: -1643.0962
+    height: -1733
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendtoExtractor
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: PickedExtractor
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11485878
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: AskForExtraction
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: Das Spirit aus diesem objekt extrahieren?
+  NodeRect:
+    serializedVersion: 2
+    x: -1540
+    y: -1722
+    width: 160
+    height: 50
+  Id: 3
+  Answers:
+  - {fileID: 11446626}
+  - {fileID: 11421264}

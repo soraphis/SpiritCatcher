@@ -1,0 +1,589 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ae9a88c80635b24598fab8d2c34758f, type: 3}
+  m_Name: DialogSerim
+  m_EditorClassIdentifier: 
+  DialogName: DialogJerome
+  StartingPoint: {fileID: 11428864}
+  Statements:
+  - {fileID: 11428864}
+  - {fileID: 11444726}
+  - {fileID: 11402926}
+  - {fileID: 11473098}
+  - {fileID: 11462138}
+  - {fileID: 11479480}
+  - {fileID: 11439928}
+  - {fileID: 11452504}
+  - {fileID: 11489216}
+  - {fileID: 11462504}
+  Properties:
+  - Name: whileFestival
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: afterFestival
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: beforeBanditFight
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: afterBanditFight
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: FestivalSpeechListened
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: SendToSarim
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+  - Name: SendToRato
+    type: 2
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+--- !u!114 &11401636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428864}
+  To: {fileID: 11462504}
+  Id: 18
+  BoundingRect:
+    serializedVersion: 2
+    x: -1451.3368
+    y: -1872
+    width: -1493.6632
+    height: -1628
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToRato
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11402926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: FestivalSpeach
+  m_EditorClassIdentifier: 
+  speaker: Serim
+  text: "*Wainu hanu Haselnuss, zippeln zappeln gr\xFCne Pappeln, Ihr Geister m\xF6get
+    uns verzeihn, den wir sind liebe Leutelein*"
+  NodeRect:
+    serializedVersion: 2
+    x: -1404
+    y: -1563
+    width: 160
+    height: 50
+  Id: 3
+  Answers: []
+--- !u!114 &11405288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428864}
+  To: {fileID: 11444726}
+  Id: 2
+  BoundingRect:
+    serializedVersion: 2
+    x: -1504.1428
+    y: -1872
+    width: -1677.8572
+    height: -1796
+  conditions:
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: whileFestival
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToSarim
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11405676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428864}
+  To: {fileID: 11479480}
+  Id: 10
+  BoundingRect:
+    serializedVersion: 2
+    x: -1415.6893
+    y: -1872
+    width: -1220.3107
+    height: -1716
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterBanditFight
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11428864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: HelperNode
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1527
+    y: -1922
+    width: 160
+    height: 50
+  Id: 0
+  Answers:
+  - {fileID: 11405288}
+  - {fileID: 11432330}
+  - {fileID: 11429822}
+  - {fileID: 11465572}
+  - {fileID: 11405676}
+  - {fileID: 11429390}
+  - {fileID: 11401636}
+--- !u!114 &11429390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428864}
+  To: {fileID: 11439928}
+  Id: 12
+  BoundingRect:
+    serializedVersion: 2
+    x: -1471.0625
+    y: -1872
+    width: -1653.9375
+    height: -1682
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToSarim
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: SendToRato
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11429822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428864}
+  To: {fileID: 11473098}
+  Id: 6
+  BoundingRect:
+    serializedVersion: 2
+    x: -1367
+    y: -1877.058
+    width: -1182
+    height: -1830.942
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11432330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428864}
+  To: {fileID: 11402926}
+  Id: 4
+  BoundingRect:
+    serializedVersion: 2
+    x: -1438.4346
+    y: -1872
+    width: -1332.5654
+    height: -1563
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: whileFestival
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11439928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: QuestPartFinish
+  m_EditorClassIdentifier: 
+  speaker: Serim
+  text: "Was? Deine Mutter schickt dich? Kr\xE4uter f\xFCr deine Schwester? Hmm eigentlich
+    sind diese Kr\xE4uter f\xFCr Spirits, aber .... hier, nimm welche."
+  NodeRect:
+    serializedVersion: 2
+    x: -1758
+    y: -1682
+    width: 160
+    height: 50
+  Id: 11
+  Answers:
+  - {fileID: 11459792}
+--- !u!114 &11441330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11452504}
+  To: {fileID: 11489216}
+  Id: 16
+  BoundingRect:
+    serializedVersion: 2
+    x: -1691.2247
+    y: -1541
+    width: -1690.7865
+    height: -1502
+  conditions: []
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11444726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: Greeting
+  m_EditorClassIdentifier: 
+  speaker: Serim
+  text: '. . . '
+  NodeRect:
+    serializedVersion: 2
+    x: -1815
+    y: -1796
+    width: 160
+    height: 50
+  Id: 1
+  Answers: []
+--- !u!114 &11452504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: GetItem:Heilkraut
+  m_EditorClassIdentifier: 
+  speaker: 
+  text: "Heilkr\xE4uter Erhalten"
+  NodeRect:
+    serializedVersion: 2
+    x: -1760
+    y: -1591
+    width: 160
+    height: 50
+  Id: 13
+  Answers:
+  - {fileID: 11441330}
+--- !u!114 &11459792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11439928}
+  To: {fileID: 11452504}
+  Id: 14
+  BoundingRect:
+    serializedVersion: 2
+    x: -1690.1538
+    y: -1632
+    width: -1691.0549
+    height: -1591
+  conditions: []
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11462138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: BanditFight
+  m_EditorClassIdentifier: 
+  speaker: Serim
+  text: 
+  NodeRect:
+    serializedVersion: 2
+    x: -1312
+    y: -1634
+    width: 160
+    height: 50
+  Id: 7
+  Answers: []
+--- !u!114 &11462504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: RepeatYourself
+  m_EditorClassIdentifier: 
+  speaker: Serim
+  text: "Ach, komm heut Abend zum gro\xDFen Fest zu Ehren der Waldgeister. Nach der
+    Zeremonie werden sie bes\xE4nftigt sein und deine Schwester wird dann sowieso
+    wieder gesund sein! Ganz bestimmt!"
+  NodeRect:
+    serializedVersion: 2
+    x: -1578
+    y: -1628
+    width: 160
+    height: 50
+  Id: 17
+  Answers: []
+--- !u!114 &11465572
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c7e89b34d713b4e9f9a1131ca7bd1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  From: {fileID: 11428864}
+  To: {fileID: 11462138}
+  Id: 9
+  BoundingRect:
+    serializedVersion: 2
+    x: -1428.3368
+    y: -1872
+    width: -1250.6632
+    height: -1634
+  conditions:
+  - boolValue: 1
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: beforeBanditFight
+  - boolValue: 0
+    intValue: 0
+    floatValue: 0
+    type: 0
+    BoolcompareType: 0
+    NumcompareType: 0
+    propertyName: afterFestival
+  title: 
+  parent: {fileID: 11400000}
+--- !u!114 &11473098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: AfterFestivalWishes
+  m_EditorClassIdentifier: 
+  speaker: Serim
+  text: "Hast du auch die Anwesenheit der Spirits gesp\xFChrt. Es m\xFCssen Tausende
+    gewesen sein. Und sie werden auf mich h\xF6ren - das ist gewiss!"
+  NodeRect:
+    serializedVersion: 2
+    x: -1182
+    y: -1836
+    width: 160
+    height: 50
+  Id: 5
+  Answers: []
+--- !u!114 &11479480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: BanditFight2
+  m_EditorClassIdentifier: 
+  speaker: Serim
+  text: "*Ohh gro\xDFer H\xFCter des Waldes und all ihr treuen Geister die ihr den
+    Wald mit uns teilt! Ich flehe euch an beendet diese Plage, heilt unsren Wald und
+    lasst uns wieder fr\xF6hlich sein... okay? w\xE4re doch viel sch\xF6ner ...ehh
+    ja... Geister des Waldes wir haben hier viele Opfergaben die ihr... eh?*"
+  NodeRect:
+    serializedVersion: 2
+    x: -1269
+    y: -1716
+    width: 160
+    height: 50
+  Id: 8
+  Answers: []
+--- !u!114 &11489216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d708eb015a05eca449e7daffe3c82e05, type: 3}
+  m_Name: QuestPartStart
+  m_EditorClassIdentifier: 
+  speaker: Serim
+  text: "Wenn du mehr \xFCber diese r\xE4tselhafte Krankheit deiner Schwester erfahren
+    willst suche Rato, den Dorf\xE4ltesten, auf... \ner wei\xDF immer auf alles eine
+    Antwort."
+  NodeRect:
+    serializedVersion: 2
+    x: -1759
+    y: -1502
+    width: 160
+    height: 50
+  Id: 15
+  Answers: []

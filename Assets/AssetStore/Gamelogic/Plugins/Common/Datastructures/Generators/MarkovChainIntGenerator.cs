@@ -11,7 +11,7 @@
 
 		/// <summary>Constructs a new MarkovChain2IntGenerator
 		/// </summary>
-		/// <param name="frequencies">The conditional frequencies for the elements to generate,
+		/// <param Name="frequencies">The conditional frequencies for the elements to generate,
 		/// where frequencies[m][n] is the relative prob of generating n given m was generated 
 		/// the last time </param>
 		public MarkovChain2IntGenerator(float[][] frequencies)

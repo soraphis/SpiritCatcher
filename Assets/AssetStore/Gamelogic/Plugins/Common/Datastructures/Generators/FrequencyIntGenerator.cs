@@ -18,7 +18,7 @@ namespace Gamelogic
 		/// Constructs a new FrequencyIntGenerator object. The given elements and frequencies
 		/// together describe a piecewise linear distribution. 
 		/// </summary>
-		/// <param name="relativeFrequencies">The (relative) frequency to generate integers at. The size of this
+		/// <param Name="relativeFrequencies">The (relative) frequency to generate integers at. The size of this
 		///	sequence determines which frequencies are being generated. If the size is n, then integers from 0 
 		/// to n - 1 are generated.</param>
 		public FrequencyIntGenerator(IEnumerable<float> relativeFrequencies)

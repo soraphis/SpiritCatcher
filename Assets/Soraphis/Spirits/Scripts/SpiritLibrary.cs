@@ -58,7 +58,7 @@ namespace Assets.Soraphis.Spirits.Scripts {
             Spirits = csvLib.ToArray();
 
             foreach(var t in Spirits) {
-                t.name = t.Name; // dont confuse SpiritType 'Name' with Scriptableobject 'name' ... 
+                t.name = t.Name; // dont confuse SpiritType 'Name' with Scriptableobject 'Name' ... 
 
                 AssetDatabase.AddObjectToAsset(t, this);
                 t.hideFlags = HideFlags.HideInHierarchy;

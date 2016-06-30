@@ -5,7 +5,7 @@ namespace Gamelogic
 	/// <summary>
 	/// A generator that only generates elements that passes the predicate.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
+	/// <typeparam Name="T"></typeparam>
 	public class FilterGenerator<T> : IGenerator<T>
 	{
 		private readonly IGenerator<T> generator;
@@ -14,8 +14,8 @@ namespace Gamelogic
 		/// <summary>
 		/// Constructs a new generator that only returns elements that passes the predicate.
 		/// </summary>
-		/// <param name="generator"></param>
-		/// <param name="predicate"></param>
+		/// <param Name="generator"></param>
+		/// <param Name="predicate"></param>
 		public FilterGenerator(IGenerator<T> generator, Func<T, bool> predicate)
 		{
 			this.generator = generator;

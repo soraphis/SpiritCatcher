@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using Assets.Soraphis.SaveGame;
 using Assets.Soraphis.Spirits.Scripts;
 using Gamelogic;
+using UnityEngine.UI;
 
 public class Player : Singleton<Player>, Saveable {
 
@@ -21,6 +22,8 @@ public class Player : Singleton<Player>, Saveable {
     public class Inventory {
         private List<InventoryElement> elements = new List<InventoryElement>();
 
+        public event Action OnChange;
+
         public bool Contains(string name) {
             return elements.Any(e => e.Name == name);
         }
@@ -31,12 +34,28 @@ public class Player : Singleton<Player>, Saveable {
 
         public InventoryElement this[string name] {
             get { return elements.Find(e => e.Name == name); }
-            set { elements[elements.FindIndex(e => e.Name == name)] = value;  }
+            set {
+                elements[elements.FindIndex(e => e.Name == name)] = value;
+                if (OnChange != null) {
+                    OnChange.Invoke();
+                }
+            }
         }
 
         public void AddItem(string name, int amount = 1) {
-            if(! this.Contains(name)) elements.Add(new InventoryElement(name, amount));
-            else this[name].Amount += amount;
+            if(!this.Contains(name)) elements.Add(new InventoryElement(name, amount));
+            else {
+                if(this[name].Amount + amount >= 0) this[name].Amount += amount;
+                else throw new ArgumentException("removing more items then there are");
+            }
+            if(this[name].Amount == 0) elements.Remove(this[name]);
+            if(OnChange != null) {
+                OnChange.Invoke();
+            }
+        }
+
+        public List<InventoryElement> GetElements() {
+            return elements.ToList();
         }
     }
 
@@ -106,6 +125,13 @@ public class Player : Singleton<Player>, Saveable {
 
             team.Add(spirit);
         }
+
+        var i_node = node.GetChild("items");
+        // var items = Items.GetElements();
+        foreach(var item in i_node.Children) {
+            Items.AddItem(item.Name, (int) item.Value);
+        }
+
     }
 
     public DataNode Save() {
@@ -141,6 +167,12 @@ public class Player : Singleton<Player>, Saveable {
                 a.AddChild("BaseDMG", attack.BaseDMG);
                 a.AddChild("StaminaCost", attack.StaminaCost);
             }
+        }
+
+        var i_node = node.AddChild("items");
+        var items = Items.GetElements();
+        for (int i = 0; i < items.Count; ++i) {
+            i_node.AddChild(items[i].Name, items[i].Amount);
         }
 
         return node;

@@ -25,8 +25,8 @@ namespace Supyrb {
         /// <summary>
         /// Get the object the serialized property holds by using reflection
         /// </summary>
-        /// <typeparam name="T">The object type that the property contains</typeparam>
-        /// <param name="property"></param>
+        /// <typeparam Name="T">The object type that the property contains</typeparam>
+        /// <param Name="property"></param>
         /// <returns>Returns the object type T if it is the type the property actually contains</returns>
         public static T GetValue<T>(this SerializedProperty property) {
             return GetNestedObject<T>(property.propertyPath, GetSerializedPropertyRootComponent(property));
@@ -35,9 +35,9 @@ namespace Supyrb {
         /// <summary>
         /// Set the value of a field of the property with the type T
         /// </summary>
-        /// <typeparam name="T">The type of the field that is set</typeparam>
-        /// <param name="property">The serialized property that should be set</param>
-        /// <param name="value">The new value for the specified property</param>
+        /// <typeparam Name="T">The type of the field that is set</typeparam>
+        /// <param Name="property">The serialized property that should be set</param>
+        /// <param Name="value">The new value for the specified property</param>
         /// <returns>Returns if the operation was successful or failed</returns>
         public static bool SetValue<T>(this SerializedProperty property, T value) {
 
@@ -65,10 +65,10 @@ namespace Supyrb {
         /// <summary>
         /// Iterates through objects to handle objects that are nested in the root object
         /// </summary>
-        /// <typeparam name="T">The type of the nested object</typeparam>
-        /// <param name="path">Path to the object through other properties e.g. PlayerInformation.Health</param>
-        /// <param name="obj">The root object from which this path leads to the property</param>
-        /// <param name="includeAllBases">Include base classes and interfaces as well</param>
+        /// <typeparam Name="T">The type of the nested object</typeparam>
+        /// <param Name="path">Path to the object through other properties e.g. PlayerInformation.Health</param>
+        /// <param Name="obj">The root object from which this path leads to the property</param>
+        /// <param Name="includeAllBases">Include base classes and interfaces as well</param>
         /// <returns>Returns the nested object casted to the type T</returns>
         public static T GetNestedObject<T>(string path, object obj, bool includeAllBases = false) {
             foreach (string part in path.Split('.')) {

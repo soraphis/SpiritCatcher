@@ -7,7 +7,7 @@ namespace Gamelogic.Internal.KDTree
 	/// <summary>
 	/// A NearestNeighbour iterator for the KD-tree which intelligently iterates and captures relevant data in the search space.
 	/// </summary>
-	/// <typeparam name="T">The type of data the iterator should handle.</typeparam>
+	/// <typeparam Name="T">The type of data the iterator should handle.</typeparam>
 	public class NearestNeighbour<T> : IEnumerator
 	{
 		/// <summary>The point from which are searching in n-dimensional space.</summary>
@@ -37,10 +37,10 @@ namespace Gamelogic.Internal.KDTree
 		/// Construct a new nearest neighbour iterator.
 		/// </summary>
 		/// <param name="pRoot">The root of the tree to begin searching from.</param>
-		/// <param name="tSearchPoint">The point in n-dimensional space to search.</param>
-		/// <param name="kDistance">The distance function used to evaluate the points.</param>
-		/// <param name="iMaxPoints">The max number of points which can be returned by this iterator.  Capped to max in tree.</param>
-		/// <param name="fThreshold">Threshold to apply to the search space.  Negative numbers indicate that no threshold is applied.</param>
+		/// <param Name="tSearchPoint">The point in n-dimensional space to search.</param>
+		/// <param Name="kDistance">The distance function used to evaluate the points.</param>
+		/// <param Name="iMaxPoints">The max number of points which can be returned by this iterator.  Capped to max in tree.</param>
+		/// <param Name="fThreshold">Threshold to apply to the search space.  Negative numbers indicate that no threshold is applied.</param>
 		public NearestNeighbour(KDNode<T> pRoot, Vector2 tSearchPoint, IDistanceFunction kDistance, int iMaxPoints, float fThreshold)
 		{
 			// Store the search point.

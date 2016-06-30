@@ -58,7 +58,7 @@ namespace UnityStandardAssets.ImageEffects
 
         void CurveGui ( string name, SerializedProperty animationCurve, Color color) {
             // @NOTE: EditorGUILayout.CurveField is buggy and flickers, using PropertyField for now
-            //animationCurve.animationCurveValue = EditorGUILayout.CurveField (GUIContent (name), animationCurve.animationCurveValue, color, Rect (0.0f,0.0f,1.0f,1.0f));
+            //animationCurve.animationCurveValue = EditorGUILayout.CurveField (GUIContent (Name), animationCurve.animationCurveValue, color, Rect (0.0f,0.0f,1.0f,1.0f));
             EditorGUILayout.PropertyField (animationCurve, new GUIContent (name));
             if (GUI.changed)
                 applyCurveChanges = true;

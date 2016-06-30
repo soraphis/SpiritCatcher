@@ -5,7 +5,7 @@ namespace Gamelogic.Internal.KDTree
 	/// <summary>
 	/// A MinHeap is a smallest-first queue based around a binary heap so it is quick to insert / remove items.
 	/// </summary>
-	/// <typeparam name="T">The type of data this MinHeap stores.</typeparam>
+	/// <typeparam Name="T">The type of data this MinHeap stores.</typeparam>
 	/// <remarks>This is based on this: https://bitbucket.org/rednaxela/knn-benchmark/src/tip/ags/utils/dataStructures/trees/thirdGenKD/ </remarks>
 	public class MinHeap<T>
 	{
@@ -35,7 +35,7 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Create a new min heap with a given capacity.
 		/// </summary>
-		/// <param name="iCapacity"></param>
+		/// <param Name="iCapacity"></param>
 		public MinHeap(int iCapacity)
 		{
 			tData = new T[iCapacity];
@@ -57,8 +57,8 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Insert a new element.
 		/// </summary>
-		/// <param name="key">The key which represents its position in the priority queue (ie. distance).</param>
-		/// <param name="value">The value to be stored at the key.</param>
+		/// <param Name="key">The key which represents its position in the priority queue (ie. distance).</param>
+		/// <param Name="value">The value to be stored at the key.</param>
 		public void Insert(float key, T value)
 		{
 			// If we need more room, double the space.
@@ -125,7 +125,7 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Bubble a child item up the tree.
 		/// </summary>
-		/// <param name="iChild"></param>
+		/// <param Name="iChild"></param>
 		private void SiftUp(int iChild)
 		{
 			// For each parent above the child, if the parent is smaller then bubble it up.
@@ -147,7 +147,7 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Bubble a parent down through the children so it goes in the right place.
 		/// </summary>
-		/// <param name="iParent">The index of the parent.</param>
+		/// <param Name="iParent">The index of the parent.</param>
 		private void SiftDown(int iParent)
 		{
 			// For each child.

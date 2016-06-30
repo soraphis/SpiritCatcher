@@ -15,8 +15,8 @@ namespace Gamelogic
 		/// Constructs a new FrequencyFloatGenerator object. The given elements and frequencies
 		/// together describe a piecewise linear distribution. 
 		/// </summary>
-		/// <param name="elements">Samples of elements to generate.</param>
-		/// <param name="frequencies">The (relative) frequency to generate the sample at.</param>
+		/// <param Name="elements">Samples of elements to generate.</param>
+		/// <param Name="frequencies">The (relative) frequency to generate the sample at.</param>
 		public FrequencyFloatGenerator(IEnumerable<float> elements, IEnumerable<float> frequencies)
 		{
 			var accumulutiveProbability = new List<float>();

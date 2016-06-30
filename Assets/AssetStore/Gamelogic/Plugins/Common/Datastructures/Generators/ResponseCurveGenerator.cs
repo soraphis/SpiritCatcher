@@ -3,7 +3,7 @@
 	/// <summary>
 	/// A generator that uses a response curve to generate elements.
 	/// </summary>
-	/// <typeparam name="T">The type of element to generate. The response 
+	/// <typeparam Name="T">The type of element to generate. The response 
 	/// curve must be of the same type.</typeparam>
 	public class ResponseCurveGenerator<T> : IGenerator<T>
 	{
@@ -14,7 +14,7 @@
 		/// Creates a new ResponseCurveGenerator with the given 
 		/// response curve.
 		/// </summary>
-		/// <param name="responseCurve"></param>
+		/// <param Name="responseCurve"></param>
 		public ResponseCurveGenerator(ResponseCurveBase<T> responseCurve):
 			this(responseCurve, new UniformFloatGenerator())
 		{}
@@ -23,7 +23,7 @@
 		/// Creates a new ResponseCurveGenerator with the given 
 		/// response curve.
 		/// </summary>
-		/// <param name="responseCurve"></param>
+		/// <param Name="responseCurve"></param>
 		/// <param name="floatGenerator"></param>
 		public ResponseCurveGenerator(ResponseCurveBase<T> responseCurve, IGenerator<float> floatGenerator)
 		{

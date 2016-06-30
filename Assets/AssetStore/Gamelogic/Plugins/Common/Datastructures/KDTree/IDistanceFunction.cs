@@ -10,17 +10,17 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Compute a distance between two n-dimensional points.
 		/// </summary>
-		/// <param name="p1">The first point.</param>
-		/// <param name="p2">The second point.</param>
+		/// <param Name="p1">The first point.</param>
+		/// <param Name="p2">The second point.</param>
 		/// <returns>The n-dimensional distance.</returns>
 		float  Distance(Vector2 p1, Vector2 p2);
 
 		/// <summary>
 		/// Find the shortest distance from a point to an axis aligned rectangle in n-dimensional space.
 		/// </summary>
-		/// <param name="point">The point of interest.</param>
-		/// <param name="min">The minimum coordinate of the rectangle.</param>
-		/// <param name="max">The maximum coorindate of the rectangle.</param>
+		/// <param Name="point">The point of interest.</param>
+		/// <param Name="min">The minimum coordinate of the rectangle.</param>
+		/// <param Name="max">The maximum coorindate of the rectangle.</param>
 		/// <returns>The shortest n-dimensional distance between the point and rectangle.</returns>
 		float DistanceToRectangle(Vector2 point, Vector2 min, Vector2 max);
 	}
@@ -103,8 +103,8 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Find the squared distance between two n-dimensional points.
 		/// </summary>
-		/// <param name="p1">The first point.</param>
-		/// <param name="p2">The second point.</param>
+		/// <param Name="p1">The first point.</param>
+		/// <param Name="p2">The second point.</param>
 		/// <returns>The n-dimensional squared distance.</returns>
 		public float Distance(Vector2 p1, Vector2 p2)
 		{
@@ -114,9 +114,9 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Find the shortest distance from a point to an axis aligned rectangle in n-dimensional space.
 		/// </summary>
-		/// <param name="point">The point of interest.</param>
-		/// <param name="min">The minimum coordinate of the rectangle.</param>
-		/// <param name="max">The maximum coorindate of the rectangle.</param>
+		/// <param Name="point">The point of interest.</param>
+		/// <param Name="min">The minimum coordinate of the rectangle.</param>
+		/// <param Name="max">The maximum coorindate of the rectangle.</param>
 		/// <returns>The shortest squared n-dimensional squared distance between the point and rectangle.</returns>
 		public float DistanceToRectangle(Vector2 point, Vector2 min, Vector2 max)
 		{

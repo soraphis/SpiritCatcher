@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using UnityEngine;
 using System.Collections;
 using System.IO;
 using System.Linq;
+using Assets.Scripts;
+using Assets.Scripts.ViewModels;
 using Assets.Soraphis.SaveGame;
 using Assets.Soraphis.Spirits.Scripts;
 using Gamelogic;
@@ -32,11 +34,12 @@ public struct DayNightColorCycle {
 public class Game : Singleton<Game>, Saveable {
     public const string SaveGamePath = "savegame.save";
 
+    [Flags]
     public enum GameState {
-        World, Battle, Menu
+        World = 1 << 0, Battle = 1 << 1, Menu = 1 << 2, MainMenu = 1 << 3
     }
 
-    public GameState CurrentGameState = GameState.Menu;
+    public GameState CurrentGameState = GameState.MainMenu;
     public SpiritLibrary SpiritLibrary;
     public AttackLibrary AttackLibrary;
     public int currentScene;
@@ -47,7 +50,8 @@ public class Game : Singleton<Game>, Saveable {
 
     [Layout] public Quest1Variables QuestPart1Variables;
     [Layout] public DayNightColorCycle DayNightColorCycle;
-    
+
+    public GameQueue Queue = new GameQueue();
 
     private void Awake() {
         DontDestroyOnLoad(this.gameObject);
@@ -57,9 +61,27 @@ public class Game : Singleton<Game>, Saveable {
     public void Start() {
 //        Application.LoadLevelAdditive(2);
         StartCoroutine(chronos());
+        StartCoroutine(GameQueueManager());
+    }
+
+    private IEnumerator GameQueueManager() {
+        while(true) {
+
+            if(Queue.Count(GameQueue.Type.WorldMessage) > 0 && 
+              (CurrentGameState & GameState.World) != 0) {
+                
+            }
+
+
+
+            
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     public void Update() {
+        if(CurrentGameState == GameState.MainMenu) return;
+
         if(Input.GetKeyDown(KeyCode.Escape)) {
             if(CurrentGameState != GameState.Battle && IngameMenu != null) {
                 ToggleIngameMenu();
@@ -87,9 +109,13 @@ public class Game : Singleton<Game>, Saveable {
 
     public void ToggleIngameMenu() {
         if(IngameMenu.activeSelf) IngameMenu.GetComponent<IngameMenu>().CloseIngameMenu();
-        else IngameMenu.SetActive(true);
+        else {
+            IngameMenu.SetActive(true);
+            CurrentGameState |= GameState.Menu;
+        }
 
-        CurrentGameState = IngameMenu.activeSelf ? GameState.Menu : GameState.World;
+
+        // CurrentGameState = IngameMenu.activeSelf ? GameState.Menu : GameState.World;
     }
 
     private IEnumerator chronos() {
@@ -155,7 +181,6 @@ public class Game : Singleton<Game>, Saveable {
         yield return null;
 
         foreach (var go in GameObject.FindObjectsOfType<SavePacker>()) {
-            print(go.name);
             if (go.transform.parent != null) continue;
             if (go.transform == this.transform) continue;
             go.GetComponent<SavePacker>().Load(savedData);

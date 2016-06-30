@@ -5,14 +5,14 @@ namespace Gamelogic
 	/// <summary>
 	/// A generator that repeats a given sequence.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
+	/// <typeparam Name="T"></typeparam>
 	public class RepeateSequenceGenerator<T> : IGenerator<T>
 	{
 		private readonly IEnumerator<T> enumerator;
 		/// <summary>
 		/// Construts a new RepeateSequenceGenerator.
 		/// </summary>
-		/// <param name="sequence">The sequence that this sequence will repeat.</param>
+		/// <param Name="sequence">The sequence that this sequence will repeat.</param>
 		public RepeateSequenceGenerator(IEnumerable<T> sequence)
 		{
 			enumerator = sequence.GetEnumerator();

@@ -8,7 +8,7 @@ namespace Gamelogic.Internal.KDTree
 	/// need the same number of dimensions.
 	/// This node splits based on the largest range of any dimension.
 	/// </summary>
-	/// <typeparam name="T">The generic data type this structure contains.</typeparam>
+	/// <typeparam Name="T">The generic data type this structure contains.</typeparam>
 	/// <remarks>This is based on this: https://bitbucket.org/rednaxela/knn-benchmark/src/tip/ags/utils/dataStructures/trees/thirdGenKD/ </remarks>
 	public class KDNode<T>
 	{
@@ -65,8 +65,8 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Protected method which constructs a new KDNode.
 		/// </summary>
-		/// <param name="iDimensions">The number of dimensions for this node (all the same in the tree).</param>
-		/// <param name="iBucketCapacity">The initial capacity of the bucket.</param>
+		/// <param Name="iDimensions">The number of dimensions for this node (all the same in the tree).</param>
+		/// <param Name="iBucketCapacity">The initial capacity of the bucket.</param>
 		protected KDNode(int iDimensions, int iBucketCapacity)
 		{
 			// Variables.
@@ -97,8 +97,8 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Insert a new point into this leaf node.
 		/// </summary>
-		/// <param name="tPoint">The position which represents the data.</param>
-		/// <param name="kValue">The value of the data.</param>
+		/// <param Name="tPoint">The position which represents the data.</param>
+		/// <param Name="kValue">The value of the data.</param>
 		public void AddPoint(Vector2 tPoint, T kValue)
 		{
 			// Find the correct leaf node.
@@ -130,7 +130,7 @@ namespace Gamelogic.Internal.KDTree
 		/// Insert the point into the leaf.
 		/// </summary>
 		/// <param name="tPoint">The point to insert the data at.</param>
-		/// <param name="kValue">The value at the point.</param>
+		/// <param Name="kValue">The value at the point.</param>
 		private void AddLeafPoint(Vector2 tPoint, T kValue)
 		{
 			// Add the data point to this node.
@@ -159,7 +159,7 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// If the point lies outside the boundaries, return false else true.
 		/// </summary>
-		/// <param name="tPoint">The point.</param>
+		/// <param Name="tPoint">The point.</param>
 		/// <returns>True if the point is inside the boundaries, false outside.</returns>
 		private bool CheckBounds(double[] tPoint)
 		{
@@ -174,7 +174,7 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Extend this node to contain a new point.
 		/// </summary>
-		/// <param name="tPoint">The point to contain.</param>
+		/// <param Name="tPoint">The point to contain.</param>
 		private void ExtendBounds(Vector2 tPoint)
 		{
 			// If we don't have bounds, create them using the new point then bail.

@@ -11,8 +11,8 @@
 		/// <summary>
 		/// Creates a new generator that generates integers in a specified range randomly.
 		/// </summary>
-		/// <param name="min"></param>
-		/// <param name="max"></param>
+		/// <param Name="min"></param>
+		/// <param Name="max"></param>
 		public UniformIntGenerator(int min, int max)
 		{
 			this.min = min;
@@ -22,7 +22,7 @@
 		/// <summary>
 		/// Creates a new generator that generates integers between 0 and the specified maximum randomly.
 		/// </summary>
-		/// <param name="max"></param>
+		/// <param Name="max"></param>
 		public UniformIntGenerator(int max)
 		{
 			min = 0;

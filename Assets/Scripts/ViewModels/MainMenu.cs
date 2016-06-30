@@ -1,11 +1,11 @@
+﻿using UnityEngine;
+using System.Collections;
 using System.IO;
 using Assets.Soraphis.SaveGame;
 using MarkLight.Views.UI;
-using UnityEngine;
 
-namespace Assets.Scripts.ViewModels {
-    public class MainMenu : UIView{
-        public void StartGame() {
+public class MainMenu : UIView {
+    public void StartGame() {
             Game.Instance.LoadLevel(3);
         }
 
@@ -24,5 +24,4 @@ namespace Assets.Scripts.ViewModels {
         public void QuitGame() {
             Application.Quit();
         }
-    }
 }

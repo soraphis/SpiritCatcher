@@ -29,6 +29,11 @@ namespace MarkLight
                     {
                         bool skipChild = false;
                         var childView = child.GetComponent<View>();
+                        if (childView == null)
+                        {
+                            continue;
+                        }
+
                         if (parent != null)
                         {
                             if (childView.Parent != parent)
@@ -62,6 +67,11 @@ namespace MarkLight
                     {
                         bool skipChild = false;
                         var childView = child.GetComponent<View>();
+                        if (childView == null)
+                        {
+                            continue;
+                        }
+
                         if (parent != null)
                         {
                             if (childView.Parent != parent.gameObject)
@@ -99,6 +109,11 @@ namespace MarkLight
                     foreach (Transform child in view.gameObject.transform)
                     {
                         var childView = child.GetComponent<View>();
+                        if (childView == null)
+                        {
+                            continue;
+                        }
+
                         if (recursive)
                         {
                             childView.DoUntil<T>(action, recursive, parent, traversalAlgorithm);
@@ -129,6 +144,11 @@ namespace MarkLight
                     foreach (Transform child in view.gameObject.transform)
                     {
                         var childView = child.GetComponent<View>();
+                        if (childView == null)
+                        {
+                            continue;
+                        }
+
                         if (recursive)
                         {
                             childStack.Push(childView);
@@ -229,7 +249,7 @@ namespace MarkLight
             }, recursive, parent, traversalAlgorithm);
             return result;
         }
-        
+
         /// <summary>
         /// Returns first view of type T found.
         /// </summary>
@@ -248,8 +268,22 @@ namespace MarkLight
             {
                 return null;
             }
-            
-            return view.Find<T>(predicate, recursive, parent, traversalAlgorithm);            
+
+            return view.Find<T>(predicate, recursive, parent, traversalAlgorithm);
+        }
+
+        /// <summary>
+        /// Returns first view of type T found.
+        /// </summary>
+        public static T Find<T>(this GameObject gameObject, bool recursive = true, View parent = null, TraversalAlgorithm traversalAlgorithm = TraversalAlgorithm.DepthFirst) where T : View
+        {
+            var view = gameObject.GetComponent<View>();
+            if (view == null)
+            {
+                return null;
+            }
+
+            return view.Find<T>(x => true, recursive, parent, traversalAlgorithm);
         }
 
         /// <summary>
@@ -269,7 +303,7 @@ namespace MarkLight
             if (parent == null)
             {
                 return null;
-            }                        
+            }
             else if (parent is T && predicate(parent as T))
             {
                 return parent as T;
@@ -284,7 +318,7 @@ namespace MarkLight
         /// Returns first ascendant of type T found.
         /// </summary>
         public static T FindParent<T>(this View view) where T : View
-        {           
+        {
             return view.FindParent<T>(x => true);
         }
 
@@ -342,7 +376,7 @@ namespace MarkLight
             {
                 action(thisView);
             }
-            view.ForEachParent<T>(action);            
+            view.ForEachParent<T>(action);
         }
 
         /// <summary>
@@ -359,6 +393,11 @@ namespace MarkLight
         public static List<T> GetChildren<T>(this View view, Func<T, bool> predicate = null, bool recursive = true, View parent = null, TraversalAlgorithm traversalAlgorithm = TraversalAlgorithm.DepthFirst) where T : View
         {
             var children = new List<T>();
+            if (predicate == null)
+            {
+                predicate = x => true;
+            }
+
             view.ForEachChild<T>(x =>
             {
                 if (predicate(x))
@@ -385,6 +424,37 @@ namespace MarkLight
         }
 
         /// <summary>
+        /// Gets child at index.
+        /// </summary>
+        public static View GetChild(this View view, int index, bool countOnlyActive = false)
+        {
+            if (!countOnlyActive)
+            {
+                var child = view.gameObject.transform.GetChild(index);
+                return child.GetComponent<View>();
+            }
+
+            int i = 0;
+            foreach (Transform child in view.gameObject.transform)
+            {
+                var childView = child.GetComponent<View>();
+                if (childView == null || !childView.IsActive)
+                {
+                    continue;
+                }
+
+                if (i == index)
+                {
+                    return childView;
+                }
+
+                ++i;
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Destroys a view.
         /// </summary>
         public static void Destroy(this View view, bool immediate = false)
@@ -398,6 +468,21 @@ namespace MarkLight
             {
                 GameObject.DestroyImmediate(view.gameObject);
             }
+        }
+
+        /// <summary>
+        /// Destroy a view or moves it back into view pool.
+        /// </summary>
+        public static void Destroy(this View view, ViewPool viewPool, bool immediate = false)
+        {
+            if (viewPool == null || viewPool.IsFull)
+            {
+                view.Destroy(immediate);
+                return;
+            }
+
+            // move view into view pool
+            viewPool.InsertView(view);
         }
 
         /// <summary>
@@ -434,7 +519,7 @@ namespace MarkLight
             // check if from the same type
             if (variable.GetType() != value.GetType())
             {
-                Debug.LogError("[MarkLight] The checked flag is not from the same type as the checked variable.");
+                Utils.LogError("[MarkLight] The checked flag is not from the same type as the checked variable.");
                 return false;
             }
 
@@ -459,7 +544,15 @@ namespace MarkLight
         /// </summary>
         public static TValue Get<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key)
         {
-            return dict.ContainsKey(key) ? dict[key] : default(TValue);
+            TValue value;
+            if (!dict.TryGetValue(key, out value))
+            {
+                return default(TValue);
+            }
+            else
+            {
+                return value;
+            }
         }
 
         /// <summary>
@@ -516,9 +609,9 @@ namespace MarkLight
             var fieldInfo = type.GetField(field, bindingFlags);
             if (fieldInfo != null)
                 return fieldInfo;
-            
+
             var propertyInfo = type.GetProperty(field, bindingFlags);
-            return propertyInfo;            
+            return propertyInfo;
         }
 
         /// <summary>
@@ -570,6 +663,67 @@ namespace MarkLight
             if (propertyInfo != null)
             {
                 propertyInfo.SetValue(typeObject, value, null);
+            }
+        }
+
+        /// <summary>
+        /// Adds range of items to a hashset.
+        /// </summary>
+        public static void AddRange<T>(this HashSet<T> hashSet, IEnumerable<T> items)
+        {
+            foreach (var item in items)
+            {
+                hashSet.Add(item);
+            }
+        }
+
+#if !UNITY_4_6 && !UNITY_5_0 && !UNITY_5_1
+        /// <summary>
+        /// Converts panel scrollbar visibility to unity scrollrect scrollbar visibility.
+        /// </summary>
+        public static UnityEngine.UI.ScrollRect.ScrollbarVisibility ToScrollRectVisibility(this PanelScrollbarVisibility visibility)
+        {
+            switch (visibility)
+            {
+                case PanelScrollbarVisibility.Permanent:
+                    return UnityEngine.UI.ScrollRect.ScrollbarVisibility.Permanent;
+                default:
+                case PanelScrollbarVisibility.AutoHide:
+                case PanelScrollbarVisibility.Hidden:
+                case PanelScrollbarVisibility.Remove:
+                    return UnityEngine.UI.ScrollRect.ScrollbarVisibility.AutoHide;
+                case PanelScrollbarVisibility.AutoHideAndExpandViewport:
+                    return UnityEngine.UI.ScrollRect.ScrollbarVisibility.AutoHideAndExpandViewport;
+            }
+        }
+#endif
+
+        /// <summary>
+        /// Converts content alignment to pivot.
+        /// </summary>
+        public static Vector2 ToPivot(this ElementAlignment alignment)
+        {
+            switch (alignment)
+            {
+                default:
+                case ElementAlignment.Center:
+                    return new Vector2(0.5f, 0.5f);
+                case ElementAlignment.Left:
+                    return new Vector2(0, 0.5f);
+                case ElementAlignment.Top:
+                    return new Vector2(0.5f, 1);
+                case ElementAlignment.Right:
+                    return new Vector2(1, 0.5f);
+                case ElementAlignment.Bottom:
+                    return new Vector2(0.5f, 0);
+                case ElementAlignment.TopLeft:
+                    return new Vector2(0, 1);
+                case ElementAlignment.TopRight:
+                    return new Vector2(1, 1);
+                case ElementAlignment.BottomLeft:
+                    return new Vector2(0, 0);
+                case ElementAlignment.BottomRight:
+                    return new Vector2(1, 0);
             }
         }
 

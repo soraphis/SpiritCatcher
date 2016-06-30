@@ -69,14 +69,14 @@ namespace MarkLight.Views.UI
         /// View offset.
         /// </summary>
         /// <d>Determines the offset of the content region relative to the view's position.</d>
-        [ChangeHandler("LayoutChanged")]
+        [ChangeHandler("OffsetChanged")]
         public _ElementMargin Offset;
 
         /// <summary>
         /// View offset from parent.
         /// </summary>
         /// <d>Used by parent views to adjust the positioning of its children without affecting the internal offset of the children.</d>
-        [ChangeHandler("LayoutChanged")]
+        [ChangeHandler("OffsetChanged")]
         public _ElementMargin OffsetFromParent;
 
         /// <summary>
@@ -91,13 +91,13 @@ namespace MarkLight.Views.UI
         /// </summary>
         /// <d>The view rect transform is used to manipulate the position, rotation and scale of the view in relation to the layout parent view's transform or in world space. For most UIViews the transform manipulated indirectly through other view fields such as Width, Height, Margin, Offset, Alignment and through the UIView's internal layout logic.</d>
         public RectTransform RectTransform;
-
+        
         /// <summary>
-        /// Indicates if raycast always is blocked.
+        /// Indicates when raycast should be blocked.
         /// </summary>
-        /// <d>Boolean indicating if the view always should block raycasts even if it is transparent. By default transparent views does not block raycasts.</d>
+        /// <d>Enum indicating when raycasts should be blocked by the view.</d>
         [ChangeHandler("BackgroundChanged")]
-        public _bool AlwaysBlockRaycast;
+        public _RaycastBlockMode RaycastBlockMode;
 
         /// <summary>
         /// Alpha value.
@@ -193,7 +193,7 @@ namespace MarkLight.Views.UI
         /// </summary>
         /// <d>Indicates whether this image should preserve its Sprite aspect ratio.</d>
         [MapTo("ImageComponent.preserveAspect")]
-        public _Sprite BackgroundImagePreserveAspect;
+        public _bool BackgroundImagePreserveAspect;
 
         /// <summary>
         /// Background image sprite.
@@ -236,8 +236,9 @@ namespace MarkLight.Views.UI
         /// Layout root.
         /// </summary>
         /// <d>A reference to the layout root of the UI views.</d>
-        public UserInterface LayoutRoot;
-        private CanvasGroup _canvasGroup;
+        protected UserInterface _layoutRoot;
+        
+        protected CanvasGroup _canvasGroup;
 
         #endregion
 
@@ -269,13 +270,12 @@ namespace MarkLight.Views.UI
             IsActive.DirectValue = true;
             OffsetFromParent.DirectValue = new ElementMargin();
             SortIndex.DirectValue = 0;
-            AlwaysBlockRaycast.DirectValue = false;
             UpdateRectTransform.DirectValue = true;
             UpdateBackground.DirectValue = true;
         }
 
         /// <summary>
-        /// Called when a field affecting the layout of the view has changed.
+        /// Called when a field affecting the layout of the view (size and anchors) has changed.
         /// </summary>
         public override void LayoutChanged()
         {
@@ -285,10 +285,32 @@ namespace MarkLight.Views.UI
             if (!UpdateRectTransform) 
                 return; // rect transform is updated elsewhere
 
+            RectTransformChanged();            
+        }
+
+        /// <summary>
+        /// Called when the offset of the view has changed.
+        /// </summary>
+        public virtual void OffsetChanged()
+        {
+            if (!UpdateRectTransform)
+                return; // rect transform is updated elsewhere
+
+            RectTransformChanged();
+        }
+
+        /// <summary>
+        /// Called when fields affecting the rect transform of the view has changed.
+        /// </summary>
+        public virtual void RectTransformChanged()
+        {
+            if (!UpdateRectTransform)
+                return; // rect transform is updated elsewhere
+
             // update rectTransform
             // horizontal alignment and positioning
-            var width = IsSet(() => OverrideWidth) ? OverrideWidth : Width;
-            var height = IsSet(() => OverrideHeight) ? OverrideHeight : Height;
+            var width = OverrideWidth.IsSet ? OverrideWidth : Width;
+            var height = OverrideHeight.IsSet ? OverrideHeight : Height;
 
             float xMin = 0f;
             float xMax = 0f;
@@ -378,7 +400,7 @@ namespace MarkLight.Views.UI
             if (!UpdateBackground)
                 return; // background image is updated elsewhere
 
-            if (IsSet("Alpha") || IsSet("IsVisible"))
+            if (Alpha.IsSet || IsVisible.IsSet || RaycastBlockMode.IsSet)
             {
                 if (_canvasGroup == null)
                 {
@@ -389,38 +411,86 @@ namespace MarkLight.Views.UI
                     }
                 }
 
-                if (IsActive)
+                _canvasGroup.alpha = IsVisible.Value ? Alpha.Value : 0;
+
+                if (RaycastBlockMode == MarkLight.RaycastBlockMode.Always)
                 {
-                    _canvasGroup.alpha = IsVisible.Value ? Alpha.Value : 0;
-                    _canvasGroup.blocksRaycasts = IsVisible ? Alpha > 0 : false;
-                    _canvasGroup.interactable = IsVisible ?  Alpha > 0 : false;
+                    _canvasGroup.blocksRaycasts = true;
                 }
+                else if (RaycastBlockMode == MarkLight.RaycastBlockMode.Never)
+                {
+                    _canvasGroup.blocksRaycasts = false;
+                }
+                else
+                {
+                    _canvasGroup.blocksRaycasts = (IsVisible && Alpha > 0);
+                }
+
+                _canvasGroup.interactable = IsVisible ?  Alpha > 0 : false;
             }
                         
             if (ImageComponent != null)
             {
                 // set image color to white if sprite has been set but not color
-                if (IsSet("BackgroundImage") && !IsSet("BackgroundColor"))
+                if (BackgroundImage.IsSet && !BackgroundColor.IsSet)
                 {
                     ImageComponent.color = Color.white;
                 }
 
                 // if image color is clear disable image component
-                ImageComponent.enabled = AlwaysBlockRaycast ? true : ImageComponent.color.a > 0;
+                ImageComponent.enabled = RaycastBlockMode == MarkLight.RaycastBlockMode.Always ? true : ImageComponent.color.a > 0;
             }
         }
 
         /// <summary>
-        /// Called once to initialize the view.
+        /// Gets local point in view from screen point (e.g. mouse position).
         /// </summary>
-        public override void Initialize()
+        public Vector2 GetLocalPoint(Vector2 screenPoint)
         {
-            base.Initialize();
+            // get root canvas
+            UnityEngine.Canvas canvas = LayoutRoot.Canvas;
 
-            if (LayoutRoot == null)
+            // for screen space overlay the camera should be null
+            Camera worldCamera = canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
+
+            // get local position of screen point
+            Vector2 pos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(RectTransform, screenPoint, worldCamera, out pos);
+            return pos;
+        }
+
+        /// <summary>
+        /// Tests if mouse is over this view. 
+        /// </summary>
+        public bool ContainsMouse(Vector3 mousePosition, bool testChildren = false, bool ignoreFullScreenViews = false)
+        {
+            // get root canvas
+            UnityEngine.Canvas canvas = LayoutRoot.Canvas;
+
+            // for screen space overlay the camera should be null
+            Camera worldCamera = canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
+            if (RectTransformUtility.RectangleContainsScreenPoint(this.RectTransform, mousePosition, worldCamera)
+                && (!ignoreFullScreenViews || !IsFullScreen)
+                && gameObject.activeInHierarchy
+                && Alpha.Value > 0.99f)
             {
-                LayoutRoot = this.FindParent<UserInterface>();
+                return true;
             }
+
+            if (testChildren)
+            {
+                foreach (var child in this)
+                {
+                    UIView view = child as UIView;
+                    if (view == null)
+                        continue;
+                                            
+                    if (view.ContainsMouse(mousePosition, testChildren, ignoreFullScreenViews))
+                        return true;                    
+                }
+            }
+
+            return false;
         }
 
         #endregion
@@ -446,6 +516,68 @@ namespace MarkLight.Views.UI
             get
             {
                 return Mathf.Abs(RectTransform.rect.height);
+            }
+        }
+
+        /// <summary>
+        /// Gets canvas group component.
+        /// </summary>
+        public CanvasGroup CanvasGroup
+        {
+            get
+            {
+                if (_canvasGroup == null)
+                {
+                    _canvasGroup = gameObject.GetComponent<CanvasGroup>();
+                    if (_canvasGroup == null)
+                    {
+                        _canvasGroup = gameObject.AddComponent<CanvasGroup>();
+                    }
+                }
+
+                return _canvasGroup;
+            }
+        }
+
+        /// <summary>
+        /// Gets boolean indicating if view takes up the entire screen.
+        /// </summary>
+        public bool IsFullScreen
+        {
+            get
+            {
+                return RectTransform.rect.width >= Screen.width && RectTransform.rect.height >= Screen.height;
+            }
+        }
+
+        /// <summary>
+        /// Gets layout root canvas.
+        /// </summary>
+        public UserInterface LayoutRoot
+        {
+            get
+            {
+                if (_layoutRoot == null)
+                {
+                    if (this is UserInterface)
+                    {
+                        _layoutRoot = this as UserInterface;
+                    }
+                    else
+                    {
+                        _layoutRoot = this.FindParent<UserInterface>();
+                        if (_layoutRoot == null)
+                        {
+                            Utils.LogError("[MarkLight] {0}: LayoutRoot missing. All UIViews needs to be placed under a UserInterface root canvas.", GameObjectName);
+                        }
+                    }
+                }
+
+                return _layoutRoot;
+            }
+            set
+            {
+                _layoutRoot = value;
             }
         }
 

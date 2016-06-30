@@ -1,0 +1,6 @@
+<NewView xmlns="MarkLight">
+  <UserInterface>
+    <IngameMenu />
+    <OverlayView SortIndex="99" />
+  </UserInterface>
+</NewView>

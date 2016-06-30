@@ -1,5 +1,5 @@
-<IngameMenu>
-  <UserInterface>
+<IngameMenu xmlns="MarkLight">
+  
     <Region Width="25%" Alignment="Left" Margin="30,0,15,0"
         BackgroundColor="0, 0, 0, 0.3">
       <Group Spacing="10px" Alignment="Top" Margin="0, 50, 0, 50">
@@ -20,12 +20,10 @@
         <Region />
         <Inventory Width="100%" Height="100%" />
         <TeamView Width="100%" Height="100%" />
-
       </ViewSwitcher>
     </Region>
 
     <ViewAnimation Id="SlideIn">
       <Animate Field="Offset" From="1000, 0, 0, 0" To="0, 0, 0, 0" Duration="0.2s" EasingFunction="QuadraticEaseIn" />
     </ViewAnimation>
-  </UserInterface>
 </IngameMenu>

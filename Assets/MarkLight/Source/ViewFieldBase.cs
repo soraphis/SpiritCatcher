@@ -16,6 +16,24 @@ namespace MarkLight
 
         public View ParentView;
         public string ViewFieldPath;
+        public bool IsMapped;
+        public bool _isSet;
+        public event EventHandler ValueSet;
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Triggers the ValueSet event.
+        /// </summary>
+        public void TriggerValueSet()
+        {
+            if (ValueSet != null)
+            {
+                ValueSet(this, EventArgs.Empty);
+            }
+        }
 
         #endregion
     }

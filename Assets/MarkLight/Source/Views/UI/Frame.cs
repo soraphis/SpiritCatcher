@@ -34,14 +34,8 @@ namespace MarkLight.Views.UI
         /// Content margin.
         /// </summary>
         /// <d>The margin of the content of this view.</d>
-        [MapTo("ContentRegion.Margin")]
+        [ChangeHandler("LayoutChanged")]
         public _ElementMargin ContentMargin;
-
-        /// <summary>
-        /// Content region view.
-        /// </summary>
-        /// <d>Content region used so that content margin can be applied.</d>
-        public Region ContentRegion;
 
         #endregion
 
@@ -53,6 +47,7 @@ namespace MarkLight.Views.UI
         public override void SetDefaultValues()
         {
             base.SetDefaultValues();
+            ContentMargin.DirectValue = new ElementMargin();
             ResizeToContent.DirectValue = true;
         }
 
@@ -74,13 +69,15 @@ namespace MarkLight.Views.UI
             {
                 float maxWidth = 0f;
                 float maxHeight = 0f;
-                int childCount = ContentRegion.transform.childCount;
+                int childCount = ChildCount;
 
                 // get size of content and set content offsets and alignment
                 for (int i = 0; i < childCount; ++i)
                 {
-                    var go = ContentRegion.transform.GetChild(i);
+                    var go = transform.GetChild(i);
                     var view = go.GetComponent<UIView>();
+                    if (view == null)
+                        continue;
 
                     // get size of content
                     if (view.Width.Value.Unit != ElementSizeUnit.Percents)
@@ -99,12 +96,12 @@ namespace MarkLight.Views.UI
                 maxHeight += Margin.Value.Top.Pixels + Margin.Value.Bottom.Pixels + ContentMargin.Value.Bottom.Pixels + ContentMargin.Value.Top.Pixels;
 
                 // adjust size to content unless it has been set
-                if (!IsSet(() => Width))
+                if (!Width.IsSet)
                 {
                     Width.DirectValue = new ElementSize(maxWidth);
                 }
 
-                if (!IsSet(() => Height))
+                if (!Height.IsSet)
                 {
                     Height.DirectValue = new ElementSize(maxHeight);
                 }

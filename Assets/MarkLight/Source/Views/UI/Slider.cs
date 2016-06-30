@@ -284,8 +284,8 @@ namespace MarkLight.Views.UI
         /// </summary>
         public override void LayoutChanged()
         {
-            Width.DirectValue = IsSet(() => Width) ? Width.Value : (Orientation == ElementOrientation.Horizontal ? Length.Value : Breadth.Value);
-            Height.DirectValue = IsSet(() => Height) ? Height.Value : (Orientation == ElementOrientation.Horizontal ? Breadth.Value : Length.Value);
+            Width.DirectValue = Width.IsSet ? Width.Value : (Orientation == ElementOrientation.Horizontal ? Length.Value : Breadth.Value);
+            Height.DirectValue = Height.IsSet ? Height.Value : (Orientation == ElementOrientation.Horizontal ? Breadth.Value : Length.Value);
 
             base.LayoutChanged();
 
@@ -378,25 +378,20 @@ namespace MarkLight.Views.UI
         /// </summary>
         private void SetSlideTo(Vector2 mouseScreenPositionIn, bool isEndDrag = false)
         {
-            var transform = SliderFillRegion.RectTransform;
+            var fillTransform = SliderFillRegion.RectTransform;
 
-            // get root canvas
-            UnityEngine.Canvas canvas = LayoutRoot.Canvas;
-
-            Vector2 pos;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, mouseScreenPositionIn, canvas.worldCamera, out pos);
-            Vector2 mouseScreenPosition = canvas.transform.TransformPoint(pos);
-
+            var pos = GetLocalPoint(mouseScreenPositionIn);
+            
             // calculate slide percentage (transform.position.x/y is center of fill area)
             float p = 0;
-            float slideAreaLength = transform.rect.width - SliderHandleImageView.Width.Value.Pixels;
+            float slideAreaLength = fillTransform.rect.width - SliderHandleImageView.Width.Value.Pixels;
             if (Orientation == ElementOrientation.Horizontal)
             {
-                p = ((mouseScreenPosition.x - transform.position.x + slideAreaLength / 2f) / slideAreaLength).Clamp(0, 1);
+                p = ((pos.x - fillTransform.localPosition.x + slideAreaLength / 2f) / slideAreaLength).Clamp(0, 1);
             }
             else
             {
-                p = ((mouseScreenPosition.y - transform.position.y + slideAreaLength / 2f) / slideAreaLength).Clamp(0, 1);
+                p = ((pos.y - fillTransform.localPosition.y + slideAreaLength / 2f) / slideAreaLength).Clamp(0, 1);
             }
 
             // set value

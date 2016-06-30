@@ -1,5 +1,5 @@
 ********************************************************************************
-*                     Thursday, June 30, 2016 12:01:36 PM                      *
+*                      Thursday, June 30, 2016 1:28:44 PM                      *
 ********************************************************************************
 smcs.exe version: 1.5.3.0
 Platform: Windows
@@ -11,50 +11,7 @@ Compiler: Version6Mono
 - Compilation -----------------------------------------------
 
 Process: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-9da4dc1e8f074ba46a41c5f16ac1a742
-Exit code: 0
-Elapsed time: 2.22 sec
-
-- Compiler output:
-0: Compilation succeeded - 2 warning(s)
-
-- Compiler errors:
-0: Assets/Scripts/Game.cs(178,29): warning CS0618: `UnityEngine.SceneManagement.SceneManager.GetAllScenes()' is obsolete: `Use SceneManager.sceneCount and SceneManager.GetSceneAt(int index) to loop the all scenes instead.'
-1: Assets/Scripts/ViewModels/TeamView.cs(11,40): warning CS0649: Field `Assets.Scripts.ViewModels.TeamView.TeamList' is never assigned to, and will always have its default value `null'
-********************************************************************************
-*                     Thursday, June 30, 2016 12:01:38 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp-Editor.dll
-Project directory: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: C:/Program Files/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-3eb9b351441354742b87adf8d53a8118
-Exit code: 0
-Elapsed time: 1.62 sec
-
-- Compiler output:
-
-- Compiler errors:
-********************************************************************************
-*                     Thursday, June 30, 2016 12:01:42 PM                      *
-********************************************************************************
-smcs.exe version: 1.5.3.0
-Platform: Windows
-Target assembly: Assembly-CSharp.dll
-Project directory: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
-Unity directory: C:/Program Files/Unity/Editor/Data
-Compiler: Version6Mono
-
-- Compilation -----------------------------------------------
-
-Process: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-c80c507d72f080642a4a916b748a2a35
+Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-cf3098d062db5044c8a7c67980fe7408
 Exit code: 0
 Elapsed time: 1.97 sec
 
@@ -65,7 +22,7 @@ Elapsed time: 1.97 sec
 0: Assets/Scripts/Game.cs(178,29): warning CS0618: `UnityEngine.SceneManagement.SceneManager.GetAllScenes()' is obsolete: `Use SceneManager.sceneCount and SceneManager.GetSceneAt(int index) to loop the all scenes instead.'
 1: Assets/Scripts/ViewModels/TeamView.cs(11,40): warning CS0649: Field `Assets.Scripts.ViewModels.TeamView.TeamList' is never assigned to, and will always have its default value `null'
 ********************************************************************************
-*                     Thursday, June 30, 2016 12:01:44 PM                      *
+*                      Thursday, June 30, 2016 1:28:46 PM                      *
 ********************************************************************************
 smcs.exe version: 1.5.3.0
 Platform: Windows
@@ -77,9 +34,95 @@ Compiler: Version6Mono
 - Compilation -----------------------------------------------
 
 Process: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
-Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-5dccc85eec0d2094ea263b6af9851c45
+Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-4e5411b15998ed04f8d2c96320907349
 Exit code: 0
-Elapsed time: 1.46 sec
+Elapsed time: 1.53 sec
+
+- Compiler output:
+
+- Compiler errors:
+********************************************************************************
+*                      Thursday, June 30, 2016 1:32:26 PM                      *
+********************************************************************************
+smcs.exe version: 1.5.3.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
+Unity directory: C:/Program Files/Unity/Editor/Data
+Compiler: Version6Mono
+
+- Compilation -----------------------------------------------
+
+Process: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
+Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-17e25e81e52abd840b05abd79e24fde3
+Exit code: 0
+Elapsed time: 1.99 sec
+
+- Compiler output:
+0: Compilation succeeded - 2 warning(s)
+
+- Compiler errors:
+0: Assets/Scripts/Game.cs(178,29): warning CS0618: `UnityEngine.SceneManagement.SceneManager.GetAllScenes()' is obsolete: `Use SceneManager.sceneCount and SceneManager.GetSceneAt(int index) to loop the all scenes instead.'
+1: Assets/Scripts/ViewModels/TeamView.cs(11,40): warning CS0649: Field `Assets.Scripts.ViewModels.TeamView.TeamList' is never assigned to, and will always have its default value `null'
+********************************************************************************
+*                      Thursday, June 30, 2016 1:32:28 PM                      *
+********************************************************************************
+smcs.exe version: 1.5.3.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
+Unity directory: C:/Program Files/Unity/Editor/Data
+Compiler: Version6Mono
+
+- Compilation -----------------------------------------------
+
+Process: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
+Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-b851cbf4d5ad8074494fc60daa3417f7
+Exit code: 0
+Elapsed time: 1.82 sec
+
+- Compiler output:
+
+- Compiler errors:
+********************************************************************************
+*                      Thursday, June 30, 2016 1:32:38 PM                      *
+********************************************************************************
+smcs.exe version: 1.5.3.0
+Platform: Windows
+Target assembly: Assembly-CSharp.dll
+Project directory: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
+Unity directory: C:/Program Files/Unity/Editor/Data
+Compiler: Version6Mono
+
+- Compilation -----------------------------------------------
+
+Process: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
+Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-e59b79d0195c92f448b5f1b3d3099efd
+Exit code: 0
+Elapsed time: 2.07 sec
+
+- Compiler output:
+0: Compilation succeeded - 2 warning(s)
+
+- Compiler errors:
+0: Assets/Scripts/Game.cs(178,29): warning CS0618: `UnityEngine.SceneManagement.SceneManager.GetAllScenes()' is obsolete: `Use SceneManager.sceneCount and SceneManager.GetSceneAt(int index) to loop the all scenes instead.'
+1: Assets/Scripts/ViewModels/TeamView.cs(11,40): warning CS0649: Field `Assets.Scripts.ViewModels.TeamView.TeamList' is never assigned to, and will always have its default value `null'
+********************************************************************************
+*                      Thursday, June 30, 2016 1:32:41 PM                      *
+********************************************************************************
+smcs.exe version: 1.5.3.0
+Platform: Windows
+Target assembly: Assembly-CSharp-Editor.dll
+Project directory: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone
+Unity directory: C:/Program Files/Unity/Editor/Data
+Compiler: Version6Mono
+
+- Compilation -----------------------------------------------
+
+Process: F:\160416-PCBackup\D\Benutzer\Oliver\Dokumente\Unity3D\PokemonClone\mcs.exe
+Arguments: -sdk:2 -r:"C:/Program Files/Unity/Editor/Data\Mono/lib/mono/2.0/System.Core.dll" @Temp/UnityTempFile-38f1f2aee2bf50045a66e9d8126b35dc
+Exit code: 0
+Elapsed time: 1.53 sec
 
 - Compiler output:
 

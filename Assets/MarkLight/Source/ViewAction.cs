@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using MarkLight.Views.UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
 #endregion
@@ -130,6 +131,42 @@ namespace MarkLight
                 foreach (var entry in _viewActionEntries)
                 {
                     entry.Invoke(baseEventData);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Triggers the view action custom data.
+        /// </summary>
+        public void Trigger(object customData)
+        {
+            if (IsDisabled)
+                return;
+
+            // go through the entries and call them
+            if (_viewActionEntries != null)
+            {
+                foreach (var entry in _viewActionEntries)
+                {
+                    entry.Invoke(customData);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Triggers the view action.
+        /// </summary>
+        public void Trigger(ActionData actionData, BaseEventData baseEventData, object customData)
+        {
+            if (IsDisabled)
+                return;
+
+            // go through the entries and call them
+            if (_viewActionEntries != null)
+            {
+                foreach (var entry in _viewActionEntries)
+                {
+                    entry.Invoke(actionData, baseEventData, customData);
                 }
             }
         }

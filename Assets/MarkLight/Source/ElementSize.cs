@@ -89,7 +89,7 @@ namespace MarkLight
         /// <summary>
         /// Parses string into element size.
         /// </summary>
-        public static ElementSize Parse(string value)
+        public static ElementSize Parse(string value, Vector3 unitSize)
         {
             ElementSize elementSize = new ElementSize();
             string trimmedValue = value.Trim();
@@ -111,6 +111,24 @@ namespace MarkLight
                 elementSize.Value = System.Convert.ToSingle(trimmedValue.Substring(0, lastIndex), CultureInfo.InvariantCulture);
                 elementSize.Unit = ElementSizeUnit.Pixels;
             }
+            else if (trimmedValue.EndsWith("ux"))
+            {
+                int lastIndex = trimmedValue.LastIndexOf("ux", StringComparison.OrdinalIgnoreCase);
+                elementSize.Value = System.Convert.ToSingle(trimmedValue.Substring(0, lastIndex), CultureInfo.InvariantCulture) * unitSize.x;
+                elementSize.Unit = ElementSizeUnit.Pixels;
+            }
+            else if (trimmedValue.EndsWith("uy"))
+            {
+                int lastIndex = trimmedValue.LastIndexOf("uy", StringComparison.OrdinalIgnoreCase);
+                elementSize.Value = System.Convert.ToSingle(trimmedValue.Substring(0, lastIndex), CultureInfo.InvariantCulture) * unitSize.y;
+                elementSize.Unit = ElementSizeUnit.Pixels;
+            }
+            else if (trimmedValue.EndsWith("uz"))
+            {
+                int lastIndex = trimmedValue.LastIndexOf("uz", StringComparison.OrdinalIgnoreCase);
+                elementSize.Value = System.Convert.ToSingle(trimmedValue.Substring(0, lastIndex), CultureInfo.InvariantCulture) * unitSize.z;
+                elementSize.Unit = ElementSizeUnit.Pixels;
+            }
             else
             {
                 elementSize.Value = System.Convert.ToSingle(trimmedValue, CultureInfo.InvariantCulture);
@@ -118,6 +136,21 @@ namespace MarkLight
             }
 
             return elementSize;
+        }
+
+        /// <summary>
+        /// Converts element size to string.
+        /// </summary>
+        public override string ToString()
+        {
+            if (Unit == ElementSizeUnit.Percents)
+            {
+                return Value.ToString() + "%";
+            }
+            else
+            {
+                return Value.ToString();
+            }
         }
 
         #endregion

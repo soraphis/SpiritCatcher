@@ -42,8 +42,12 @@ namespace MarkLight.Views.UI
         /// <d>The end angle of the radial menu.</d>
         public _float EndAngle;
 
+        /// <summary>
+        /// Animation duration.
+        /// </summary>
+        /// <d>The open/close animation duration.</d>
         [DurationValueConverter]
-        public float AnimationDuration;
+        public _float AnimationDuration;
 
         private bool _isOpen;
         private List<ViewFieldAnimator> _menuAnimators;        
@@ -70,7 +74,7 @@ namespace MarkLight.Views.UI
         /// <summary>
         /// Updates view field animators.
         /// </summary>
-        public void Update()
+        public virtual void Update()
         {
             _menuAnimators.ForEach(x =>
             {
@@ -117,15 +121,10 @@ namespace MarkLight.Views.UI
         /// </summary>
         public void OpenAt(Vector2 mouseScreenPositionIn, bool animate = true)
         {
-            // get canvas
-            UnityEngine.Canvas canvas = LayoutRoot.Canvas;
-
             // calculate menu offset
-            Vector2 pos;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, mouseScreenPositionIn, canvas.worldCamera, out pos);
-            Vector2 mouseScreenPosition = canvas.transform.TransformPoint(pos);
-            _menuOffset.x = mouseScreenPosition.x - transform.position.x;
-            _menuOffset.y = -(mouseScreenPosition.y - transform.position.y);
+            Vector2 pos = GetLocalPoint(mouseScreenPositionIn);
+            _menuOffset.x = pos.x;
+            _menuOffset.y = -pos.y;
             UpdateMenu();
 
             Open(animate);
@@ -209,7 +208,7 @@ namespace MarkLight.Views.UI
             var view = this.Find<UIView>(id, false);
             if (view == null)
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to activate menu item. Menu item \"{1}\" not found.", GameObjectName, id));
+                Utils.LogError("[MarkLight] {0}: Unable to activate menu item. Menu item \"{1}\" not found.", GameObjectName, id);
                 return;
             }
 
@@ -223,7 +222,7 @@ namespace MarkLight.Views.UI
         {
             if (index >= _menuItems.Count() || index < 0)
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to activate menu item. Index out of range.", GameObjectName));
+                Utils.LogError("[MarkLight] {0}: Unable to activate menu item. Index out of range.", GameObjectName);
                 return;
             }
 
@@ -250,7 +249,7 @@ namespace MarkLight.Views.UI
             var view = this.Find<UIView>(id, false);
             if (view == null)
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to deactivate menu item. Menu item \"{1}\" not found.", GameObjectName, id));
+                Utils.LogError("[MarkLight] {0}: Unable to deactivate menu item. Menu item \"{1}\" not found.", GameObjectName, id);
                 return;
             }
 
@@ -264,7 +263,7 @@ namespace MarkLight.Views.UI
         {
             if (index >= _menuItems.Count() || index < 0)
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to deactivate menu item. Index out of range.", GameObjectName));
+                Utils.LogError("[MarkLight] {0}: Unable to deactivate menu item. Index out of range.", GameObjectName);
                 return;
             }
 
@@ -312,9 +311,9 @@ namespace MarkLight.Views.UI
                     offsetAnimator.Field = "OffsetFromParent";
                     offsetAnimator.From = new ElementMargin(_menuOffset.x, _menuOffset.y);
                     offsetAnimator.To = new ElementMargin(xOffset + _menuOffset.x, -yOffset + _menuOffset.y, 0, 0);
-                    offsetAnimator.Duration = IsSet(() => AnimationDuration) ? AnimationDuration : 0.2f;
+                    offsetAnimator.Duration = AnimationDuration.IsSet ? AnimationDuration : 0.2f;
                     offsetAnimator.TargetView = child;
-                    _menuAnimators.Add(offsetAnimator);
+                    _menuAnimators.Add(offsetAnimator);                    
 
                     child.OffsetFromParent.DirectValue = new ElementMargin(_menuOffset.x, _menuOffset.y, 0, 0);
                     child.Alignment.DirectValue = ElementAlignment.Center;

@@ -1,4 +1,4 @@
-﻿// #define BUI BattleController.Instance
+// #define BUI BattleController.Instance
 
 using System;
 using System.Collections;
@@ -257,6 +257,14 @@ public class BattleSystemImpl2 : MonoBehaviour, IBattleSystemBattleStartHandler,
                             () => stateMachine.SetProperty(props.StateFinished, true)));
                     }
                 }));
+        }else if(b.action == PlayerAction.ActionType.SwitchSpirit) {
+            BattleObject.SetSpirit(p, BattleObject.GetTeam(p).Spirits[(int) b.actionValue]);
+            SpawnSpirit(p);
+            stateMachine.SetProperty(props.SpiritsToSpawn, stateMachine.GetProperty<int>(props.SpiritsToSpawn) + 1);
+            StartCoroutine(FinishState());
+        } else if(b.action == PlayerAction.ActionType.Item) {
+            BattleObject.GetSpirit(p).CurrentStamina -= 90;
+            StartCoroutine(FinishState());
         }
         //// ----
     }

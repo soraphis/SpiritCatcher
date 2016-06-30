@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -110,7 +110,9 @@ public class PlayerBattleActionHandler : BattleActionHandler {
         BattleController.Instance.BasicActionsPanel.SetActive(true);
         BattleController.Instance.action = null;
         yield return null;
-        yield return new WaitUntil(() => BattleController.Instance.action != null && BattleController.Instance.action.action == PlayerAction.ActionType.Attack && BattleController.Instance.action.actionValue > -1);
+        yield return new WaitUntil(() => BattleController.Instance.action != null);
+        // && BattleController.Instance.action.action == PlayerAction.ActionType.Attack && BattleController.Instance.action.actionValue > -1
+
         BattleObject.action[player_id] = BattleController.Instance.action;
 
         yield return new WaitForEndOfFrame();

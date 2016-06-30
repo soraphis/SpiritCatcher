@@ -1,0 +1,12 @@
+<Inventory>
+  <Region Width="80%" Height="90%">
+    <List Id="ItemList" Items="{Items}" Width="100%" Height="100%" Alignment="Top" Margin="30, 50, 30, 50" CanSelect="false">
+      <ListItem IsTemplate="true" Text="{#Item.Name}"  Click="ItemClicked" SelectOnMouseDown="false" >
+        <Label FontColor="0,0,0" Text=" {#Item.Amount}" Alignment="Right"/>
+      </ListItem>
+    </List>
+  </Region>
+  <Region Width="80%" Height="10%" IsVisible="{hasBackButton}" Alignment="Bottom">
+    <Button Text="" Click="CloseOverlay" />
+  </Region>
+</Inventory>

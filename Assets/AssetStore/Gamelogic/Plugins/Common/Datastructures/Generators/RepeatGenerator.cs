@@ -6,7 +6,7 @@
 	/// but a constant is desired (for example, when constructing 
 	/// compound generators).
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
+	/// <typeparam Name="T"></typeparam>
 	public class RepeatGenerator<T> : IGenerator<T>
 	{
 		/// <summary>
@@ -17,7 +17,7 @@
 		/// <summary>
 		/// Constructs a new generator that repeats the given element.
 		/// </summary>
-		/// <param name="item">The element to repeat.</param>
+		/// <param Name="item">The element to repeat.</param>
 		public RepeatGenerator(T item)
 		{
 			this.item = item;

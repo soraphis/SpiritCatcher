@@ -16,7 +16,7 @@ public static class Combinatorial
 	/// <summary>
 	/// Generate all possible tuplets of length n with digits 0 to n-1.
 	/// </summary>
-	/// <param name="n">The length of tuplets to geneate. All digits are also between 0 and n-1.</param>
+	/// <param Name="n">The length of tuplets to geneate. All digits are also between 0 and n-1.</param>
 	/// <returns></returns>
 	public static IEnumerable<int[]> Tuples(int n)
 	{
@@ -30,7 +30,7 @@ public static class Combinatorial
 	/// <summary>
 	/// Generares all tuples with mixed radices.
 	/// </summary>
-	/// <param name="radices">The array of radices for each position in the tuple.</param>
+	/// <param Name="radices">The array of radices for each position in the tuple.</param>
 	/// <returns></returns>
 	public static IEnumerable<int[]> MultiRadixTuples(int[] radices)
 	{
@@ -75,7 +75,7 @@ public static class Combinatorial
 	/// <summary>
 	/// Generates all permuations of the numbers 0 to n - 1.
 	/// </summary>
-	/// <param name="n"></param>
+	/// <param Name="n"></param>
 	/// <returns></returns>
 	public static IEnumerable<int[]> Permutations(int n)
 	{
@@ -87,8 +87,8 @@ public static class Combinatorial
 	/// <summary>
 	/// Gehenrates all permuations of the list of elements.
 	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	/// <param name="list"></param>
+	/// <typeparam Name="T"></typeparam>
+	/// <param Name="list"></param>
 	/// <returns></returns>
 	public static IEnumerable<T[]> Permutations<T>(this IEnumerable<T> list)
 	{

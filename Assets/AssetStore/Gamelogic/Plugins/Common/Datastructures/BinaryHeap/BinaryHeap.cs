@@ -8,7 +8,7 @@ namespace Gamelogic.Internal.BinaryHeap
 	/// <summary>
 	/// A binary heap, useful for sorting data and priority queues.
 	/// </summary>
-	/// <typeparam name="T"><![CDATA[IComparable<T> type of item in the heap]]>.</typeparam>
+	/// <typeparam Name="T"><![CDATA[IComparable<T> type of item in the heap]]>.</typeparam>
 	public class BinaryHeap<T> : ICollection<T>
 	{
 		// Constants
@@ -80,7 +80,7 @@ namespace Gamelogic.Internal.BinaryHeap
 		/// <summary>
 		/// Adds a key and value to the heap.
 		/// </summary>
-		/// <param name="item">The item to add to the heap.</param>
+		/// <param Name="item">The item to add to the heap.</param>
 		public void Add(T item)
 		{
 			if (Count == capacity)
@@ -207,7 +207,7 @@ namespace Gamelogic.Internal.BinaryHeap
 		/// <summary>
 		/// Checks to see if the binary heap contains the specified item.
 		/// </summary>
-		/// <param name="item">The item to search the binary heap for.</param>
+		/// <param Name="item">The item to search the binary heap for.</param>
 		/// <returns>A boolean, true if binary heap contains item.</returns>
 		public bool Contains(T item)
 		{
@@ -218,8 +218,8 @@ namespace Gamelogic.Internal.BinaryHeap
 		/// <summary>
 		/// Copies the binary heap to an array at the specified index.
 		/// </summary>
-		/// <param name="array">One dimensional array that is the destination of the copied elements.</param>
-		/// <param name="arrayIndex">The zero-based index at which copying begins.</param>
+		/// <param Name="array">One dimensional array that is the destination of the copied elements.</param>
+		/// <param Name="arrayIndex">The zero-based index at which copying begins.</param>
 		public void CopyTo(T[] array, int arrayIndex)
 		{
 			EnsureSort();
@@ -235,7 +235,7 @@ namespace Gamelogic.Internal.BinaryHeap
 		/// <summary>
 		/// Removes an item from the binary heap. This utilizes the type T's Comparer and will not remove duplicates.
 		/// </summary>
-		/// <param name="item">The item to be removed.</param>
+		/// <param Name="item">The item to be removed.</param>
 		/// <returns>Boolean true if the item was removed.</returns>
 		public bool Remove(T item)
 		{

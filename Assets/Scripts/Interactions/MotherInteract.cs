@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using Assets;
 
@@ -23,7 +23,7 @@ public class MotherInteract : MonoBehaviour {
             Game.Instance.QuestPart1Variables.SendToSarim = true;
         } else if (Dialog.currentStatement.name == "FinishQuest") {
             if(Player.Instance.Items["Heilkraut"] != null) {
-                Player.Instance.Items["Heilkraut"].Amount--;
+                Player.Instance.Items.AddItem("Heilkraut", -1);
             } else {
                 Debug.LogError("should not happen ... ever, because i check this condition twice");
             }

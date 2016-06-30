@@ -364,10 +364,10 @@ MonoBehaviour:
   Id: 16
   BoundingRect:
     serializedVersion: 2
-    x: -1691.2247
+    x: -1690.4546
     y: -1541
-    width: -1690.7865
-    height: -1502
+    width: -1690.4546
+    height: -1503
   conditions: []
   title: 
   parent: {fileID: 11400000}
@@ -404,10 +404,10 @@ MonoBehaviour:
   m_Name: GetItem:Heilkraut
   m_EditorClassIdentifier: 
   speaker: 
-  text: "Heilkr\xE4uter Erhalten"
+  text: "Heilkr\xE4uter erhalten"
   NodeRect:
     serializedVersion: 2
-    x: -1760
+    x: -1759
     y: -1591
     width: 160
     height: 50
@@ -430,9 +430,9 @@ MonoBehaviour:
   Id: 14
   BoundingRect:
     serializedVersion: 2
-    x: -1690.1538
+    x: -1689.8792
     y: -1632
-    width: -1691.0549
+    width: -1690.3297
     height: -1591
   conditions: []
   title: 
@@ -582,7 +582,7 @@ MonoBehaviour:
   NodeRect:
     serializedVersion: 2
     x: -1759
-    y: -1502
+    y: -1503
     width: 160
     height: 50
   Id: 15

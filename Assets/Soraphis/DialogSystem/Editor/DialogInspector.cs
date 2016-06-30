@@ -51,7 +51,7 @@ public class DialogStatementInspector : UnityEditor.Editor {
 
         EditorGUI.BeginChangeCheck();
         statement.name = EditorGUILayout.TextField("DialogWindow Statement", statement.name);
-        if(EditorGUI.EndChangeCheck()) { Undo.RecordObject(target, "Changed statement name"); }
+        if(EditorGUI.EndChangeCheck()) { Undo.RecordObject(target, "Changed statement Name"); }
 
         EditorGUILayout.LabelField(statement.Id.ToString(), GUILayout.MaxWidth(30));
         EditorGUILayout.EndHorizontal();
@@ -59,7 +59,7 @@ public class DialogStatementInspector : UnityEditor.Editor {
 
         EditorGUI.BeginChangeCheck();
         statement.speaker = EditorGUILayout.TextField("Speaker Name", statement.speaker);
-        if (EditorGUI.EndChangeCheck()) { Undo.RecordObject(target, "Changed speaker name"); }
+        if (EditorGUI.EndChangeCheck()) { Undo.RecordObject(target, "Changed speaker Name"); }
 
         EditorStyles.textArea.wordWrap = true;
         EditorStyles.textField.wordWrap = true;

@@ -1,0 +1,10 @@
+<MainMenuScene>
+  <UserInterface>
+    <Group Spacing="10px">
+      <Button Text="Play" Click="StartGame" />
+      <Button Text="Load Game" Click="LoadGame" />
+      <Button Text="Quit"  Click="QuitGame" />
+    </Group>
+  </UserInterface>
+  <EventSystem />
+</MainMenuScene>

@@ -6,7 +6,7 @@ namespace Gamelogic.Internal.KDTree
 	/// A binary interval heap is double-ended priority queue is a priority queue that it allows
 	/// for efficient removal of both the maximum and minimum element.
 	/// </summary>
-	/// <typeparam name="T">The data type contained at each key.</typeparam>
+	/// <typeparam Name="T">The data type contained at each key.</typeparam>
 	/// <remarks>This is based on this: https://bitbucket.org/rednaxela/knn-benchmark/src/tip/ags/utils/dataStructures/trees/thirdGenKD/ </remarks>
 	public class IntervalHeap<T>
 	{
@@ -36,7 +36,7 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Construct a new interval heap with a custom capacity.
 		/// </summary>
-		/// <param name="capacity"></param>
+		/// <param Name="capacity"></param>
 		public IntervalHeap(int capacity)
 		{
 			tData = new T[capacity];
@@ -120,8 +120,8 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Insert a new data item at a given key.
 		/// </summary>
-		/// <param name="key">The value which represents our data (i.e. a distance).</param>
-		/// <param name="value">The data we want to store.</param>
+		/// <param Name="key">The value which represents our data (i.e. a distance).</param>
+		/// <param Name="value">The data we want to store.</param>
 		public void Insert(float key, T value)
 		{
 			// If more room is needed, double the array size.
@@ -170,8 +170,8 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Replace the item with the smallest key in the queue.
 		/// </summary>
-		/// <param name="key">The new minimum key.</param>
-		/// <param name="value">The new minumum data value.</param>
+		/// <param Name="key">The new minimum key.</param>
+		/// <param Name="value">The new minumum data value.</param>
 		public void ReplaceMin(float key, T value)
 		{
 			// Check for errors.
@@ -222,7 +222,7 @@ namespace Gamelogic.Internal.KDTree
 		/// Swap out the item with the largest key in the queue.
 		/// </summary>
 		/// <param name="key">The new key for the largest item.</param>
-		/// <param name="value">The new data for the largest item.</param>
+		/// <param Name="value">The new data for the largest item.</param>
 		public void ReplaceMax(float key, T value)
 		{
 			if (Size == 0)
@@ -251,8 +251,8 @@ namespace Gamelogic.Internal.KDTree
 		/// Internal helper method which swaps two values in the arrays.
 		/// This swaps both data and key entries.
 		/// </summary>
-		/// <param name="x">The first index.</param>
-		/// <param name="y">The second index.</param>
+		/// <param Name="x">The first index.</param>
+		/// <param Name="y">The second index.</param>
 		/// <returns>The second index.</returns>
 		private int Swap(int x, int y)
 		{
@@ -350,7 +350,7 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Bubble elements up the min side of the tree.
 		/// </summary>
-		/// <param name="iChild">The child index.</param>
+		/// <param Name="iChild">The child index.</param>
 		private void SiftUpMin(int iChild)
 		{
 			// Min-side parent: (x/2-1)&~1
@@ -365,7 +365,7 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Bubble elements up the max side of the tree.
 		/// </summary>
-		/// <param name="iChild">The child index.</param>
+		/// <param Name="iChild">The child index.</param>
 		private void SiftUpMax(int iChild)
 		{
 			// Max-side parent: (x/2-1)|1
@@ -380,7 +380,7 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Bubble elements down the min side of the tree.
 		/// </summary>
-		/// <param name="iParent">The parent index.</param>
+		/// <param Name="iParent">The parent index.</param>
 		private void SiftDownMin(int iParent)
 		{
 			// For each child of the parent.
@@ -413,7 +413,7 @@ namespace Gamelogic.Internal.KDTree
 		/// <summary>
 		/// Bubble elements down the max side of the tree.
 		/// </summary>
-		/// <param name="iParent"></param>
+		/// <param Name="iParent"></param>
 		private void SiftDownMax(int iParent)
 		{
 			// For each child on the max side of the tree.

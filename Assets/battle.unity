@@ -352,11 +352,22 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 153152833}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1052489474}
+        m_MethodName: PlayerSelectTeam
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &153152833
@@ -5055,11 +5066,22 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1821229607}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1052489474}
+        m_MethodName: PlayerSelectItem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1821229607
@@ -5689,10 +5711,10 @@ RectTransform:
   - {fileID: 729830586}
   m_Father: {fileID: 1052489470}
   m_RootOrder: 5
-  m_AnchorMin: {x: 0.43650708, y: 0.05357782}
-  m_AnchorMax: {x: 0.96076435, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.00025177002}
-  m_SizeDelta: {x: -0.000061035, y: -0.00050354}
+  m_AnchorMin: {x: 0.42000002, y: 0.03454577}
+  m_AnchorMax: {x: 0.9448438, y: 0.47745427}
+  m_AnchoredPosition: {x: 0.12800026, y: 0.3800001}
+  m_SizeDelta: {x: -0.000061035156, y: 1.9994965}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2051504273
 MonoBehaviour:

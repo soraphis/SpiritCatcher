@@ -19,7 +19,8 @@ namespace MarkLight
         #region Fields
 
         private List<T> _list;
-        public event EventHandler<ListChangedEventArgs> ListChanged;
+        private object _selectedItem;
+        public event EventHandler<ListChangedEventArgs> ListChanged;        
 
         #endregion
 
@@ -100,6 +101,105 @@ namespace MarkLight
             if (ListChanged != null)
             {
                 ListChanged(this, new ListChangedEventArgs { ListChangeAction = ListChangeAction.Add, StartIndex = startIndex, EndIndex = endIndex });
+            }
+        }
+
+        /// <summary>
+        /// Replaces the items in the list.
+        /// </summary>
+        public void Replace(IEnumerable<T> newItems)
+        {
+            var newItemsList = new List<T>(newItems);
+            int newItemsCount = newItemsList.Count;
+            if (newItemsCount <= 0)
+            {
+                Clear();
+                return;
+            }
+
+            int replaceCount = newItemsCount >= Count ? Count : newItemsCount;            
+            for (int i = 0; i < replaceCount; ++i)
+            {
+                _list[i] = newItemsList[i];
+            }
+
+            if (ListChanged != null)
+            {
+                ListChanged(this, new ListChangedEventArgs { ListChangeAction = ListChangeAction.Replace, StartIndex = 0, EndIndex = replaceCount - 1 });
+            }
+
+            if (newItemsCount > Count)
+            {
+                // old list smaller than new - add items
+                AddRange(newItemsList.Skip(replaceCount));
+            }
+            else if (newItemsCount < Count)
+            {
+                // old list larger than new - remove items
+                RemoveRange(newItemsCount, Count - newItemsCount);
+            }
+        }
+
+        /// <summary>
+        /// Replaces a single item in the list.
+        /// </summary>
+        public void Replace(int index, T item)
+        {
+            if (index < 0 || index >= Count)
+                return;
+
+            _list[index] = item;
+            if (ListChanged != null)
+            {
+                ListChanged(this, new ListChangedEventArgs { ListChangeAction = ListChangeAction.Replace, StartIndex = index, EndIndex = index });
+            }
+        }
+
+        /// <summary>
+        /// Informs observers that item has been modified.
+        /// </summary>
+        public void ItemModified(T item, string fieldPath = "")
+        {
+            int index = IndexOf(item);
+            if (index < 0)
+                return;
+
+            ItemsModified(index, index, fieldPath);
+        }
+
+        /// <summary>
+        /// Informs observers that item has been modified.
+        /// </summary>
+        public void ItemModified(int index, string fieldPath = "")
+        {
+            if (index < 0 || index >= Count)
+                return;
+            
+            ItemsModified(index, index, fieldPath);            
+        }
+
+        /// <summary>
+        /// Informs observers that all items have been modified.
+        /// </summary>
+        public void ItemsModified(string fieldPath = "")
+        {
+            if (Count <= 0)
+                return;
+
+            if (ListChanged != null)
+            {
+                ListChanged(this, new ListChangedEventArgs { ListChangeAction = ListChangeAction.Modify, StartIndex = 0, EndIndex = Count - 1, FieldPath = fieldPath });
+            }
+        }
+
+        /// <summary>
+        /// Informs observers that items have been modified.
+        /// </summary>
+        public void ItemsModified(int startIndex, int endIndex, string fieldPath = "")
+        {
+            if (ListChanged != null)
+            {
+                ListChanged(this, new ListChangedEventArgs { ListChangeAction = ListChangeAction.Modify, StartIndex = startIndex, EndIndex = endIndex, FieldPath = fieldPath });
             }
         }
 
@@ -561,6 +661,45 @@ namespace MarkLight
             return _list.TrueForAll(predicate);
         }
 
+        /// <summary>
+        /// Sets selected item without notifying observers.
+        /// </summary>
+        public void SetSelected(object item)
+        {
+            _selectedItem = item;
+        }
+
+        /// <summary>
+        /// Gets index of an item.
+        /// </summary>
+        public int GetIndex(object item)
+        {
+            return item != null ? IndexOf((T)item) : -1;
+        }
+
+        /// <summary>
+        /// Scrolls to item.
+        /// </summary>
+        public void ScrollTo(T item, ElementAlignment? alignment = null, ElementMargin offset = null)
+        {
+            int index = _list.IndexOf(item);
+            if (index >= 0)
+            {
+                ScrollTo(index, alignment, offset);
+            }
+        }
+
+        /// <summary>
+        /// Scrolls to item.
+        /// </summary>
+        public void ScrollTo(int index, ElementAlignment? alignment = null, ElementMargin offset = null)
+        {
+            if (ListChanged != null)
+            {
+                ListChanged(this, new ListChangedEventArgs { ListChangeAction = ListChangeAction.ScrollTo, StartIndex = index, EndIndex = index, Alignment = alignment, Offset = offset });
+            }
+        }
+
         #endregion
 
         #region Properties
@@ -622,6 +761,50 @@ namespace MarkLight
                     if (ListChanged != null)
                     {
                         ListChanged(this, new ListChangedEventArgs { ListChangeAction = ListChangeAction.Replace, StartIndex = index, EndIndex = index });
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the selected item.
+        /// </summary>
+        public T SelectedItem
+        {
+            get
+            {
+                return _selectedItem != null ? (T)_selectedItem : default(T);
+            }
+            set
+            {
+                SelectedIndex = IndexOf(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the selected index.
+        /// </summary>
+        public int SelectedIndex
+        {
+            get
+            {
+                return _selectedItem != null ? IndexOf((T)_selectedItem) : -1;
+            }
+            set
+            {
+                if (value < 0 || value >= Count)
+                {
+                    _selectedItem = null;
+                    return;
+                }
+
+                int currentIndex = SelectedIndex;
+                if (currentIndex != value)
+                {
+                    _selectedItem = this[value];
+                    if (ListChanged != null)
+                    {
+                        ListChanged(this, new ListChangedEventArgs { ListChangeAction = ListChangeAction.Select, StartIndex = value, EndIndex = value });
                     }
                 }
             }

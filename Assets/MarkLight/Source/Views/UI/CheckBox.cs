@@ -37,6 +37,12 @@ namespace MarkLight.Views.UI
         [ChangeHandler("IsDisabledChanged")]
         public _bool IsDisabled;
 
+        /// <summary>
+        /// Indicates if the check box can be interacted with.        
+        /// </summary>
+        /// <d>If true the check box can only be set programmatically rather than by the user.</d>
+        public _bool IsInteractable;
+
         #region CheckBoxGroup
 
         /// <summary>
@@ -248,6 +254,7 @@ namespace MarkLight.Views.UI
             Height.DirectValue = new ElementSize(40);
             CheckBoxImageView.Width.DirectValue = new ElementSize(40);
             CheckBoxImageView.Height.DirectValue = new ElementSize(40);
+            IsInteractable.DirectValue = true;
         }
 
         /// <summary>
@@ -301,7 +308,7 @@ namespace MarkLight.Views.UI
             }
             else
             {
-                SetState(IsChecked ? "Checked" : "Default");
+                SetState(IsChecked ? "Checked" : DefaultStateName);
 
                 // enable button actions
                 Click.IsDisabled = false;
@@ -313,6 +320,9 @@ namespace MarkLight.Views.UI
         /// </summary>
         public void CheckBoxClick()
         {
+            if (!IsInteractable)
+                return;
+
             IsChecked.Value = !IsChecked;
         }
 

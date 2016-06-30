@@ -46,8 +46,8 @@ namespace MarkLight.Views.UI
 
             if (columnHeaders.Count > 0 && columns.Count > columnHeaders.Count)
             {
-                Debug.LogWarning(String.Format("[MarkLight] {0}: Row contains more columns ({1}) than there are column headers ({2}).", name,
-                    columns.Count, columnHeaders.Count));
+                Utils.LogWarning("[MarkLight] {0}: Row contains more columns ({1}) than there are column headers ({2}).", name,
+                    columns.Count, columnHeaders.Count);
 
                 // remove columns outside the bounds
                 columns = new List<Column>(columns.Take(columnHeaders.Count));
@@ -73,7 +73,7 @@ namespace MarkLight.Views.UI
                 for (int i = 0; i < columns.Count; ++i)
                 {
                     var defWidth = columnHeaders[i].Width.Value;
-                    if (!columnHeaders[i].IsSet("Width") || defWidth.Fill == true)
+                    if (!columnHeaders[i].Width.IsSet || defWidth.Fill == true)
                     {
                         columnsToFill.Add(columns[i]);
                         continue;
@@ -105,12 +105,12 @@ namespace MarkLight.Views.UI
             float offset = 0;
             foreach (var column in columns)
             {
-                if (!column.IsSet("TextAlignment"))
+                if (!column.TextAlignment.IsSet)
                 {
                     column.TextAlignment.Value = ParentDataGrid.ColumnTextAlignment.Value;
                 }
 
-                if (!column.IsSet("TextMargin"))
+                if (!column.TextMargin.IsSet)
                 {
                     column.TextMargin.Value = ParentDataGrid.ColumnTextMargin.Value;
                 }
@@ -143,7 +143,7 @@ namespace MarkLight.Views.UI
         {
             get
             {
-                if (!_parentDataGrid)
+                if (_parentDataGrid == null)
                 {
                     _parentDataGrid = this.FindParent<DataGrid>();
                 }

@@ -1,4 +1,5 @@
-﻿#region Using Statements
+﻿//#define DISABLE_INIT_TRYCATCH // uncomment if you don't want exceptions to be caught during initialization of views
+#region Using Statements
 using MarkLight.ValueConverters;
 using MarkLight.Views;
 using System;
@@ -8,10 +9,13 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System.Collections;
+using MarkLight.Views.UI;
 #endregion
 
 namespace MarkLight
@@ -20,7 +24,7 @@ namespace MarkLight
     /// Base class for view models.
     /// </summary>
     /// <d>Base class for all view models in the framework. All view models must be a subclass of this class to be processed and managed the framework. </d>
-    public class View : MonoBehaviour
+    public class View : MonoBehaviour, IEnumerable<View>
     {
         #region Fields
 
@@ -34,34 +38,52 @@ namespace MarkLight
         /// <summary>
         /// The style of the view.
         /// </summary>
-        /// <d>Used as selector by the styles. Specifies the name of the style that is to be applied to the view. The style is applied when the view is created (usually in the editor as the view XML is processed).</d>
+        /// <d>Used as selector by the styles. Specifies the name of the style that is to be applied to the view and any children that explicitly inherits its style. The style is applied when the view is created (usually in the editor as the XUML is processed).</d>
         public string Style;
+
+        /// <summary>
+        /// Based on style.
+        /// </summary>
+        /// <d>Used in style definition to specify which style it's based on.</d>
+        public string BasedOn;
 
         /// <summary>
         /// The theme of the view.
         /// </summary>
-        /// <d>Specifies the name of the theme that is applied to the view. The theme determines which set of styles are to be considered when applying matching styles to the view.</d>
+        /// <d>Specifies the name of the theme that is applied to the view and its children. The theme determines which set of styles are to be considered when applying matching styles to the view.</d>
         public string Theme;
+
+        /// <summary>
+        /// Base directory.
+        /// </summary>
+        /// <d>Specifies the base directory to be used by the view and its children. The base directory is used when loading resources such as sprites, fonts, etc.</d>
+        public string BaseDirectory;
+
+        /// <summary>
+        /// Unit size.
+        /// </summary>
+        /// <d>Specifies the user-defined unit size to be used by the view and its children. Used when element size is specified in user-defined units to convert it into pixels.</d>
+        public Vector3 UnitSize;
 
         /// <summary>
         /// Layout parent view.
         /// </summary>
         /// <d>The layout parent view is the direct ascendant of the current view in the scene object hierarchy.</d>
-        [NotSetFromXml]
+        [NotSetFromXuml]
         public View LayoutParent;
 
         /// <summary>
         /// Parent view.
         /// </summary>
-        /// <d>The parent of the view is the logical parent to which this view belongs. In the view XML any view you can see has the current view as its logical parent.</d>
-        [NotSetFromXml]
+        /// <d>The parent of the view is the logical parent to which this view belongs. In the XUML any view you can see has the current view as its logical parent.</d>
+        [NotSetFromXuml]
         public View Parent;
 
         /// <summary>
         /// Content view.        
         /// </summary>
         /// <d>View that is the parent to the content of this view. Usually it is the current view itself but when a ContentPlaceholder is used the Content points to the view that contains the ContentPlaceholder.</d>
-        [NotSetFromXml]
+        [NotSetFromXuml]
         public View Content;
 
         /// <summary>
@@ -69,7 +91,7 @@ namespace MarkLight
         /// </summary>
         /// <d>View state name. Determines state values to be applied to the view. All views start out in the "Default" state and when the state changes the values associated with that state are applied to the view.</d>
         [ChangeHandler("StateChanged", TriggerImmediately = true)]
-        [NotSetFromXml]
+        [NotSetFromXuml]
         public _string State;
 
         /// <summary>
@@ -110,7 +132,7 @@ namespace MarkLight
         /// <summary>
         /// Rotation of the view.
         /// </summary>
-        /// <d>The local rotation of the view in relation to the layout parent view transform. Stored as a Quaternion but specified in the view XML as euler angles.</d>
+        /// <d>The local rotation of the view in relation to the layout parent view transform. Stored as a Quaternion but specified in XUML as euler angles.</d>
         [MapTo("Transform.localRotation")]
         public _Quaternion Rotation;
 
@@ -127,6 +149,7 @@ namespace MarkLight
         /// Item data.
         /// </summary>
         /// <d>Provides a mechanism to bind to dynamic list data. The item is set, e.g. by the List view on the child views it generates for its dynamic list data. The Item points to the list item data the view is associated with.</d>
+        [GenericViewField]
         public _object Item;
 
         /// <summary>
@@ -136,44 +159,60 @@ namespace MarkLight
         public _bool IsTemplate;
 
         /// <summary>
+        /// Activated view action.
+        /// </summary>
+        /// <d>Triggered every time the view is activated. Also triggered once the view is intialized if it starts out activated.</d>
+        public ViewAction Activated;
+
+        /// <summary>
+        /// Deactivated view action.
+        /// </summary>
+        /// <d>Triggered every time the view is deactivated. Also triggered once the view is intialized if it starts out deactivated.</d>
+        public ViewAction Deactivated;
+
+        /// <summary>
         /// Indicates if the view has been destroyed by GameObject.Destroy().
         /// </summary>
-        [NotSetFromXml]
+        [NotSetFromXuml]
         public _bool IsDestroyed;
 
         /// <summary>
         /// Indicates if the view has been created dynamically. 
         /// </summary>
-        [NotSetFromXml]
+        [NotSetFromXuml]
         public _bool IsDynamic;
 
         /// <summary>
         /// The name of the view's type.
         /// </summary>
-        [NotSetFromXml]
+        [NotSetFromXuml]
         public string ViewTypeName;
 
         /// <summary>
-        /// Name of the view as given by the view XML.
+        /// Name of the view as specified in the XUML.
         /// </summary>
-        [NotSetFromXml]
-        public string ViewXmlName;
+        [NotSetFromXuml]
+        public string ViewXumlName;
 
-        [NotSetFromXml]
+        [NotSetFromXuml]
         public List<ViewFieldBinding> ViewFieldBindings;
 
-        [NotSetFromXml]
+        [NotSetFromXuml]
         public List<ViewActionEntry> ViewActionEntries;
 
-        [NotSetFromXml]
+        [NotSetFromXuml]
         public List<ViewFieldStateValue> ViewFieldStateValues;
 
-        [NotSetFromXml]
+        [NotSetFromXuml]
         public List<string> SetViewFieldNames;
+
+        [NotSetFromXuml]
+        public ValueConverterContext ValueConverterContext;
 
         public static string DefaultStateName = "Default";
         public static string AnyStateName = "Any";
 
+        private ViewTypeData _viewTypeData;
         private Dictionary<string, ViewFieldData> _viewFieldData;
         private Dictionary<string, Dictionary<string, ViewFieldStateValue>> _stateValues;
         private Dictionary<string, Dictionary<string, StateAnimation>> _stateAnimations;
@@ -183,9 +222,10 @@ namespace MarkLight
         private Dictionary<string, MethodInfo> _changeHandlerMethods;
         private Dictionary<string, string> _expressionViewField;
         private List<ViewAction> _eventSystemViewActions;
-        private bool _defaultState;
+        private bool _isDefaultState;
+        private bool _isInitialized;
         private string _previousState;
-        private StateAnimation _stateAnimation;
+        private StateAnimation _stateAnimation;        
 
 #if UNITY_4_6 || UNITY_5_0
         private bool _eventSystemTriggersInitialized;
@@ -242,6 +282,7 @@ namespace MarkLight
         public object SetValue(string viewField, object value, bool updateDefaultState, HashSet<ViewFieldData> callstack, ValueConverterContext context, bool notifyObservers)
         {
             callstack = callstack ?? new HashSet<ViewFieldData>();
+            context = context ?? ValueConverterContext;
 
             // Debug.Log(String.Format("{0}: {1} = {2}", GameObjectName, viewField, value));
 
@@ -249,20 +290,21 @@ namespace MarkLight
             var viewFieldData = GetViewFieldData(viewField);
             if (viewFieldData == null)
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to assign value \"{1}\" to view field \"{2}\". View field not found.", GameObjectName, value, viewField));
+                Utils.LogError("[MarkLight] {0}: Unable to assign value \"{1}\" to view field \"{2}\". View field not found.", GameObjectName, value, viewField);
                 return null;
             }
 
             // if default state set default state value
-            if (_defaultState && updateDefaultState)
+            if (_isDefaultState && updateDefaultState)
             {
                 var defaultStateValues = _stateValues.Get(DefaultStateName);
                 if (defaultStateValues != null)
                 {
                     // update default state value
-                    if (defaultStateValues.ContainsKey(viewField))
+                    ViewFieldStateValue defaultStateValue;
+                    if (defaultStateValues.TryGetValue(viewField, out defaultStateValue))
                     {
-                        defaultStateValues[viewField].SetValue(value);
+                        defaultStateValue.SetValue(value, viewFieldData.ValueConverter.ConvertToString(value));
                     }
                 }
             }
@@ -274,7 +316,7 @@ namespace MarkLight
             }
             catch (Exception e)
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to assign value \"{1}\" to view field \"{2}\". Exception thrown: {3}", GameObjectName, value, viewField, Utils.GetError(e)));
+                Utils.LogError("[MarkLight] {0}: Unable to assign value \"{1}\" to view field \"{2}\". Exception thrown: {3}", GameObjectName, value, viewField, Utils.GetError(e));
                 return null;
             }
         }
@@ -304,7 +346,7 @@ namespace MarkLight
             var viewFieldData = GetViewFieldData(viewField);
             if (viewFieldData == null)
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to set is-set indicator on view field \"{1}\". View field not found.", GameObjectName, viewField));
+                Utils.LogError("[MarkLight] {0}: Unable to set is-set indicator on view field \"{1}\". View field not found.", GameObjectName, viewField);
                 return;
             }
 
@@ -320,7 +362,7 @@ namespace MarkLight
             var viewFieldData = GetViewFieldData(viewField);
             if (viewFieldData == null)
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". View field not found.", GameObjectName, viewFieldBinding, viewField));
+                Utils.LogError("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". View field not found.", GameObjectName, viewFieldBinding, viewField);
                 return;
             }
 
@@ -338,24 +380,49 @@ namespace MarkLight
                 string[] bindings = trimmedBinding.Split(delimiterChars, StringSplitOptions.RemoveEmptyEntries);
                 if (bindings.Length < 1)
                 {
-                    Debug.LogError(String.Format("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". Improperly formatted binding string.", GameObjectName, viewFieldBinding, viewField));
+                    Utils.LogError("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". Improperly formatted binding string.", GameObjectName, viewFieldBinding, viewField);
                     return;
                 }
 
                 bindingValueObserver.BindingType = BindingType.MultiBindingTransform;
                 bindingValueObserver.ParentView = Parent;
-                bindingValueObserver.TransformMethod = Parent.GetType().GetMethod(bindings[0], BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 
+                // get transformation method
+                string transformMethodName = bindings[0];
+                Type transformMethodViewType = Parent.GetType();
+
+                string[] transformStr = bindings[0].Split('.');
+                if (transformStr.Length == 2)
+                {
+                    transformMethodViewType = ViewData.GetViewType(transformStr[0]);
+                    transformMethodName = transformStr[1];
+
+                    if (transformMethodViewType == null)
+                    {
+                        Utils.LogError("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". View \"{3}\" not found.", GameObjectName, viewFieldBinding, viewField, transformStr[0]);
+                        return;
+                    }
+                }
+
+                bindingValueObserver.TransformMethod = transformMethodViewType.GetMethod(transformMethodName, BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
                 if (bindingValueObserver.TransformMethod == null)
                 {
-                    Debug.LogError(String.Format("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". Transform method \"{3}\" not found in view type \"{4}\".", GameObjectName, viewFieldBinding, viewField, bindings[0], Parent.ViewTypeName));
+                    Utils.LogError("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". Transform method \"{3}\" not found in view type \"{4}\".", GameObjectName, viewFieldBinding, viewField, bindings[0], Parent.ViewTypeName);
                     return;
                 }
 
                 foreach (var binding in bindings.Skip(1))
                 {
-                    bool isLocalField, isNegatedField, isOneWay;
-                    var sourceFieldName = ParseBindingString(binding, out isLocalField, out isNegatedField, out isOneWay);
+                    bool isLocalField, isNegatedField, isOneWay, isResource;
+                    var sourceFieldName = ParseBindingString(binding, out isLocalField, out isNegatedField, out isOneWay, out isResource);
+
+                    // is this a binding to a resource in a resource dictionary?
+                    if (isResource)
+                    {
+                        // yes.
+                        SetResourceBinding(bindingValueObserver, sourceFieldName);
+                        continue;
+                    }
 
                     // if the binding is defined as a local field (through the '#' notation) we are binding to a field on this view 
                     // otherwise we are binding to our parent view
@@ -365,12 +432,12 @@ namespace MarkLight
                     var sourceViewFieldData = bindingView.GetViewFieldData(sourceFieldName);
                     if (sourceViewFieldData == null)
                     {
-                        Debug.LogError(String.Format("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". Source binding view field \"{3}\" not found.", GameObjectName, viewFieldBinding, viewField, binding));
+                        Utils.LogError("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". Source binding view field \"{3}\" not found.", GameObjectName, viewFieldBinding, viewField, binding);
                         return;
                     }
                     //Debug.Log(String.Format("Creating binding {0} <-> {1}", sourceViewFieldData.ViewFieldPath, viewFieldData.ViewFieldPath));
 
-                    bindingValueObserver.Sources.Add(new BindingSource(sourceViewFieldData, isNegatedField));
+                    bindingValueObserver.Sources.Add(new ViewFieldBindingSource(sourceViewFieldData, isNegatedField));
                     sourceViewFieldData.RegisterValueObserver(bindingValueObserver);
                 }
             }
@@ -387,7 +454,7 @@ namespace MarkLight
                 if (matches.Count <= 0)
                 {
                     // no bindings found
-                    Debug.LogError(String.Format("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". String contains no binding.", GameObjectName, viewFieldBinding, viewField));
+                    Utils.LogError("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". String contains no binding.", GameObjectName, viewFieldBinding, viewField);
                     return;
                 }
 
@@ -413,8 +480,16 @@ namespace MarkLight
                 foreach (var match in matches)
                 {
                     var binding = match.Groups["field"].Value.Trim();
-                    bool isLocalField, isNegatedField, isOneWay;
-                    var sourceFieldName = ParseBindingString(binding, out isLocalField, out isNegatedField, out isOneWay);
+                    bool isLocalField, isNegatedField, isOneWay, isResource;
+                    var sourceFieldName = ParseBindingString(binding, out isLocalField, out isNegatedField, out isOneWay, out isResource);
+                    
+                    // is this a binding to a resource in a resource dictionary?
+                    if (isResource)
+                    {
+                        // yes.
+                        SetResourceBinding(bindingValueObserver, sourceFieldName);
+                        continue;
+                    }
 
                     // if the binding is defined as a local field (through the '#' notation) we are binding to a field on this view 
                     // otherwise we are binding to our parent view
@@ -424,14 +499,15 @@ namespace MarkLight
                     var sourceViewFieldData = bindingView.GetViewFieldData(sourceFieldName);
                     if (sourceViewFieldData == null)
                     {
-                        Debug.LogError(String.Format("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". Source binding view field \"{3}\" not found.", GameObjectName, viewFieldBinding, viewField, sourceFieldName));
+                        Utils.LogError("[MarkLight] {0}: Unable to assign binding \"{1}\" to view field \"{2}\". Source binding view field \"{3}\" not found.", GameObjectName, viewFieldBinding, viewField, sourceFieldName);
                         return;
                     }
                     //Debug.Log(String.Format("Creating binding {0} <-> {1}", sourceViewFieldData.ViewFieldPath, viewFieldData.ViewFieldPath));
 
-                    bindingValueObserver.Sources.Add(new BindingSource(sourceViewFieldData, isNegatedField));
+                    bindingValueObserver.Sources.Add(new ViewFieldBindingSource(sourceViewFieldData, isNegatedField));
                     sourceViewFieldData.RegisterValueObserver(bindingValueObserver);
 
+                    // handle two-way bindings
                     if (!formatStringBinding && !isOneWay)
                     {
                         bindingValueObserver.BindingType = BindingType.SingleBinding;
@@ -440,10 +516,18 @@ namespace MarkLight
                         var targetBindingValueObserver = new BindingValueObserver();
                         targetBindingValueObserver.BindingType = BindingType.SingleBinding;
                         targetBindingValueObserver.Target = sourceViewFieldData;
-                        targetBindingValueObserver.Sources.Add(new BindingSource(viewFieldData, isNegatedField));
+                        targetBindingValueObserver.Sources.Add(new ViewFieldBindingSource(viewFieldData, isNegatedField));
 
                         viewFieldData.RegisterValueObserver(targetBindingValueObserver);
                         AddValueObserver(targetBindingValueObserver);
+
+                        // if this is a local binding and target view is the same as source view 
+                        // we need to make sure value propagation happens in an intuitive order
+                        // so that if we e.g. bind Text="{#Item.Score}" that Item.Score propagates to Text first. 
+                        if (isLocalField && viewFieldData.TargetView == bindingView)
+                        {
+                            sourceViewFieldData.PropagateFirst = true;
+                        }
                     }
                 }
             }
@@ -452,13 +536,36 @@ namespace MarkLight
         }
 
         /// <summary>
+        /// Sets resource binding.
+        /// </summary>
+        private void SetResourceBinding(BindingValueObserver bindingValueObserver, string sourceFieldName)
+        {
+            string dictionaryName = null;
+            string resourceKey = sourceFieldName;
+
+            int resourceIndex = sourceFieldName.IndexOf('.', 0);
+            if (resourceIndex > 0)
+            {
+                resourceKey = sourceFieldName.Substring(resourceIndex + 1);
+                dictionaryName = sourceFieldName.Substring(0, resourceIndex);
+            }
+
+            var resourceBindingSource = new ResourceBindingSource(dictionaryName, resourceKey);
+            bindingValueObserver.Sources.Add(resourceBindingSource);
+
+            // so here we want to register a resource binding observer in the dictionary
+            ResourceDictionary.RegisterResourceBindingObserver(dictionaryName, resourceKey, bindingValueObserver);
+        }
+
+        /// <summary>
         /// Parses binding string and returns view field path.
         /// </summary>
-        private string ParseBindingString(string binding, out bool isLocalField, out bool isNegatedField, out bool isOneWay)
+        private string ParseBindingString(string binding, out bool isLocalField, out bool isNegatedField, out bool isOneWay, out bool isResource)
         {
             isLocalField = false;
             isNegatedField = false;
             isOneWay = false;
+            isResource = false;
 
             var viewField = binding;
             while (viewField.Length > 0)
@@ -476,6 +583,11 @@ namespace MarkLight
                 else if (viewField.StartsWith("="))
                 {
                     isOneWay = true;
+                    viewField = viewField.Substring(1);
+                }
+                else if (viewField.StartsWith("@"))
+                {
+                    isResource = true;
                     viewField = viewField.Substring(1);
                 }
                 else
@@ -496,7 +608,7 @@ namespace MarkLight
             var viewFieldData = GetViewFieldData(entry.ViewActionFieldName);
             if (viewFieldData == null)
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to assign view action handler \"{1}.{2}()\" to view action \"{3}\". View action not found.", GameObjectName, Parent.ViewTypeName, entry.ViewActionHandlerName, entry.ViewActionFieldName));
+                Utils.LogError("[MarkLight] {0}: Unable to assign view action handler \"{1}.{2}()\" to view action \"{3}\". View action not found.", GameObjectName, Parent.ViewTypeName, entry.ViewActionHandlerName, entry.ViewActionFieldName);
                 return;
             }
 
@@ -527,18 +639,6 @@ namespace MarkLight
             else
             {
                 currentStateValues[stateValue.ViewFieldPath] = stateValue;
-            }
-
-            // if it's a non-default state value make sure we create a equivalent default state value for it
-            bool isDefaultState = stateValue.State == DefaultStateName;
-            if (!isDefaultState)
-            {
-                ViewFieldStateValue defaultStateValue = new ViewFieldStateValue();
-                defaultStateValue.State = DefaultStateName;
-                defaultStateValue.ValueConverterContext = stateValue.ValueConverterContext;
-                defaultStateValue.ViewFieldPath = stateValue.ViewFieldPath;
-                defaultStateValue.SetValue(GetValue(defaultStateValue.ViewFieldPath));
-                SetStateValue(defaultStateValue);
             }
         }
 
@@ -571,7 +671,7 @@ namespace MarkLight
             }
             else
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to assign view change handler \"{1}()\" for view field \"{2}\". Change handler method not found.", GameObjectName, changeHandler.ChangeHandlerName, changeHandler.ViewField));
+                Utils.LogError("[MarkLight] {0}: Unable to assign view change handler \"{1}()\" for view field \"{2}\". Change handler method not found.", GameObjectName, changeHandler.ChangeHandlerName, changeHandler.ViewField);
                 return;
             }
         }
@@ -621,7 +721,7 @@ namespace MarkLight
             if (viewFieldData == null)
             {
                 hasValue = false;
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to get value from view field \"{1}\". View field not found.", GameObjectName, viewField));
+                Utils.LogError("[MarkLight] {0}: Unable to get value from view field \"{1}\". View field not found.", GameObjectName, viewField);
                 return null;
             }
 
@@ -632,7 +732,7 @@ namespace MarkLight
             catch (Exception e)
             {
                 hasValue = false;
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to get value from view field \"{1}\". Exception thrown: {2}", GameObjectName, viewField, Utils.GetError(e)));
+                Utils.LogError("[MarkLight] {0}: Unable to get value from view field \"{1}\". Exception thrown: {2}", GameObjectName, viewField, Utils.GetError(e));
                 return null;
             }
         }
@@ -654,7 +754,7 @@ namespace MarkLight
             var viewFieldData = GetViewFieldData(viewField);
             if (viewFieldData == null)
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to get set-value from view field \"{1}\". View field not found.", GameObjectName, viewField));
+                Utils.LogError("[MarkLight] {0}: Unable to get set-value from view field \"{1}\". View field not found.", GameObjectName, viewField);
                 return false;
             }
 
@@ -666,10 +766,6 @@ namespace MarkLight
         /// </summary>
         public virtual void InitializeInternalDefaultValues()
         {
-            State.DirectValue = DefaultStateName;
-            IsActive.DirectValue = true;
-            _defaultState = true;
-
             // initialize lists and dictionaries
             _viewFieldData = new Dictionary<string, ViewFieldData>();
             _stateValues = new Dictionary<string, Dictionary<string, ViewFieldStateValue>>();
@@ -681,7 +777,7 @@ namespace MarkLight
             _expressionViewField = new Dictionary<string, string>();
             _eventSystemViewActions = new List<ViewAction>();
             _previousState = State;
-            _defaultState = State == DefaultStateName;
+            _isDefaultState = State == DefaultStateName;
         }
 
         /// <summary>
@@ -736,6 +832,7 @@ namespace MarkLight
             }
 
             InitEventSystemTriggers();
+            IsInitialized = true;
         }
 
         /// <summary>
@@ -840,7 +937,7 @@ namespace MarkLight
         /// <summary>
         /// Called once at the end of a frame. Triggers queued change handlers.
         /// </summary>
-        public void LateUpdate()
+        public virtual void LateUpdate()
         {
             TriggerChangeHandlers();
 
@@ -870,7 +967,7 @@ namespace MarkLight
                     }
                     catch (Exception e)
                     {
-                        Debug.LogError(String.Format("[MarkLight] {0}: Exception thrown in change handler \"{1}\": {2}", GameObjectName, changeHandler, Utils.GetError(e)));
+                        Utils.LogError("[MarkLight] {0}: Exception thrown in change handler \"{1}\": {2}", GameObjectName, changeHandler, Utils.GetError(e));
                     }
                 }
             }
@@ -881,7 +978,7 @@ namespace MarkLight
         /// </summary>
         public void PropagateBindings()
         {
-            foreach (var viewFieldData in _viewFieldData.Values)
+            foreach (var viewFieldData in _viewFieldData.Values.OrderByDescending(x => x.PropagateFirst))
             {
                 viewFieldData.NotifyBindingValueObservers(new HashSet<ViewFieldData>());
             }
@@ -892,7 +989,8 @@ namespace MarkLight
         /// </summary>
         public void QueueAllChangeHandlers()
         {
-            foreach (var viewFieldData in _viewFieldData.Values)
+            var _viewFieldDataList = new List<ViewFieldData>(_viewFieldData.Values);                        
+            foreach (var viewFieldData in _viewFieldDataList)
             {
                 viewFieldData.NotifyChangeHandlerValueObservers(new HashSet<ViewFieldData>());
             }
@@ -923,13 +1021,13 @@ namespace MarkLight
             var viewFieldData = GetViewFieldData(viewField);
             if (viewFieldData == null)
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Unable to set state value \"{1}-{2}\". View field \"{2}\" not found.", GameObjectName, state, viewField));
+                Utils.LogError("[MarkLight] {0}: Unable to set state value \"{1}-{2}\". View field \"{2}\" not found.", GameObjectName, state, viewField);
                 return;
             }
 
             if (viewFieldData.ValueConverter != null)
             {
-                viewFieldData.ValueConverter.Convert(value, context != null ? context : ValueConverterContext.Empty);
+                viewFieldData.ValueConverter.Convert(value, context != null ? context : ValueConverterContext.Default);
             }
 
             // set state value
@@ -961,6 +1059,19 @@ namespace MarkLight
                         Value = value,
                         ValueConverterContext = context
                     });
+
+                    // for every state value we need to store the default value so we can revert back to it
+                    var defaultStateValue = ViewFieldStateValues.FirstOrDefault(x => x.State == DefaultStateName && x.ViewFieldPath == mappedViewField);
+                    if (defaultStateValue == null)
+                    {
+                        ViewFieldStateValues.Add(new ViewFieldStateValue
+                        {
+                            State = DefaultStateName,
+                            ViewFieldPath = mappedViewField,
+                            ValueConverterContext = ValueConverterContext.Empty,
+                            DefaultValueNotSet = true
+                        });
+                    }
                 }
             }
         }
@@ -1017,6 +1128,8 @@ namespace MarkLight
         internal void QueueChangeHandler(string name)
         {
             _changeHandlers.Add(name);
+
+            // TODO optimize by caching this info in ViewTypeData
             if (!_changeHandlerMethods.ContainsKey(name))
             {
                 _changeHandlerMethods.Add(name, GetType().GetMethod(name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic));
@@ -1024,7 +1137,7 @@ namespace MarkLight
         }
 
         /// <summary>
-        /// Called after the view is initialized but before any XML values are set. Used to set default values on the view.
+        /// Called after the view is initialized but before any XUML values are set. Used to set default values on the view.
         /// </summary>
         public virtual void SetDefaultValues()
         {
@@ -1041,6 +1154,15 @@ namespace MarkLight
         {
             QueueChangeHandler("LayoutChanged");
 
+            // inform parents of update
+            NotifyLayoutChanged();
+        }
+
+        /// <summary>
+        /// Notifies the parents that the layout of this view has changed.
+        /// </summary>
+        public void NotifyLayoutChanged()
+        {
             // inform parents of update
             this.ForEachParent<View>(x => x.QueueChangeHandler("ChildLayoutChanged"));
         }
@@ -1082,6 +1204,17 @@ namespace MarkLight
         public virtual void IsActiveChanged()
         {
             gameObject.SetActive(IsActive.Value);
+
+            if (IsActive.Value)
+            {
+                Activated.Trigger();
+            }
+            else
+            {
+                Deactivated.Trigger();
+            }
+
+            NotifyLayoutChanged();
         }
 
         /// <summary>
@@ -1089,13 +1222,6 @@ namespace MarkLight
         /// </summary>
         public virtual void StateChanged()
         {
-            // no state changes are made while generating UI in editor, this is to prevent default state-values from being overwritten
-            if (!Application.isPlaying)
-            {
-                State.DirectValue = DefaultStateName;
-                return;
-            }
-
             // stop previous animation if active and get new state animation
             if (_stateAnimation != null && !_stateAnimation.IsAnimationCompleted)
             {
@@ -1103,7 +1229,34 @@ namespace MarkLight
             }
             _stateAnimation = GetStateAnimation(_previousState, State);
 
-            _defaultState = State == DefaultStateName;
+            // if we are changing from default state we need to make sure all default state values has been set
+            if (_isDefaultState)
+            {
+                var defaultStateValues = _stateValues.Get(DefaultStateName);
+                if (defaultStateValues != null) // no state values set nothing to do
+                {
+                    foreach (var stateValue in defaultStateValues.Values)
+                    {
+                        if (stateValue.DefaultValueNotSet)
+                        {
+                            // get view field data
+                            var viewFieldData = GetViewFieldData(stateValue.ViewFieldPath);
+                            if (viewFieldData == null)
+                            {
+                                Utils.LogError("[MarkLight] {0}: Unable to assign default state value to view field \"{1}\". View field not found.", GameObjectName, stateValue.ViewFieldPath);
+                            }
+                            else
+                            {
+                                // set default value
+                                var value = GetValue(stateValue.ViewFieldPath);
+                                stateValue.SetValue(value, viewFieldData.ValueConverter.ConvertToString(value));
+                            }
+                        }
+                    }
+                }
+            }
+
+            _isDefaultState = State == DefaultStateName;
             _previousState = State;
 
             // get state values
@@ -1164,6 +1317,16 @@ namespace MarkLight
         }
 
         /// <summary>
+        /// Activates the view and sends data to it.
+        /// </summary>
+        public void Activate(object data)
+        {
+            IsActive.DirectValue = true;
+            gameObject.SetActive(true);
+            Activated.Trigger(data);
+        }
+
+        /// <summary>
         /// Deactivates the view.
         /// </summary>
         public void Deactivate()
@@ -1180,12 +1343,40 @@ namespace MarkLight
         }
 
         /// <summary>
+        /// Creates a child view of specified type.
+        /// </summary>
+        public T CreateView<T>(int siblingIndex = -1, ValueConverterContext context = null, string themeName = "", string id = "", string style = "", IEnumerable<XElement> contentXuml = null) where T : View
+        {
+            var view = ViewData.CreateView<T>(this, this, context, themeName, Id, style);
+
+            // set view sibling index
+            if (siblingIndex > 0)
+            {
+                view.GameObject.transform.SetSiblingIndex(siblingIndex);
+            }
+
+            view.IsDynamic.DirectValue = true;
+            return view;           
+        }
+
+        /// <summary>
         /// Creates a view from a template and adds it to a parent at specified index.
         /// </summary>
-        public static T CreateView<T>(T template, View layoutParent, int siblingIndex = -1) where T : View
+        public static T CreateView<T>(T template, View layoutParent, int siblingIndex = -1, ViewPool viewPool = null) where T : View
         {
-            // instantiate template
-            var go = Instantiate(template.gameObject) as GameObject;            
+            GameObject go = null;
+
+            // if pool isn't empty get an item from the pool
+            if (viewPool != null && !viewPool.IsEmpty)
+            {
+                go = viewPool.GetView().gameObject;
+            }
+            else
+            {
+                // instantiate template
+                go = Instantiate(template.gameObject) as GameObject;
+            }
+
             go.hideFlags = UnityEngine.HideFlags.None;
 
             // set layout parent
@@ -1200,27 +1391,65 @@ namespace MarkLight
 
             view.IsTemplate.DirectValue = false;
             view.IsDynamic.DirectValue = true;
+            //view.LayoutParent = layoutParent;
             return view;
         }
 
         /// <summary>
-        /// Adds a view from a template.
+        /// Creates a child view from a template.
         /// </summary>
-        public T CreateView<T>(T template, int siblingIndex = -1) where T : View
+        public T CreateView<T>(T template, int siblingIndex = -1, ViewPool viewPool = null) where T : View
         {
-            return CreateView(template, this, siblingIndex);
+            return CreateView(template, this, siblingIndex, viewPool);
+        }
+
+        /// <summary>
+        /// Creates a pool of ready to be used views that can be drawn from when a new view is needed rather than creating them on-demand. Used to improve performance.
+        /// </summary>
+        public ViewPool GetViewPool(string name, View template, int poolSize, int maxPoolSize)
+        {
+            // does a view pool container exist for this template?
+            var viewPoolContainer = this.Find<ViewPoolContainer>(x => x.Id == name && x.Template == template, false);
+            if (viewPoolContainer == null)
+            {
+                // no. create a new one 
+                viewPoolContainer = CreateView<ViewPoolContainer>();
+                viewPoolContainer.Id = name;
+                viewPoolContainer.PoolSize.DirectValue = poolSize;
+                viewPoolContainer.MaxPoolSize.DirectValue = maxPoolSize;
+                viewPoolContainer.IsActive.DirectValue = false;
+                viewPoolContainer.Template = template;
+                viewPoolContainer.HideFlags.Value = UnityEngine.HideFlags.HideInHierarchy;
+                // viewPoolContainer.HideFlags.Value = UnityEngine.HideFlags.HideAndDontSave; // TODO enable to only create during runtime
+                viewPoolContainer.InitializeViews();                                
+            }            
+            else
+            {
+                // yes. just update pool size
+                viewPoolContainer.PoolSize.Value = poolSize;
+                viewPoolContainer.MaxPoolSize.Value = maxPoolSize;
+                viewPoolContainer.Template = template;
+                viewPoolContainer.UpdateViewPool();
+            }
+        
+            return new ViewPool(viewPoolContainer);
         }
 
         /// <summary>
         /// Notifies all value observers that are dependent on the specified field. E.g. when field "Name" changes, value observers on "Name.FirstName"
         /// and "Name.LastName" are notified in this method. 
         /// </summary>
-        public void NotifyDependentValueObservers(string viewFieldPath)
+        public void NotifyDependentValueObservers(string viewFieldPath, bool includeViewField = false)
         {
             foreach (var viewFieldData in _viewFieldData.Values)
             {
                 if (!viewFieldData.IsOwner)
                     continue;
+
+                if (includeViewField && viewFieldData.ViewFieldPath == viewFieldPath)
+                {
+                    viewFieldData.NotifyValueObservers(new HashSet<ViewFieldData>());
+                }
 
                 if (viewFieldData.ViewFieldPathInfo.Dependencies.Count > 0 &&
                     viewFieldData.ViewFieldPathInfo.Dependencies.Contains(viewFieldPath))
@@ -1233,7 +1462,7 @@ namespace MarkLight
         /// <summary>
         /// Moves the view to another view.
         /// </summary>
-        public void MoveTo(View target, int childIndex = -1)
+        public void MoveTo(View target, int childIndex = -1, bool updateLayoutParent = true)
         {
             transform.SetParent(target.transform, false);
             if (childIndex >= 0)
@@ -1241,7 +1470,18 @@ namespace MarkLight
                 transform.SetSiblingIndex(childIndex);
             }
 
-            SetValue(() => LayoutParent, target);
+            if (updateLayoutParent)
+            {
+                SetValue(() => LayoutParent, target);
+            }
+        }
+
+        /// <summary>
+        /// Initializes this view and all children. Used if the view is created dynamically and need to be called once to properly initialize the view.
+        /// </summary>
+        public void InitializeViews()
+        {
+            ViewPresenter.Instance.InitializeViews(this);
         }
 
         /// <summary>
@@ -1273,9 +1513,204 @@ namespace MarkLight
             return false;
         }
 
-#endregion
+        /// <summary>
+        /// Calls InitializeInternalDefaultValues() and catches and prints any exception thrown.
+        /// </summary>
+        internal void TryInitializeInternalDefaultValues()
+        {
+#if !DISABLE_INIT_TRYCATCH
+            try
+            {
+                InitializeInternalDefaultValues();
+            }
+            catch (Exception e)
+            {
+                Utils.LogError("[MarkLight] {0}: InitializeInternalDefaultValues() failed. Exception thrown: {1}", GameObjectName, Utils.GetError(e));
+            }
+#else
+            InitializeInternalDefaultValues();
+#endif 
+        }
 
-#region Properties
+        /// <summary>
+        /// Calls InitializeInternalDefaultValues() and catches and prints any exception thrown if define is set.
+        /// </summary>
+        internal void TryInitializeInternal()
+        {
+#if !DISABLE_INIT_TRYCATCH
+            try
+            {
+                InitializeInternal();
+            }
+            catch (Exception e)
+            {
+                Utils.LogError("[MarkLight] {0}: InitializeInternal() failed. Exception thrown: {1}", GameObjectName, Utils.GetError(e));
+            }
+#else
+            InitializeInternal();
+#endif 
+        }
+
+        /// <summary>
+        /// Calls Initialize() and catches and prints any exception thrown.
+        /// </summary>
+        internal void TryInitialize()
+        {
+#if !DISABLE_INIT_TRYCATCH
+            try
+            {
+                Initialize();
+            }
+            catch (Exception e)
+            {
+                Utils.LogError("[MarkLight] {0}: Initialize() failed. Exception thrown: {1}", GameObjectName, Utils.GetError(e));
+            }
+#else
+            Initialize();
+#endif 
+        }
+
+        /// <summary>
+        /// Calls PropagateBindings() and catches and prints any exception thrown.
+        /// </summary>
+        internal void TryPropagateBindings()
+        {
+#if !DISABLE_INIT_TRYCATCH
+            try
+            {
+                PropagateBindings();
+            }
+            catch (Exception e)
+            {
+                Utils.LogError("[MarkLight] {0}: PropagateBindings() failed. Exception thrown: {1}", GameObjectName, Utils.GetError(e));
+            }
+#else
+            PropagateBindings();
+#endif
+        }
+
+        /// <summary>
+        /// Calls QueueAllChangeHandlers() and catches and prints any exception thrown.
+        /// </summary>
+        internal void TryQueueAllChangeHandlers()
+        {
+#if !DISABLE_INIT_TRYCATCH
+            try
+            {
+                QueueAllChangeHandlers();
+            }
+            catch (Exception e)
+            {
+                Utils.LogError("[MarkLight] {0}: QueueAllChangeHandlers() failed. Exception thrown: {1}", GameObjectName, Utils.GetError(e));
+            }
+#else
+            QueueAllChangeHandlers();
+#endif
+        }
+
+        /// <summary>
+        /// Calls TriggerChangeHandlers() and catches and prints any exception thrown.
+        /// </summary>
+        internal void TryTriggerChangeHandlers()
+        {
+#if !DISABLE_INIT_TRYCATCH
+            try
+            {
+                TriggerChangeHandlers();
+            }
+            catch (Exception e)
+            {
+                Utils.LogError("[MarkLight] {0}: TriggerChangeHandlers() failed. Exception thrown: {1}", GameObjectName, Utils.GetError(e));
+            }
+#else
+            TriggerChangeHandlers();
+#endif
+        }
+
+        /// <summary>
+        /// Returns string based on format string and parameters.
+        /// </summary>
+        public static string Format(string format, object arg)
+        {
+            return String.Format(format, arg ?? String.Empty);
+        }
+
+        /// <summary>
+        /// Returns string based on format string and parameters.
+        /// </summary>
+        public static string Format1(string format, object arg)
+        {
+            return String.Format(format, arg ?? String.Empty);
+        }
+
+        /// <summary>
+        /// Returns string based on format string and parameters.
+        /// </summary>
+        public static string Format2(string format, object arg1, object arg2)
+        {
+            return String.Format(format, arg1 ?? String.Empty, arg2 ?? String.Empty);
+        }
+
+        /// <summary>
+        /// Returns string based on format string and parameters.
+        /// </summary>
+        public static string Format3(string format, object arg1, object arg2, object arg3)
+        {
+            return String.Format(format, arg1 ?? String.Empty, arg2 ?? String.Empty, arg3 ?? String.Empty);
+        }
+
+        /// <summary>
+        /// Gets child view enumerator.
+        /// </summary>
+        public IEnumerator<View> GetEnumerator()
+        {
+            foreach (Transform child in gameObject.transform)
+            {
+                var childView = child.GetComponent<View>();
+                if (childView == null)
+                {
+                    continue;
+                }
+
+                yield return childView;
+            }
+        }
+
+        /// <summary>
+        /// Gets child view enumerator.
+        /// </summary>
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        /// <summary>
+        /// Destroys the view and moves its content to a new parent.
+        /// </summary>
+        public void DestroyAndMoveContent(View newParent)
+        {
+            // move content
+            MoveContent(newParent);
+
+            // destroy
+            this.Destroy();
+        }
+
+        /// <summary>
+        /// Moves the view's content to a new parent.
+        /// </summary>
+        public void MoveContent(View newParent)
+        {
+            var children = Content.GetChildren<View>(false);
+            foreach (var child in children)
+            {
+                child.MoveTo(newParent);
+            }
+        }
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         /// Gets boolean indicating if this view is live (enabled and not destroyed).
@@ -1328,7 +1763,7 @@ namespace MarkLight
         {
             get
             {
-                var viewName = ViewTypeName == "View" ? ViewXmlName : ViewTypeName;                
+                var viewName = ViewTypeName == "View" ? ViewXumlName : ViewTypeName;                
                 return !String.IsNullOrEmpty(Id) ? String.Format("{0} ({1})", viewName, Id) : viewName;
             }
         }
@@ -1341,6 +1776,37 @@ namespace MarkLight
             get
             {
                 return _viewFieldData;
+            }
+        }
+
+        /// <summary>
+        /// Gets view type data.
+        /// </summary>
+        public ViewTypeData ViewTypeData
+        {
+            get
+            {
+                if (_viewTypeData == null)
+                {
+                    _viewTypeData = ViewData.GetViewTypeData(ViewTypeName);
+                }
+
+                return _viewTypeData;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets bool indicating if the view has been initialized.
+        /// </summary>
+        public bool IsInitialized
+        {
+            get
+            {
+                return _isInitialized;
+            }
+            set
+            {
+                _isInitialized = value;
             }
         }
 

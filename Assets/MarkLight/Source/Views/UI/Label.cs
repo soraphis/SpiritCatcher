@@ -251,7 +251,7 @@ namespace MarkLight.Views.UI
             base.BehaviorChanged();
 
             TextComponent.alignment = TextAnchor;
-            if (IsSet(() => ShadowColor) || IsSet(() => ShadowDistance))
+            if (ShadowColor.IsSet || ShadowDistance.IsSet)
             {
                 var shadowComponent = GetComponent<Shadow>();
                 if (shadowComponent == null)
@@ -263,7 +263,7 @@ namespace MarkLight.Views.UI
                 shadowComponent.effectDistance = ShadowDistance.Value;
             }
 
-            if (IsSet(() => OutlineColor) || IsSet(() => OutlineDistance))
+            if (OutlineColor.IsSet || OutlineDistance.IsSet)
             {
                 var outlineComponent = GetComponent<Outline>();
                 if (outlineComponent == null)
@@ -350,7 +350,7 @@ namespace MarkLight.Views.UI
                     if (!convertResult.Success)
                     {
                         // unable to parse token
-                        Debug.LogError(String.Format("[MarkLight] {0}: Unable to parse text embedded size tag \"[{1}]\". {2}", GameObjectName, tag, convertResult.ErrorMessage));
+                        Utils.LogError("[MarkLight] {0}: Unable to parse text embedded size tag \"[{1}]\". {2}", GameObjectName, tag, convertResult.ErrorMessage);
                         return String.Format("[{0}]", tag);
                     }
 
@@ -371,7 +371,7 @@ namespace MarkLight.Views.UI
                     if (!convertResult.Success)
                     {
                         // unable to parse token
-                        Debug.LogError(String.Format("[MarkLight] {0}: Unable to parse text embedded color tag \"[{1}]\". {2}", GameObjectName, tag, convertResult.ErrorMessage));
+                        Utils.LogError("[MarkLight] {0}: Unable to parse text embedded color tag \"[{1}]\". {2}", GameObjectName, tag, convertResult.ErrorMessage);
                         return String.Format("[{0}]", tag);
                     }
 
@@ -388,6 +388,9 @@ namespace MarkLight.Views.UI
 
                 return String.Format("[{0}]", tag);
             });
+
+            // replace newline in string
+            formattedText = formattedText.Replace("\\n", Environment.NewLine);
 
             // split the string up on each line
             StringBuilder result = new StringBuilder();

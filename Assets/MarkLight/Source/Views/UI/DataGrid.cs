@@ -49,6 +49,13 @@ namespace MarkLight.Views.UI
         public _object SelectedItem;
 
         /// <summary>
+        /// Indicates if the list of rows are scrollable.
+        /// </summary>
+        /// <d>Boolean indicating if the list of rows is to be scrollable.</d>
+        [MapTo("DataGridList.IsScrollable")]
+        public _bool IsScrollable;
+
+        /// <summary>
         /// Indicates if items can be deselected by clicking.
         /// </summary>
         /// <d>A boolean indicating if items in the data grid can be deselected by clicking. Items can always be deselected programmatically.</d>
@@ -68,6 +75,13 @@ namespace MarkLight.Views.UI
         /// <d>A boolean indicating if items can be selected by clicking. Items can always be selected programmatically.</d>
         [MapTo("DataGridList.CanSelect")]
         public _bool CanSelect;
+
+        /// <summary>
+        /// Indicates if the rows should alternate in style.
+        /// </summary>
+        /// <d>Boolean indicating if the Row style should alternate between "Default" and "Alternate".</d>
+        [MapTo("DataGridList.AlternateItems")]
+        public _bool AlternateRows;
 
         /// <summary>
         /// Data grid list image sprite.
@@ -168,6 +182,13 @@ namespace MarkLight.Views.UI
         public _ElementSortDirection ListSortDirection;
 
         #region ListMask
+
+        /// <summary>
+        /// Indicates if a list mask is to be used.
+        /// </summary>
+        /// <d>Boolean indicating if a list mask is to be used.</d>
+        [MapTo("DataGridList.UseListMask")]
+        public _bool UseListMask;
 
         /// <summary>
         /// The width of the list mask image.

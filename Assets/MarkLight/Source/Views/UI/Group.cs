@@ -142,7 +142,7 @@ namespace MarkLight.Views.UI
                 {
                     if (isHorizontal)
                     {
-                        Debug.LogWarning(String.Format("[MarkLight] Unable to group view \"{0}\" horizontally as it doesn't specify its width in pixels or elements.", view.GameObjectName));
+                        Utils.LogWarning("[MarkLight] Unable to group view \"{0}\" horizontally as it doesn't specify its width in pixels or elements.", view.GameObjectName);
                         continue;
                     }
                     else
@@ -155,7 +155,7 @@ namespace MarkLight.Views.UI
                 {
                     if (!isHorizontal)
                     {
-                        Debug.LogWarning(String.Format("[MarkLight] Unable to group view \"{0}\" vertically as it doesn't specify its height in pixels or elements.", view.GameObjectName));
+                        Utils.LogWarning("[MarkLight] Unable to group view \"{0}\" vertically as it doesn't specify its height in pixels or elements.", view.GameObjectName);
                         continue;
                     }
                     else
@@ -172,7 +172,7 @@ namespace MarkLight.Views.UI
 
                 // set desired alignment if it is valid for the orientation otherwise use defaults
                 var alignment = isHorizontal ? ElementAlignment.Left : ElementAlignment.Top;
-                var desiredAlignment = IsSet(() => ContentAlignment) ? ContentAlignment : view.Alignment;
+                var desiredAlignment = ContentAlignment.IsSet ? ContentAlignment : view.Alignment;
                 if (isHorizontal && (desiredAlignment == ElementAlignment.Top || desiredAlignment == ElementAlignment.Bottom
                     || desiredAlignment == ElementAlignment.TopLeft || desiredAlignment == ElementAlignment.BottomLeft))
                 {
@@ -202,14 +202,14 @@ namespace MarkLight.Views.UI
                 }
 
                 // update child layout
-                view.LayoutChanged();
+                view.RectTransformChanged();
                 ++childIndex;
             }
 
             // set width and height 
             float totalSpacing = childCount > 1 ? (childIndex - 1) * Spacing.Value.Pixels : 0f;
 
-            if (!IsSet(() => Width))
+            if (!Width.IsSet)
             {
                 // if width is not explicitly set then adjust to content
                 if (!percentageWidth)
@@ -228,7 +228,7 @@ namespace MarkLight.Views.UI
                 }
             }
 
-            if (!IsSet(() => Height))
+            if (!Height.IsSet)
             {
                 // if height is not explicitly set then adjust to content
                 if (!percentageHeight)

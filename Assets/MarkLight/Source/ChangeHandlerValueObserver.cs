@@ -48,7 +48,7 @@ namespace MarkLight
         /// <summary>
         /// Notifies the change handler value observer that value has changed.
         /// </summary>
-        public override void Notify(HashSet<ViewFieldData> callstack)
+        public override bool Notify(HashSet<ViewFieldData> callstack)
         {
             if (TriggerImmediately)
             {
@@ -58,6 +58,8 @@ namespace MarkLight
             {
                 ParentView.QueueChangeHandler(ChangeHandlerName);
             }
+
+            return true;
         }
 
         /// <summary>
@@ -72,7 +74,7 @@ namespace MarkLight
             }
             catch (Exception e)
             {
-                Debug.LogError(String.Format("[MarkLight] {0}: Exception thrown when triggering change handler \"{1}\": {2}", ParentView.GameObjectName, ChangeHandlerName, Utils.GetError(e)));
+                Utils.LogError("[MarkLight] {0}: Exception thrown when triggering change handler \"{1}\": {2}", ParentView.GameObjectName, ChangeHandlerName, Utils.GetError(e));
             }
         }
 

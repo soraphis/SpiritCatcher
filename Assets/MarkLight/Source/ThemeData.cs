@@ -21,11 +21,14 @@ namespace MarkLight
 
         public string ThemeName;
         public string BaseDirectory;
-        public string Xml;
+        public Vector3 UnitSize;
+        public string Xuml;
         public List<ThemeElementData> ThemeElementData;
+        public bool BaseDirectorySet;
+        public bool UnitSizeSet;
 
         [NonSerialized]
-        private XElement _xmlElement;
+        private XElement _xumlElement;
 
         [NonSerialized]
         private Dictionary<string, List<ThemeElementData>> _themeElementData;
@@ -84,7 +87,41 @@ namespace MarkLight
                     continue;
 
                 // we have a match
-                matchedThemeElements.Add(themeElement);                
+                matchedThemeElements.Add(themeElement);
+
+                // add styles this style is based on
+                try
+                {
+                    matchedThemeElements.AddRange(GetBasedOnThemeElementData(viewTypeName, themeElement.BasedOn));
+                }
+                catch (Exception e)
+                {
+                    Utils.LogError("[MarkLight] Unable to get theme data. Exception thrown: {0}", Utils.GetError(e));
+                }
+            }
+
+            return matchedThemeElements;
+        }
+
+        /// <summary>
+        /// Gets theme element data a style is based on.
+        /// </summary>
+        public List<ThemeElementData> GetBasedOnThemeElementData(string viewTypeName, string basedOnTheme)
+        {
+            var matchedThemeElements = new List<ThemeElementData>();
+
+            if (string.IsNullOrEmpty(basedOnTheme))
+                return matchedThemeElements;
+
+            //Debug.Log(string.Format("GetThemeElementData started Type:{0} Based:{1}", viewTypeName, basedOnTheme));           
+            foreach (var themeElement in _themeElementData[viewTypeName])
+            {
+                if (themeElement.Style == basedOnTheme)
+                {
+                    //Debug.Log(string.Format("foundMatch for {0}", basedOnTheme));
+                    matchedThemeElements.Add(themeElement);
+                    matchedThemeElements.AddRange(GetBasedOnThemeElementData(viewTypeName, themeElement.BasedOn));
+                }
             }
 
             return matchedThemeElements;
@@ -95,26 +132,26 @@ namespace MarkLight
         #region Properties
 
         /// <summary>
-        /// Gets or sets XML element.
+        /// Gets or sets XUML element.
         /// </summary>
-        public XElement XmlElement
+        public XElement XumlElement
         {
             get
             {
-                if (_xmlElement == null && !String.IsNullOrEmpty(Xml))
+                if (_xumlElement == null && !String.IsNullOrEmpty(Xuml))
                 {
                     try
                     {
-                        _xmlElement = XElement.Parse(Xml);
+                        _xumlElement = XElement.Parse(Xuml);
                     }
                     catch
                     {
                     }
                 }
 
-                return _xmlElement; 
+                return _xumlElement;
             }
-            set { _xmlElement = value; }
+            set { _xumlElement = value; }
         }
 
         #endregion

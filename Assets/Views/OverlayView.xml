@@ -1,11 +1,9 @@
-<OverlayView>
-  <UserInterface SortingOrder="100" >
-    <Region Width="100%" Height="100%">
-      <ViewSwitcher Id="ContentViewSwitcher" TransitionIn="SlideIn">
-        <Region Width="0" Height="0"/>
-        <Inventory Width="100%" Height="100%" BackgroundColor="0, 0, 0, 0.4" AlwaysBlockRaycast="true"/>
-        <TeamView hasBackButton="true" BackgroundColor="0, 0, 0, 0.4" AlwaysBlockRaycast="true"/>
-      </ViewSwitcher>
-    </Region>
-  </UserInterface>
+<OverlayView xmlns="MarkLight">
+      <Region Width="100%" Height="100%">
+        <ViewSwitcher Id="ContentViewSwitcher" TransitionIn="SlideIn">
+          <Region Width="0" Height="0"/>
+          <Inventory Width="100%" Height="100%" BackgroundColor="0, 0, 0, 0.4" RaycastBlockMode="Always"/>
+          <TeamView hasBackButton="true" BackgroundColor="0, 0, 0, 0.4" RaycastBlockMode="Always"/>
+        </ViewSwitcher>
+      </Region>
 </OverlayView>

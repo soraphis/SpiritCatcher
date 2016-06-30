@@ -210,13 +210,13 @@ namespace MarkLight.Views.UI
         /// <summary>
         /// Indicates if the button is pressed.
         /// </summary>
-        [NotSetFromXml]
+        [NotSetFromXuml]
         public bool IsPressed;
 
         /// <summary>
         /// Indicates if the mouse is over the button.
         /// </summary>
-        [NotSetFromXml]
+        [NotSetFromXuml]
         public bool IsMouseOver;
 
         #endregion
@@ -267,7 +267,7 @@ namespace MarkLight.Views.UI
             }
             else
             {
-                SetState("Default");
+                SetState(IsToggleButton && ToggleValue ? "Pressed" : DefaultStateName);
 
                 // enable button actions
                 Click.IsDisabled = false;
@@ -383,6 +383,18 @@ namespace MarkLight.Views.UI
         {
             base.SetState(state);
             ButtonLabel.SetState(state);
+        }
+
+        /// <summary>
+        /// Called when the button is disabled.
+        /// </summary>
+        public void OnDisable()
+        {
+            if (!IsToggleButton && !IsDisabled)
+            {
+                // reset state to default if view is deactivated
+                SetState(DefaultStateName);
+            }
         }
 
         #endregion

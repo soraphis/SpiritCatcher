@@ -1,7 +1,7 @@
 ﻿<TeamView>
   <Region Width="80%" Height="90%">
   <List Id="TeamList" Items="{Spirits}" Width="80%" Height="100%" Alignment="Top" Margin="30, 50, 30, 50" CanSelect="false">
-    <ListItem IsTemplate="true" Text="{#Item.Name}"  Click="ItemClicked" SelectOnMouseDown="false" >
+    <ListItem IsTemplate="true" Text="{#Item.Name}"  Click="ItemClicked">
       <Label FontColor="0,0,0" Text=" {#Item.Level}" Alignment="Right"/>
       <Slider SliderHandleBreadth="0" SliderHandleLength="0" 	Alignment="Bottom" Height="10%" Width="80%" CanSlide="false" Max="1" Min="0" Value="$getPercentHP({#Item.CurrentHP}, {#Item.HP})"/>
     </ListItem>
